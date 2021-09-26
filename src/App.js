@@ -6,6 +6,7 @@ import AppContext from './Context/AppContext';
 import NavBar from './components/NavBar';
 import SignUp from './components/SignUp';
 import MyFavoritesList from './components/Pages/MyFavoritesList';
+import CreateList from './components/Pages/listPage.js/CreateList';
 
 
 
@@ -44,6 +45,9 @@ function App() {
             </Route>
             <Route path="/MyFavoritesLists" exact>
               <MyFavoritesList />
+            </Route>
+            <Route path="/CreateList" exact>
+              <CreateList />
             </Route>
           </Switch>
 
