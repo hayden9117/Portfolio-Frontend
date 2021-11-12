@@ -20,8 +20,9 @@ export default function AccountMenu() {
 
 
         localStorage.clear();
-        window.location.reload(false);
         history.push('/')
+        window.location.reload(false);
+
     }
 
     return (

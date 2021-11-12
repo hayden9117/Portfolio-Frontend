@@ -1,7 +1,6 @@
 import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
 import React from 'react';
 import { Link } from 'react-router-dom'
-import { Button } from '@material-ui/core';
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -9,7 +8,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
-import AccountCircleRounded from '@material-ui/icons/AccountCircleRounded';
 import MailIcon from '@material-ui/icons/Mail';
 import ContactsOutlinedIcon from '@material-ui/icons/ContactsOutlined';
 import MenuIcon from "@material-ui/icons/Menu";

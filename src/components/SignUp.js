@@ -14,24 +14,27 @@ function SignUp() {
         e.preventDefault();
         let bodyObject = { 'username': newUserName, 'password': newPassword }
 
-
-        fetch(`http://localhost:3001/newuser`, {
-            credentials: 'include',
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json',
-                'charset': 'UTF-8'
-            },
-            body: JSON.stringify(bodyObject)
-        })
-            .then(response => response.json())
-            .then(result => {
-                console.log(result)
-                if (result.message === 'successfully added new entry to database') {
-                    alert('successfully added new entry to database, Please Login')
-                    history.push('/')
-                }
+        if (matchedPassWord === newPassword) {
+            fetch(`http://localhost:3001/newuser`, {
+                credentials: 'include',
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'charset': 'UTF-8'
+                },
+                body: JSON.stringify(bodyObject)
             })
+                .then(response => response.json())
+                .then(result => {
+                    console.log(result)
+                    if (result.message === 'successfully added new entry to database') {
+                        alert('successfully added new entry to database, Please Login')
+                        history.push('/')
+                    }
+                })
+        } else {
+            alert('password does not match')
+        }
     }
     const handleLogIn = (e) => {
         history.push(e)

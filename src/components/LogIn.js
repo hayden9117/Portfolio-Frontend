@@ -39,7 +39,7 @@ function Login({ setToken }) {
                 }
 
                 if (result.token === 'test123') {
-                    alert('login successful')
+
                     setToken(result)
                 }
 
