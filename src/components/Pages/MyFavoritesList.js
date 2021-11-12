@@ -40,7 +40,6 @@ function MyFavoritesList() {
       .then(result => {
         console.log(result)
         if (result.message === 'successfully added new entry to database') {
-          alert(`${result.message}`)
           setRender({
             ...render,
             render: true

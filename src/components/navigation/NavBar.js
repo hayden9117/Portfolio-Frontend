@@ -18,7 +18,7 @@ import List from '@material-ui/core/List';
 import { Drawer } from '@material-ui/core';
 import clsx from 'clsx';
 import '../../App.css';
-import LogOut from './LogOut';
+import AccountMenu from './Account/AccountMenu';
 
 function NavBar() {
   const [open, setOpen] = React.useState(false);
@@ -107,7 +107,7 @@ function NavBar() {
         <Typography variant="h6" className={classes.title} >
           My Favorites List Demo
         </Typography>
-        <LogOut />
+        <AccountMenu />
       </Toolbar>
     </AppBar>
 
