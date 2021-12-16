@@ -40,7 +40,9 @@ function Login({ setToken }) {
 
                 if (result.token === 'test123') {
 
-                    setToken(result)
+                    setToken(result);
+                    
+                    history.push('/Home')
                 }
 
                 if (result.message === 'incorrect password') {

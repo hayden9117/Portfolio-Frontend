@@ -48,6 +48,10 @@
   box-shadow: 6px 11px 5px -4px rgba(0, 0, 0, 0.24);
   padding: 10px;
 }
+.loginText {
+  margin-left: 50px;
+ 
+}
 
 .customLink {
   color: #fff;
@@ -82,3 +86,8 @@
   align-items: stretch;
   
 }
+
+.center {
+  border: 5px solid #FFFF00;
+  text-align: center;
+  }

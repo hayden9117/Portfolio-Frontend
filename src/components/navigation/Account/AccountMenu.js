@@ -4,6 +4,7 @@ import { Menu } from '@material-ui/core';
 import { MenuItem } from '@material-ui/core';
 import AccountCircleRounded from '@material-ui/icons/AccountCircleRounded';
 import { useHistory } from 'react-router';
+// import MyAccount from './MyAccount';
 
 export default function AccountMenu() {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -46,7 +47,7 @@ export default function AccountMenu() {
                 }}
             >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleClose}>My Account</MenuItem>
                 <MenuItem onClick={handleLogOut}>Logout</MenuItem>
             </Menu>
         </div>

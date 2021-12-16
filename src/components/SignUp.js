@@ -2,6 +2,8 @@ import { Button, TextField } from "@material-ui/core"
 import PasswordStrengthBar from 'react-password-strength-bar';
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { FormControl } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 
 
 
@@ -41,18 +43,20 @@ function SignUp() {
     }
 
     return (
-        <form className="loginForm" >
-            <TextField className="loginText" label="create username" value={newUserName} onChange={e => setNewUserName(e.target.value)} variant="outlined" style={{ height: 80 }} />
-            <div />
-            <TextField label="create password" type="password" value={newPassword} onChange={e => setNewPassword(e.target.value)} variant="outlined" style={{ height: 80 }} />
-            <div />
-            <TextField label="re-type password" type="password" value={matchedPassWord} onChange={e => setMatchedPassword(e.target.value)} variant="outlined" />
-            <div></div>
-            <Button className="loginSubmit" onClick={handleSubmit}>Submit</Button>
-            <div></div>
-            <Button onClick={() => handleLogIn("/")} >Login</Button>
-            <PasswordStrengthBar password={newPassword} />
-        </form>
+        <Box className="loginForm">
+            <FormControl sx={{ m: 'auto', width: '25ch' }} variant="standard" >
+                <TextField label="create username" value={newUserName} onChange={e => setNewUserName(e.target.value)} variant="outlined" style={{ height: 80 }} />
+
+                <TextField label="create password" type="password" value={newPassword} onChange={e => setNewPassword(e.target.value)} variant="outlined" style={{ height: 80 }} />
+
+                <TextField label="re-type password" type="password" value={matchedPassWord} onChange={e => setMatchedPassword(e.target.value)} variant="outlined" />
+
+                <Button className="loginSubmit" onClick={handleSubmit}>Submit</Button>
+
+                <Button onClick={() => handleLogIn("/")} >Login</Button>
+                <PasswordStrengthBar password={newPassword} />
+            </FormControl>
+        </Box >
     )
 }
 

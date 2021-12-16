@@ -9,7 +9,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import ContactsOutlinedIcon from '@material-ui/icons/ContactsOutlined';
 import MenuIcon from "@material-ui/icons/Menu";
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
@@ -17,9 +16,14 @@ import { Drawer } from '@material-ui/core';
 import clsx from 'clsx';
 import '../../App.css';
 import AccountMenu from './Account/AccountMenu';
+import { useContext } from 'react';
+import AppContext from '../../Context/AppContext';
+import IconsArray from './NavComponents/NavBarIcons';
+
 
 function NavBar() {
   const [open, setOpen] = React.useState(false);
+  const {navTitle} = useContext(AppContext);
 
 
   const useStyles = makeStyles((theme) => ({
@@ -77,17 +81,7 @@ function NavBar() {
             </IconButton>
           </div>
           <Divider />
-          <List>
-            {['My Favorites Lists', 'Friends Favorites List', 'Send Favorites list'].map((text, index) => {
-              let path = text.replace(/ /g, '');
-              return (
-                <ListItem button key={text} component={Link} to={path}>
-                  <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <ContactsOutlinedIcon />}</ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItem>
-              )
-            })}
-          </List>
+<IconsArray/>
           <Divider />
           <List>
             {['Deleted List'].map((text, index) => {
@@ -103,7 +97,7 @@ function NavBar() {
         </Drawer>
         <img style={{ height: 100, margin: 'auto', display: 'block' }} src="/images/gamba-logo.jpg" alt="" />
         <Typography variant="h6" className={classes.title} >
-          My Favorites List Demo
+         {navTitle}
         </Typography>
         <AccountMenu />
       </Toolbar>

@@ -6,8 +6,11 @@ import AppContext from './Context/AppContext';
 import NavBar from './components/navigation/NavBar';
 import SignUp from './components/SignUp';
 import MyFavoritesList from './components/Pages/MyFavoritesList';
-import CreateList from './components/Pages/listPage.js/CreateList';
+import CreateList from './components/Pages/listPage/CreateList';
 import useToken from './components/UseToken';
+import RandomShotGenerator from './components/RandomShotGenerator';
+import Home from './components/home/Home';
+
 
 
 
@@ -18,7 +21,7 @@ function App() {
   const [value, setValue] = useState("");
   const [listName, setListName] = useState("");
   const [listType, setListType] = useState("");
-
+  const [navTitle, setNavTitle] = useState('');
   const { token, setToken } = useToken();
   console.log(token)
 
@@ -46,7 +49,8 @@ function App() {
           // newUserName, setNewUserName,
           listName, setListName,
           listType, setListType,
-          token, setToken
+          token, setToken,
+          navTitle, setNavTitle
 
         }
       }>
@@ -54,17 +58,17 @@ function App() {
         <Router>
           <NavBar />
           <Switch>
-            {/* <Route path="/" exact>
-              <Login />
-            </Route> */}
-            {/* <Route path="/signup" exact>
-              <SignUp />
-            </Route> */}
+          <Route path="/Home" exact>
+              <Home />
+            </Route>
             <Route path="/MyFavoritesLists" exact>
               <MyFavoritesList />
             </Route>
             <Route path="/CreateList" exact>
               <CreateList />
+            </Route>
+            <Route path="/randTest" exact>
+              <RandomShotGenerator />
             </Route>
           </Switch>
 

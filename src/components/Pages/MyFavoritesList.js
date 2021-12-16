@@ -12,11 +12,15 @@ import '../../App.css';
 
 
 
+
+
 function MyFavoritesList() {
   const { listName, setListName } = useContext(AppContext);
+ const { setNavTitle} = useContext(AppContext);
   const [list, setList] = React.useState([]);
   const [render, setRender] = React.useState({ render: true });
 
+setNavTitle("My Favorites") 
 
   const handleChange = (e) => {
     setListName(e.target.value)
