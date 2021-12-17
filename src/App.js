@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from './components/LogIn';
 import AppContext from './Context/AppContext';
@@ -8,7 +9,6 @@ import SignUp from './components/SignUp';
 import MyFavoritesList from './components/Pages/MyFavoritesList';
 import CreateList from './components/Pages/listPage/CreateList';
 import useToken from './components/UseToken';
-import RandomShotGenerator from './components/RandomShotGenerator';
 import Home from './components/home/Home';
 
 
@@ -17,15 +17,20 @@ import Home from './components/home/Home';
 
 
 function App() {
-
+  const history = useHistory()
   const [value, setValue] = useState("");
   const [listName, setListName] = useState("");
   const [listType, setListType] = useState("");
   const [navTitle, setNavTitle] = useState('');
+  const [flick, setFlick] = useState("")
+  const [env, setEnv] = useState("")
+  const [adv, setAdv] = useState("")
   const { token, setToken } = useToken();
   console.log(token)
-
+  const pathHome = ['/','/home']
   if (!token) {
+
+    
 
     return <Router>
       <Switch>
@@ -36,7 +41,6 @@ function App() {
       </Switch>
     </Router>
   }
-
 
   return (
     <div className="App">
@@ -50,7 +54,12 @@ function App() {
           listName, setListName,
           listType, setListType,
           token, setToken,
-          navTitle, setNavTitle
+          navTitle, setNavTitle,
+          flick, setFlick,
+          env, setEnv,
+          adv, setAdv
+
+
 
         }
       }>
@@ -58,7 +67,7 @@ function App() {
         <Router>
           <NavBar />
           <Switch>
-          <Route path="/Home" exact>
+          <Route path="/" exact>
               <Home />
             </Route>
             <Route path="/MyFavoritesLists" exact>
@@ -66,9 +75,6 @@ function App() {
             </Route>
             <Route path="/CreateList" exact>
               <CreateList />
-            </Route>
-            <Route path="/randTest" exact>
-              <RandomShotGenerator />
             </Route>
           </Switch>
 

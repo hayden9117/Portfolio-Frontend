@@ -1,4 +1,4 @@
-import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, Box, IconButton, Toolbar, Typography, CssBaseline } from '@material-ui/core';
 import React from 'react';
 import { Link } from 'react-router-dom'
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -56,6 +56,8 @@ function NavBar() {
   }
 
   return (
+    <Box sx={{ display: "flex", height: "100%" }}>
+    <CssBaseline />
     <AppBar style={{ background: '#0d99fb' }}>
       <Toolbar >
         <IconButton
@@ -102,7 +104,7 @@ function NavBar() {
         <AccountMenu />
       </Toolbar>
     </AppBar>
-
+    </Box>
   );
 }
 

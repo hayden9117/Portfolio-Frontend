@@ -17,14 +17,10 @@ const icons = [
     {
       id: 1,
       Icon: ContactsOutlinedIcon,
-      text: 'My Favorites Lists'
+      text: 'List Share'
    
     },
-    {
-      id: 2,
-      Icon: InboxIcon,
-      text: 'Send Favorites list'
-    },
+   
   ];
   return (
 <List>

@@ -20,7 +20,7 @@ function MyFavoritesList() {
   const [list, setList] = React.useState([]);
   const [render, setRender] = React.useState({ render: true });
 
-setNavTitle("My Favorites") 
+setNavTitle("List Share") 
 
   const handleChange = (e) => {
     setListName(e.target.value)

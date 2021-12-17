@@ -41,8 +41,8 @@ function Login({ setToken }) {
                 if (result.token === 'test123') {
 
                     setToken(result);
-                    
-                    history.push('/Home')
+
+                    history.push('/')
                 }
 
                 if (result.message === 'incorrect password') {
