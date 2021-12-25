@@ -50,7 +50,6 @@
 }
 .loginText {
   margin-left: 50px;
- 
 }
 
 .customLink {
@@ -84,10 +83,23 @@
 .listBox {
   display: flex;
   align-items: stretch;
-  
 }
 
 .center {
-  border: 5px solid #FFFF00;
+  border: 5px solid #ffff00;
   text-align: center;
-  }
+}
+
+.MuiGrid-container {
+  width: max-content !important ;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.MuiGrid-item {
+  width: 450px;
+
+  display: flex;
+  flex-wrap: wrap;
+}
