@@ -7,34 +7,22 @@ import {
   CardMedia,
   Typography,
   Avatar,
-} from "@material-ui/core";
-import dummyData from "./apps";
+} from "@mui/material";
 import CardDialog from "./CardDialog";
-import { useEffect } from "react";
-import { useState } from "react";
 import "../../../App.css";
 
 function CardsArray(props) {
   return (
     <>
-      {dummyData?.map((item) => {
+      {props.map?.map((item) => {
         return (
           <>
             <Grid item>
-              <Card data-testid="card" key={item.id} sx={{ passing: 3 }}>
+              <Card data-testid="card" key={item.id}>
                 <CardHeader
-                  data-testid="title"
                   avatar={
-                    <Avatar
-                      data-testid="avatar"
-                      sx={{ bgcolor: "red" }}
-                      aria-label="recipe"
-                    >
-                      <img
-                        className="cardsImage"
-                        src={item.image}
-                        alt={item.name.slice(0, 2)}
-                      />
+                    <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">
+                      {item.name}
                     </Avatar>
                   }
                   titleTypographyProps={{ variant: "h6" }}

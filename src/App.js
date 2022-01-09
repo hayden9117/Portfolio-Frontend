@@ -1,6 +1,5 @@
 import "./App.css";
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./components/LogIn";
 import AppContext from "./Context/AppContext";
@@ -10,20 +9,20 @@ import MyFavoritesList from "./components/Pages/MyFavoritesList";
 import CreateList from "./components/Pages/listPage/CreateList";
 import useToken from "./components/UseToken";
 import Home from "./components/home/Home";
-import { Box } from "@material-ui/core";
+import { Box } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
+import { theme } from "./config/theme";
 
 function App() {
-  const history = useHistory();
   const [value, setValue] = useState("");
   const [listName, setListName] = useState("");
   const [listType, setListType] = useState("");
   const [navTitle, setNavTitle] = useState("");
-  const [flick, setFlick] = useState("");
-  const [env, setEnv] = useState("");
-  const [adv, setAdv] = useState("");
+  const [open, setOpen] = useState(false);
   const { token, setToken } = useToken();
+
   console.log(token);
-  const pathHome = ["/", "/home"];
+
   if (!token) {
     return (
       <Router>
@@ -43,45 +42,44 @@ function App() {
 
   return (
     <Box sx={{ height: "100%" }}>
-      <AppContext.Provider
-        value={{
-          // userName, setUserName,
-          // password, setPassword,
-          value,
-          setValue,
-          // newPassword, setNewPassword,
-          // newUserName, setNewUserName,
-          listName,
-          setListName,
-          listType,
-          setListType,
-          token,
-          setToken,
-          navTitle,
-          setNavTitle,
-          flick,
-          setFlick,
-          env,
-          setEnv,
-          adv,
-          setAdv,
-        }}
-      >
-        <Router>
-          <NavBar />
-          <Switch>
-            <Route path="/" exact>
-              <Home />
-            </Route>
-            <Route path="/ListShare" exact>
-              <MyFavoritesList />
-            </Route>
-            <Route path="/CreateList" exact>
-              <CreateList />
-            </Route>
-          </Switch>
-        </Router>
-      </AppContext.Provider>
+      <ThemeProvider theme={theme}>
+        <AppContext.Provider
+          value={{
+            // userName, setUserName,
+            // password, setPassword,
+            value,
+            setValue,
+            // newPassword, setNewPassword,
+            // newUserName, setNewUserName,
+            listName,
+            setListName,
+            listType,
+            setListType,
+            token,
+            setToken,
+            navTitle,
+            setNavTitle,
+            open,
+            setOpen,
+          }}
+        >
+          <Router>
+            <NavBar />
+            <Switch>
+              <Route path="/" exact>
+                <Home />
+              </Route>
+              <Route path="/ListShare" exact>
+                <MyFavoritesList />
+              </Route>
+
+              <Route path="/CreateList" exact>
+                <CreateList />
+              </Route>
+            </Switch>
+          </Router>
+        </AppContext.Provider>
+      </ThemeProvider>
     </Box>
   );
 }

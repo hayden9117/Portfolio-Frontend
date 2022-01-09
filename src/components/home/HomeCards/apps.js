@@ -19,8 +19,7 @@ const dummyData = [
     createdAt: "2020-01-01",
     updatedAt: "2020-01-01",
     scrollEnd: 900,
-    // image: "/images/Untitled_Artwork.png",
-    // image: navigating,
+    image: "/images/gamba-logo.jpg",
   },
   {
     id: 3,
@@ -29,8 +28,8 @@ const dummyData = [
       "baby chillwave pork belly kinfolk hammock unicorn small batch brunch jianbing poutine shaman. Heirloom asymmetrical gentrify distillery pitchfork, raw denim poke williamsburg cray godard chartreuse brunch taxidermy selfies. Squid taiyaki hexagon, photo booth affogato taxidermy selvage vice banh mi heirloom food truck umami austin bicycle rights.",
     createdAt: "2020-01-01",
     updatedAt: "2020-01-01",
-    // image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgKRO-REDvmhR7WK8nDEl7BQfy4P3MicmwgA&usqp=CAU",
-    // image: navigating,
+    scrollEnd: 1350,
+    image: "/images/gamba-logo.jpg",
   },
   {
     id: 4,
@@ -39,8 +38,8 @@ const dummyData = [
       "baby chillwave pork belly kinfolk hammock unicorn small batch brunch jianbing poutine shaman. Heirloom asymmetrical gentrify distillery pitchfork, raw denim poke williamsburg cray godard chartreuse brunch taxidermy selfies. Squid taiyaki hexagon, photo booth affogato taxidermy selvage vice banh mi heirloom food truck umami austin bicycle rights.",
     createdAt: "2020-01-01",
     updatedAt: "2020-01-01",
-    // image: "/src/common/screen/home/HomeCards/CardImages",
-    // image: navigating,
+    scrollEnd: 1800,
+    image: "/images/gamba-logo.jpg",
   },
   {
     id: 5,
@@ -49,8 +48,7 @@ const dummyData = [
       "baby chillwave pork belly kinfolk hammock unicorn small batch brunch jianbing poutine shaman. Heirloom asymmetrical gentrify distillery pitchfork, raw denim poke williamsburg cray godard chartreuse brunch taxidermy selfies. Squid taiyaki hexagon, photo booth affogato taxidermy selvage vice banh mi heirloom food truck umami austin bicycle rights.",
     createdAt: "2020-01-01",
     updatedAt: "2020-01-01",
-    // image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgKRO-REDvmhR7WK8nDEl7BQfy4P3MicmwgA&usqp=CAU",
-    // image: navigating,
+    image: "/images/gamba-logo.jpg",
   },
 ];
 

@@ -107,3 +107,9 @@
 .MuiCardMedia-img {
   object-fit: fill !important ;
 }
+.smoothScroll {
+  scroll-behavior: smooth;
+}
+.cardsArbitrage {
+  padding-bottom: 3;
+}
