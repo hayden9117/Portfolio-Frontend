@@ -12,6 +12,7 @@ import Home from "./components/home/Home";
 import { Box } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./config/theme";
+import SideStepper from "./components/navigation/side-stepper/sideStepper";
 
 function App() {
   const [value, setValue] = useState("");
@@ -45,12 +46,8 @@ function App() {
       <ThemeProvider theme={theme}>
         <AppContext.Provider
           value={{
-            // userName, setUserName,
-            // password, setPassword,
             value,
             setValue,
-            // newPassword, setNewPassword,
-            // newUserName, setNewUserName,
             listName,
             setListName,
             listType,
@@ -65,6 +62,7 @@ function App() {
         >
           <Router>
             <NavBar />
+            <SideStepper />
             <Switch>
               <Route path="/" exact>
                 <Home />

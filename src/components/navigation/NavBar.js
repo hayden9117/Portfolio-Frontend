@@ -13,6 +13,7 @@ import { useContext } from "react";
 import AppContext from "../../Context/AppContext";
 import { useTheme } from "@mui/material/styles";
 import { NavDrawer } from "./NavComponents/Drawer";
+import SideStepper from "./side-stepper/sideStepper";
 
 function NavBar() {
   const { setOpen } = useContext(AppContext);
@@ -47,41 +48,6 @@ function NavBar() {
           >
             <MenuIcon />
           </IconButton>
-          {/* <Drawer
-            // className={classes.drawer}
-            variant="persistent"
-            anchor="left"
-            open={open}
-            // classes={{
-            //   paper: classes.drawerPaper,
-            // }}
-          >
-            <div>
-              <IconButton onClick={handleDrawerClose}>
-                {theme.direction === "ltr" ? (
-                  <ChevronLeftIcon />
-                ) : (
-                  <ChevronRightIcon />
-                )}
-              </IconButton>
-            </div>
-            <Divider />
-            <IconsArray />
-            <Divider />
-            <List>
-              {["Deleted List"].map((text, index) => {
-                let path = text.replace(/ /g, "");
-                return (
-                  <ListItem button key={text} component={Link} to={path}>
-                    <ListItemIcon>
-                      {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                    </ListItemIcon>
-                    <ListItemText primary={text} />
-                  </ListItem>
-                );
-              })}
-            </List>
-          </Drawer> */}
           <NavDrawer />
 
           <Typography

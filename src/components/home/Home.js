@@ -1,6 +1,6 @@
 import AppContext from "../../Context/AppContext";
 import { useContext } from "react";
-import { Box } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import Cards from "./HomeCards/Cards";
 import "../../App.css";
 import FullWidthTabs from "./resume/Tabs";
@@ -11,25 +11,29 @@ function Home() {
   setNavTitle("Richard Haydens Portfolio");
 
   return (
-    <Box>
+    <Stack>
       <Box
         sx={{
           textAlign: "center",
-          marginTop: "150px",
         }}
       >
-        <AboutMe />
-        <FullWidthTabs />
+        <Stack>
+          <AboutMe />
+
+          <FullWidthTabs />
+        </Stack>
       </Box>
       <Box
         sx={{
           textAlign: "center",
           marginTop: "12%",
+          marginLeft: "auto",
+          marginRight: "auto",
         }}
       >
         <Cards />
       </Box>
-    </Box>
+    </Stack>
   );
 }
 export default Home;

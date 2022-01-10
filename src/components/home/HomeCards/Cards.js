@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, Button } from "@mui/material";
+import { Box, Grid, Button } from "@material-ui/core";
 import dummyData from "./apps";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
@@ -32,7 +32,7 @@ const Cards = () => {
   }, [document.getElementById("scroll", handleScroll)]);
 
   const scroll = (prop) => {
-    if (prop === 0) {
+    if (prop == 0) {
       box.current.scrollTo(0, null);
     }
 
@@ -44,10 +44,12 @@ const Cards = () => {
     <>
       {`TEST DATA ___ SCROLL POS ( ${scrollOffset} )`}
       <Box
+        id="aboutMe"
         sx={{
           display: "flex",
           flexDirection: "row",
           maxHeight: 460,
+          width: 555,
           justifyContent: "center",
         }}
       >

@@ -52,13 +52,16 @@ export default function FullWidthTabs() {
 
   return (
     <Box
+      id="aboutMe"
       sx={{
         bgcolor: "background.paper",
         width: 800,
+        height: 1500,
         marginLeft: "auto",
         marginRight: "auto",
       }}
     >
+      <Typography variant="h3">Experience</Typography>
       <AppBar position="static">
         <Tabs
           value={value}

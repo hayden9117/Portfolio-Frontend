@@ -6,7 +6,6 @@ import {
   CardHeader,
   CardMedia,
   Typography,
-  Avatar,
 } from "@mui/material";
 import CardDialog from "./CardDialog";
 import "../../../App.css";
@@ -20,11 +19,6 @@ function CardsArray(props) {
             <Grid item>
               <Card data-testid="card" key={item.id}>
                 <CardHeader
-                  avatar={
-                    <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">
-                      {item.name}
-                    </Avatar>
-                  }
                   titleTypographyProps={{ variant: "h6" }}
                   title={item.name}
                   subheader={`Updated at: ${item.updatedAt}`}
