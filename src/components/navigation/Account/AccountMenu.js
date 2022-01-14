@@ -3,6 +3,7 @@ import { Button, Menu, MenuItem } from "@mui/material";
 
 import AccountCircleRounded from "@material-ui/icons/AccountCircleRounded";
 import { useHistory } from "react-router";
+import { Grid } from "@material-ui/core";
 // import MyAccount from './MyAccount';
 
 export default function AccountMenu() {
@@ -25,6 +26,7 @@ export default function AccountMenu() {
   return (
     <div>
       <Button
+        color={"inherit"}
         id="basic-button"
         aria-controls="basic-menu"
         aria-haspopup="true"
@@ -42,9 +44,11 @@ export default function AccountMenu() {
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My Account</MenuItem>
-        <MenuItem onClick={handleLogOut}>Logout</MenuItem>
+        <Grid container direction="column">
+          <MenuItem onClick={handleClose}>Profile</MenuItem>
+          <MenuItem onClick={handleClose}>My Account</MenuItem>
+          <MenuItem onClick={handleLogOut}>Logout</MenuItem>
+        </Grid>
       </Menu>
     </div>
   );

@@ -8,7 +8,7 @@ export const AboutMe = () => {
         bgcolor: "background.paper",
         width: 800,
         height: 800,
-        mt: -50,
+        mt: 10,
         marginLeft: "auto",
         marginRight: "auto",
       }}

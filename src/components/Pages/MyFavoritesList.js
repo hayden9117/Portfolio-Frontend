@@ -127,7 +127,6 @@ function MyFavoritesList() {
                   alignItems="flex-start"
                   key={item}
                   component={Link}
-                  to={"/createList"}
                 >
                   <ListItemText primary={item} />
                 </ListItem>

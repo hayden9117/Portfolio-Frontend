@@ -8,7 +8,6 @@ import {
   Typography,
 } from "@mui/material";
 import CardDialog from "./CardDialog";
-import "../../../App.css";
 
 function CardsArray(props) {
   return (

@@ -13,6 +13,7 @@ const Cards = () => {
   const [scrollOffset, setScrollOffset] = React.useState();
   const element = document.getElementById("scroll");
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleScroll = () => {
     var x = element.scrollLeft;
 
@@ -29,7 +30,7 @@ const Cards = () => {
           .removeEventListener("scroll", handleScroll);
       }
     };
-  }, [document.getElementById("scroll", handleScroll)]);
+  }, [handleScroll]);
 
   const scroll = (prop) => {
     if (prop == 0) {
@@ -55,8 +56,8 @@ const Cards = () => {
       >
         <Box sx={{ display: "flex" }}>
           <Button
+            color="primary"
             onClick={() => scroll(-450)}
-            onDoubleClick={() => scroll(0)}
             variiant="contained"
           >
             <ChevronLeftIcon />
@@ -69,10 +70,7 @@ const Cards = () => {
           </Grid>
           <br></br>
         </Box>
-        <Button
-          onClick={() => scroll(450)}
-          onDoubleClick={() => scroll(grid.current.clientWidth)}
-        >
+        <Button color="primary" onClick={() => scroll(450)}>
           <ChevronRightIcon />
         </Button>
       </Box>

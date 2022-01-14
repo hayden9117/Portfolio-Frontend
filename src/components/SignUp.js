@@ -1,7 +1,7 @@
 import PasswordStrengthBar from "react-password-strength-bar";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { FormControl, Box, Button, TextField } from "@mui/material";
+import { FormControl, Box, Stack, Button, TextField } from "@mui/material";
 
 function SignUp() {
   const [matchedPassWord, setMatchedPassword] = useState("");
@@ -39,8 +39,8 @@ function SignUp() {
   };
 
   return (
-    <Box className="loginForm">
-      <FormControl sx={{ m: "auto", width: "25ch" }} variant="standard">
+    <FormControl variant="standard">
+      <Stack>
         <TextField
           label="create username"
           value={newUserName}
@@ -66,14 +66,12 @@ function SignUp() {
           variant="outlined"
         />
 
-        <Button className="loginSubmit" onClick={handleSubmit}>
-          Submit
-        </Button>
+        <Button onClick={handleSubmit}>Submit</Button>
 
         <Button onClick={() => handleLogIn("/")}>Login</Button>
         <PasswordStrengthBar password={newPassword} />
-      </FormControl>
-    </Box>
+      </Stack>
+    </FormControl>
   );
 }
 

@@ -1,7 +1,8 @@
 import * as React from "react";
+import { useContext } from "react";
+import AppContext from "/Users/richie/Desktop/my-favorites/frontend/src/Context/AppContext.js";
 import { useEffect } from "react";
 import { Stepper, Step, StepButton, StepLabel, Stack } from "@mui/material";
-
 import PropTypes from "prop-types";
 import { styled } from "@mui/material/styles";
 import Check from "@mui/icons-material/Check";
@@ -122,7 +123,9 @@ const ColorlibStepIconRoot = styled("div")(({ theme, ownerState }) => ({
   alignItems: "center",
   ...(ownerState.active && {
     backgroundImage:
-      "linear-gradient( 136deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%)",
+      theme.palette.mode === "dark"
+        ? "linear-gradient( 136deg, rgb(44, 6, 94) 0%, rgb(99, 80, 125) 50%, rgb(138,35,135) 100%)"
+        : "linear-gradient( 136deg, rgb(226, 226, 240) 0%, rgb(95, 167, 244) 50%, rgb(255,255,255) 100%)",
     boxShadow: "0 4px 10px 0 rgba(0,0,0,.25)",
   }),
   ...(ownerState.completed && {
@@ -168,28 +171,10 @@ ColorlibStepIcon.propTypes = {
   icon: PropTypes.node,
 };
 
-const steps = [
-  {
-    label: "About Me",
-    stepValue: 0,
-    scrollPos: 0,
-  },
-  {
-    label: "Experience",
-    stepValue: 1,
-    scrollPos: 820,
-  },
-  {
-    label: "My Portfolio",
-    stepValue: 2,
-    scrollPos: 2580,
-  },
-];
-
 export default function SideStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
-  const [completed, setCompleted] = React.useState({});
   const [scrollOffset, setScrollOffset] = React.useState();
+  const { steps } = useContext(AppContext);
 
   const handleStep = (step) => {
     setActiveStep(step.stepValue);
@@ -211,11 +196,9 @@ export default function SideStepper() {
     <Stack
       sx={{
         height: "500px",
-        marginLeft: "85%",
-        position: "-webkit-sticky",
-        position: "sticky",
+        width: 200,
         top: "10%",
-        paddingTop: "40px",
+        paddingTop: "80px",
         zIndex: 5,
       }}
     >
@@ -228,11 +211,30 @@ export default function SideStepper() {
           // height: "500px",
           alignItems: "start",
           "& .css-p46eja-MuiStepConnector-root": {
-            marginLeft: "25px",
+            marginLeft: "35px",
+          },
+
+          "& .css-obxkkc-MuiStepConnector-root": {
+            marginLeft: "35px",
           },
           ".css-p46eja-MuiStepConnector-root .MuiStepConnector-line ": {
             height: "190px",
           },
+          ".css-obxkkc-MuiStepConnector-root .css-8t49rw-MuiStepConnector-line ":
+            {
+              height: "190px",
+            },
+          overflow: "auto",
+          display: "block",
+
+          height: "100%",
+          width: 150,
+          zindex: 1200,
+
+          position: "fixed",
+          top: 90,
+
+          right: 15,
         }}
       >
         {steps.map((step, index) => (

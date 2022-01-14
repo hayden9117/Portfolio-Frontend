@@ -5,58 +5,69 @@ import {
   Toolbar,
   Typography,
   CssBaseline,
+  Button,
+  Grid,
 } from "@mui/material";
 import React from "react";
 import MenuIcon from "@material-ui/icons/Menu";
 import AccountMenu from "./Account/AccountMenu";
 import { useContext } from "react";
 import AppContext from "../../Context/AppContext";
-import { useTheme } from "@mui/material/styles";
 import { NavDrawer } from "./NavComponents/Drawer";
-import SideStepper from "./side-stepper/sideStepper";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 
 function NavBar() {
   const { setOpen } = useContext(AppContext);
   const { navTitle } = useContext(AppContext);
-
-  const theme = useTheme();
-
+  const { checked, setChecked } = useContext(AppContext);
+  const { setMode } = useContext(AppContext);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
-  const handleDrawerClose = () => {
-    setOpen(false);
+
+  console.log(checked);
+  const toggleChecked = () => {
+    setChecked(!checked);
   };
+
+  if (checked === true) {
+    setMode("light");
+  }
+  if (checked === false) {
+    setMode("dark");
+  }
 
   return (
     <Box
       sx={{
         display: "flex",
         height: "100%",
+        width: "100%",
         textAlign: "center",
       }}
     >
       <CssBaseline />
-      <AppBar>
+      <AppBar sx={{ maxHeight: "60px" }}>
         <Toolbar>
           <IconButton
             edge="start"
             color="inherit"
             aria-label="menu"
             onClick={handleDrawerOpen}
-            // className={clsx(classes.menuButton, open && classes.hide)}
           >
             <MenuIcon />
           </IconButton>
           <NavDrawer />
 
-          <Typography
-            variant="h6"
-            // className={classes.title}
-          >
-            {navTitle}
-          </Typography>
-          <AccountMenu />
+          <Typography>{navTitle}</Typography>
+          <Grid container sx={{ marginLeft: "80%" }}>
+            <Button color={"inherit"} onClick={toggleChecked}>
+              {" "}
+              {checked === true ? <LightModeIcon /> : <DarkModeIcon />}
+            </Button>
+            <AccountMenu />
+          </Grid>
         </Toolbar>
       </AppBar>
     </Box>

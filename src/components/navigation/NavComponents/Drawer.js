@@ -37,7 +37,7 @@ export const NavDrawer = () => {
       // }}
     >
       <div>
-        <IconButton onClick={handleDrawerClose}>
+        <IconButton color="primary" onClick={handleDrawerClose}>
           {theme.direction === "ltr" ? (
             <ChevronLeftIcon />
           ) : (

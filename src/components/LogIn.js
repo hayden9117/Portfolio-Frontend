@@ -49,10 +49,9 @@ function Login({ setToken }) {
   };
 
   return (
-    <form className="loginForm" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <h1>Please Login</h1>
       <TextField
-        className="loginText"
         label="username"
         value={userName}
         onChange={(e) => setUserName(e.target.value)}
