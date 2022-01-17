@@ -6,15 +6,17 @@ import SideStepper from "../../navigation/side-stepper/sideStepper";
 import FullWidthTabs from "./resume/Tabs";
 import { AboutMe } from "./resume/aboutMe";
 import { HomeSideSteps } from "../../comman/helpers/StepperHelper";
+import Skills from "./resume/Skills";
 
 function Home() {
   const { setNavTitle } = useContext(AppContext);
   const { setSteps } = useContext(AppContext);
+
   setSteps(HomeSideSteps);
   setNavTitle("My Resume");
 
   return (
-    <>
+    <Box>
       <Stack>
         <Box
           sx={{
@@ -23,7 +25,7 @@ function Home() {
         >
           <Stack>
             <AboutMe />
-
+            <Skills />
             <FullWidthTabs />
           </Stack>
         </Box>
@@ -41,7 +43,7 @@ function Home() {
       <Box>
         <SideStepper />
       </Box>
-    </>
+    </Box>
   );
 }
 export default Home;

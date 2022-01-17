@@ -141,6 +141,7 @@ function ColorlibStepIcon(props) {
     1: <SettingsIcon />,
     2: <GroupAddIcon />,
     3: <VideoLabelIcon />,
+    4: <VideoLabelIcon />,
   };
 
   return (
@@ -174,23 +175,31 @@ ColorlibStepIcon.propTypes = {
 export default function SideStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
   const [scrollOffset, setScrollOffset] = React.useState();
+
   const { steps } = useContext(AppContext);
 
   const handleStep = (step) => {
-    setActiveStep(step.stepValue);
     window.scrollTo({
       top: step.scrollPos,
       behavior: "smooth",
     });
+  };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const handleScroll = () => {
+    let x = window.scrollY;
 
-    console.log(step.scrollPos);
+    setScrollOffset(x);
   };
 
   useEffect(() => {
-    var x = window.scrollY;
+    window.addEventListener("scroll", handleScroll);
+  }, [handleScroll]);
 
-    setScrollOffset(x);
-  }, [window.scrollY]);
+  const activeStepHandler = (index) => {
+    let active = index <= activeStep;
+
+    return active;
+  };
 
   return (
     <Stack
@@ -209,20 +218,23 @@ export default function SideStepper() {
         orientation="vertical"
         sx={{
           // height: "500px",
-          alignItems: "start",
+          "& .MuiButtonBase-root": {
+            justifyContent: "flex-start",
+            alignItems: "flex-start",
+          },
           "& .css-p46eja-MuiStepConnector-root": {
-            marginLeft: "35px",
+            marginLeft: "50%",
           },
 
           "& .css-obxkkc-MuiStepConnector-root": {
-            marginLeft: "35px",
+            marginLeft: "50%",
           },
           ".css-p46eja-MuiStepConnector-root .MuiStepConnector-line ": {
-            height: "190px",
+            height: "50px",
           },
           ".css-obxkkc-MuiStepConnector-root .css-8t49rw-MuiStepConnector-line ":
             {
-              height: "190px",
+              height: "50px",
             },
           overflow: "auto",
           display: "block",
@@ -237,15 +249,24 @@ export default function SideStepper() {
           right: 15,
         }}
       >
-        {steps.map((step, index) => (
-          <Step active={index <= activeStep} key={step.label}>
-            <StepButton color="inherit" onClick={() => handleStep(step)}>
-              <StepLabel StepIconComponent={ColorlibStepIcon}>
-                {step.label}
-              </StepLabel>
-            </StepButton>
-          </Step>
-        ))}
+        {steps.map((step, index) => {
+          return (
+            <Step
+              active={
+                scrollOffset >= step.scrollPos
+                  ? step.stepValue
+                  : activeStepHandler(index)
+              }
+              key={step.label}
+            >
+              <StepButton color="inherit" onClick={() => handleStep(step)}>
+                <StepLabel StepIconComponent={ColorlibStepIcon}>
+                  {step.label}
+                </StepLabel>
+              </StepButton>
+            </Step>
+          );
+        })}
       </Stepper>
     </Stack>
   );

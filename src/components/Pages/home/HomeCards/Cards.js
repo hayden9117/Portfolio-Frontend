@@ -33,7 +33,7 @@ const Cards = () => {
   }, [handleScroll]);
 
   const scroll = (prop) => {
-    if (prop == 0) {
+    if (prop === 0) {
       box.current.scrollTo(0, null);
     }
 

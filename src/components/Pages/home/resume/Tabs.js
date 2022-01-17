@@ -56,7 +56,7 @@ export default function FullWidthTabs() {
       sx={{
         bgcolor: "background.paper",
         width: 800,
-        height: 1500,
+        height: 1000,
         marginLeft: "auto",
         marginRight: "auto",
       }}

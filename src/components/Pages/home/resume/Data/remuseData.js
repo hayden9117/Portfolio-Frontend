@@ -23,4 +23,81 @@ export const resumeData = {
       "• Facilitate root cause analysis of system issues",
     ],
   },
+  Skills: {
+    skillSet: [
+      {
+        skill: "JavaScript",
+        description:
+          "Javascript was the first language I became familliar with. I have a strong understanding of front end functional programming and server-side backend development with this language.",
+        panel: "panel-1",
+      },
+      {
+        skill: "Typescript",
+        description:
+          "I have plenty of experience utilizing type script for enterprise level applications. As a super set of java script, Typescript can be used to create applications with higher levels of bug detection by utilizing Typescripts Static typing capabilities. Saving time and money in the development life cycle. ",
+        panel: "panel-2",
+      },
+      {
+        skill: "Git",
+        description:
+          "I have experience with git and working on agile teams, I have strong understanding of using git to push changes, and settle merge conflicts if any.",
+        panel: "panel-3",
+      },
+      {
+        skill: "RESTful APIs",
+        description:
+          " I have experience with utilizing Restful frame works such as Express.js, By understanding the REST ful achitecture I can learn new frameworks quickly.",
+        panel: "panel-4",
+      },
+      {
+        skill: "Front-end React",
+        description:
+          "I have been learning and working with react since the begining of my app development journey. I have a solid foundation with this Frame work and can build custom Graphic user interfaces.",
+        panel: "panel-5",
+      },
+      {
+        skill: "SQL no SQl Databases",
+        description:
+          " I have experience storing data with relational and non relational data bases",
+        panel: "panel-6",
+      },
+      {
+        skill: "CSS",
+        description:
+          "I have experience building custom UI components, utilizing this skill set also allows me to augment and develop modular components from other UI frameworks.",
+        panel: "panel-7",
+      },
+      {
+        skill: "Testing",
+        description:
+          "Experienced in test driven development, utilizing frameworks and libraries such as Jest, React testinglibrary and cypress. I have a strong understanding of the testing pyramid and have developed unit, end to end and integration tests.",
+        panel: "panel-8",
+      },
+      {
+        skill: "Containerization",
+        description:
+          "Experience with utilizing docker and containerixation to deploy applications to DevSecOps standards.",
+
+        panel: "panel-9",
+      },
+      {
+        skill: "User Centered Design",
+        description:
+          "Understanding of putting the user at the center, and using best practices to develop user centered applicatilion. I have experience with meet and understanding users need and developing applications to insudtry standard best practices.",
+        panel: "panel-10",
+      },
+      {
+        skill: "Agile",
+        description:
+          "Worked in team environment using Agile and scrum managing continuos development, and best practices.",
+        panel: "panel-11",
+      },
+      {
+        skill: "CI/CD",
+        description:
+          "Experience with CI/CD and using tools such as git lab to bridge the gap between development, security and operations.",
+        panel: "panel-12",
+      },
+    ],
+  },
 };

@@ -75,6 +75,7 @@ function App() {
               <Route path="/" exact>
                 <Home />
               </Route>
+
               <Route path="/ListShare" exact>
                 <MyFavoritesList />
               </Route>
