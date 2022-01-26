@@ -7,6 +7,7 @@ import FullWidthTabs from "./resume/Tabs";
 import { AboutMe } from "./resume/aboutMe";
 import { HomeSideSteps } from "../../comman/helpers/StepperHelper";
 import Skills from "./resume/Skills";
+import { Divider } from "@mui/material";
 
 function Home() {
   const { setNavTitle } = useContext(AppContext);
@@ -17,29 +18,27 @@ function Home() {
 
   return (
     <Box>
-      <Stack>
-        <Box
-          sx={{
-            textAlign: "center",
-          }}
+      <Box
+        sx={{
+          textAlign: "center",
+
+          "& .css-pnq1z9-MuiStack-root": {
+            alignItems: "center",
+          },
+        }}
+      >
+        <Stack
+          direction={"column"}
+          spacing={5}
+          divider={<Divider orientation="vertical" flexItem />}
         >
-          <Stack>
-            <AboutMe />
-            <Skills />
-            <FullWidthTabs />
-          </Stack>
-        </Box>
-        <Box
-          sx={{
-            textAlign: "center",
-            marginTop: "12%",
-            marginLeft: "auto",
-            marginRight: "auto",
-          }}
-        >
+          <AboutMe />
+          <Skills />
+          <FullWidthTabs />
           <Cards />
-        </Box>
-      </Stack>
+        </Stack>
+      </Box>
+
       <Box>
         <SideStepper />
       </Box>

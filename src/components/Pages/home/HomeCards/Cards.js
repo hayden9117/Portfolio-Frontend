@@ -16,8 +16,8 @@ const Cards = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleScroll = () => {
     var x = element.scrollLeft;
-
-    setScrollOffset(x);
+    var y = document.documentElement.scrollTop;
+    setScrollOffset(y);
   };
 
   useEffect(() => {

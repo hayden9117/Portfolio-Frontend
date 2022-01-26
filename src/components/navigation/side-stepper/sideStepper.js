@@ -206,7 +206,6 @@ export default function SideStepper() {
       sx={{
         height: "500px",
         width: 200,
-        top: "10%",
         paddingTop: "80px",
         zIndex: 5,
       }}
@@ -230,11 +229,11 @@ export default function SideStepper() {
             marginLeft: "50%",
           },
           ".css-p46eja-MuiStepConnector-root .MuiStepConnector-line ": {
-            height: "50px",
+            height: "100px",
           },
           ".css-obxkkc-MuiStepConnector-root .css-8t49rw-MuiStepConnector-line ":
             {
-              height: "50px",
+              height: "100px",
             },
           overflow: "auto",
           display: "block",

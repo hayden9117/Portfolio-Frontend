@@ -1,5 +1,4 @@
 import { Typography, Box, List, ListItem } from "@mui/material";
-import { typography } from "@mui/system";
 
 import { resumeData } from "./Data/remuseData";
 

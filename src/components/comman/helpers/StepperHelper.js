@@ -12,11 +12,11 @@ export const HomeSideSteps = [
   {
     label: "Experience",
     stepValue: 2,
-    scrollPos: 1900,
+    scrollPos: 2300,
   },
   {
     label: "My Portfolio",
     stepValue: 3,
-    scrollPos: 3000,
+    scrollPos: 3297,
   },
 ];

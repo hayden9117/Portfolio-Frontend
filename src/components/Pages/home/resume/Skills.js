@@ -22,33 +22,27 @@ function Skills() {
       sx={{
         bgcolor: "background.paper",
         width: 800,
-        height: 1100,
+        height: "100%",
         mt: 10,
-        marginLeft: "auto",
-        marginRight: "auto",
         marginBottom: 5,
       }}
     >
       <Typography variant="h2">Skill Set</Typography>
-      <List>
+      <List sx={{ marginLeft: "auto", marginRight: "auto" }}>
         {resumeData.Skills.skillSet.map((skills) => {
           return (
             <ListItem>
               <Accordion
                 expanded={expanded === skills.panel}
                 onChange={handleChange(skills.panel)}
+                sx={{ width: "100%", padding: 2 }}
               >
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel1a-content"
                   id="panel1a-header"
                 >
-                  <Typography
-                    variant="h5"
-                    sx={{ maxWidth: 430, textAlign: "left" }}
-                  >
-                    {skills.skill}
-                  </Typography>
+                  <Typography variant="h5">{skills.skill}</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography>{skills.description}</Typography>
