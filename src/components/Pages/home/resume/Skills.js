@@ -1,7 +1,6 @@
 import {
   Typography,
   Box,
-  Stack,
   List,
   ListItem,
   Accordion,
@@ -27,7 +26,6 @@ function Skills() {
         marginBottom: 5,
       }}
     >
-      <Typography variant="h2">Skill Set</Typography>
       <List sx={{ marginLeft: "auto", marginRight: "auto" }}>
         {resumeData.Skills.skillSet.map((skills) => {
           return (

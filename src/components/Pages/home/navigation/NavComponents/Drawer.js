@@ -1,7 +1,6 @@
 import { IconButton } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
-// import { makeStyles, useTheme } from "@mui/material";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@mui/material/ListItem";
@@ -14,7 +13,7 @@ import Divider from "@material-ui/core/Divider";
 import List from "@mui/material/List";
 import { Drawer } from "@mui/material";
 import IconsArray from "./NavBarIcons";
-import AppContext from "../../../Context/AppContext";
+import AppContext from "../../../../../Context/AppContext";
 import { useContext } from "react";
 
 export const NavDrawer = () => {
@@ -27,15 +26,7 @@ export const NavDrawer = () => {
   };
 
   return (
-    <Drawer
-      // className={classes.drawer}
-      variant="persistent"
-      anchor="left"
-      open={open}
-      // classes={{
-      //   paper: classes.drawerPaper,
-      // }}
-    >
+    <Drawer variant="persistent" anchor="left" open={open}>
       <div>
         <IconButton color="primary" onClick={handleDrawerClose}>
           {theme.direction === "ltr" ? (

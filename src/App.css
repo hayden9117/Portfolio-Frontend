@@ -113,3 +113,43 @@
 .cardsArbitrage {
   padding-bottom: 3;
 }
+
+.remove-btn {
+  margin-right: 0.5rem;
+}
+
+.item-enter {
+  opacity: 0;
+}
+.item-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+.item-exit {
+  opacity: 1;
+}
+.item-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+}
+
+@media screen and (max-width: 650px) {
+  .MuiBox-root-30 {
+    overflow: scroll !important;
+  }
+  .MuiGrid-container {
+    flex-direction: row !important;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .css-1uhjvr8-MuiStepper-root {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 651px) {
+  .MuiGrid-container {
+    flex-direction: column;
+  }
+}

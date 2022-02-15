@@ -1,8 +1,7 @@
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, Box } from "@mui/material";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import "../App.css";
 
 function Login({ setToken }) {
   const [userName, setUserName] = useState();
@@ -31,6 +30,7 @@ function Login({ setToken }) {
         }
 
         if (result.token === "test123") {
+          console.log(result.token);
           setToken(result);
 
           history.push("/");
@@ -49,30 +49,39 @@ function Login({ setToken }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>Please Login</h1>
-      <TextField
-        label="username"
-        value={userName}
-        onChange={(e) => setUserName(e.target.value)}
-        variant="outlined"
-        style={{ height: 80 }}
-      />
-      <div />
-      <TextField
-        label="password"
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        variant="outlined"
-      />
-      <div />
-      <Button className="loginSubmit" type="submit">
-        Submit
-      </Button>
-      <div></div>
-      <Button onClick={() => handleSignUp("/signup")}>Sign UP</Button>
-    </form>
+    <Box
+      component="form"
+      sx={{
+        textAlign: "center",
+        marginTop: "12%",
+        "& .MuiTextField-root": { m: 2, width: "100ch" },
+      }}
+    >
+      <form>
+        <h1>Please Login</h1>
+        <TextField
+          label="username"
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
+          variant="outlined"
+          style={{ height: 80 }}
+        />
+        <div />
+        <TextField
+          label="password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          variant="outlined"
+        />
+        <div />
+        <Button className="loginSubmit" type="submit" onClick={handleSubmit}>
+          Submit
+        </Button>
+        <div></div>
+        <Button onClick={() => handleSignUp("/signup")}>Sign UP</Button>
+      </form>
+    </Box>
   );
 }
 

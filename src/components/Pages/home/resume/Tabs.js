@@ -61,7 +61,6 @@ export default function FullWidthTabs() {
         marginRight: "auto",
       }}
     >
-      <Typography variant="h3">Experience</Typography>
       <AppBar position="static">
         <Tabs
           value={value}

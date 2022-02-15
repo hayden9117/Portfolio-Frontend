@@ -6,6 +6,7 @@ import {
   CardHeader,
   CardMedia,
   Typography,
+  Button,
 } from "@mui/material";
 import CardDialog from "./CardDialog";
 
@@ -34,6 +35,11 @@ function CardsArray(props) {
                     <CardDialog description={item.description} />
                     <br />
                   </Typography>
+
+                  <Button href={item.link} variant="contained" color="primary">
+                    {" "}
+                    Check Out App
+                  </Button>
                 </CardContent>
               </Card>
             </Grid>

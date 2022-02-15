@@ -1,7 +1,6 @@
 import {
   AppBar,
   Box,
-  IconButton,
   Toolbar,
   Typography,
   CssBaseline,
@@ -9,24 +8,16 @@ import {
   Grid,
 } from "@mui/material";
 import React from "react";
-import MenuIcon from "@material-ui/icons/Menu";
-import AccountMenu from "./Account/AccountMenu";
-import { useContext } from "react";
-import AppContext from "../../Context/AppContext";
-import { NavDrawer } from "./NavComponents/Drawer";
+import { useContext, useState, useEffect } from "react";
+import AppContext from "../../../../Context/AppContext";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
+import PropTypes from "prop-types";
 
-function NavBar() {
-  const { setOpen } = useContext(AppContext);
-  const { navTitle } = useContext(AppContext);
+function NavBar(props) {
   const { checked, setChecked } = useContext(AppContext);
   const { setMode } = useContext(AppContext);
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
 
-  console.log(checked);
   const toggleChecked = () => {
     setChecked(!checked);
   };
@@ -48,30 +39,28 @@ function NavBar() {
       }}
     >
       <CssBaseline />
-      <AppBar sx={{ maxHeight: "60px" }}>
-        <Toolbar>
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            onClick={handleDrawerOpen}
-          >
-            <MenuIcon />
-          </IconButton>
-          <NavDrawer />
+      <AppBar sx={{ height: "150px" }}>
+        <Toolbar sx={{ height: "150px", alignContent: "center" }}>
+          <Typography sx={{ position: "absolute" }} variant="h2">
+            {props.title}
+          </Typography>
 
-          <Typography>{navTitle}</Typography>
           <Grid container sx={{ marginLeft: "80%" }}>
-            <Button color={"inherit"} onClick={toggleChecked}>
+            <Button
+              sx={{ position: "absolute", left: 180 }}
+              color={"inherit"}
+              onClick={toggleChecked}
+            >
               {" "}
               {checked === true ? <LightModeIcon /> : <DarkModeIcon />}
             </Button>
-            <AccountMenu />
           </Grid>
         </Toolbar>
       </AppBar>
     </Box>
   );
 }
-
+NavBar.propTypes = {
+  title: PropTypes.string,
+};
 export default NavBar;

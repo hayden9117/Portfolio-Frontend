@@ -13,7 +13,6 @@ export const AboutMe = () => {
         marginRight: "auto",
       }}
     >
-      <Typography variant="h2 "> About Me</Typography>
       <Stack direction="row" spacing={2}>
         <Avatar
           variant="rounded"

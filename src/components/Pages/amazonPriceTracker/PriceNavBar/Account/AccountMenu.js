@@ -1,9 +1,9 @@
 import * as React from "react";
-import { Button, Menu, MenuItem } from "@mui/material";
+import { Button, Menu, MenuItem, Stack } from "@mui/material";
 
 import AccountCircleRounded from "@material-ui/icons/AccountCircleRounded";
 import { useHistory } from "react-router";
-import { Grid } from "@material-ui/core";
+
 // import MyAccount from './MyAccount';
 
 export default function AccountMenu() {
@@ -44,11 +44,11 @@ export default function AccountMenu() {
           "aria-labelledby": "basic-button",
         }}
       >
-        <Grid container direction="column">
+        <Stack spacing={2} sx={{ padding: 2 }}>
           <MenuItem onClick={handleClose}>Profile</MenuItem>
           <MenuItem onClick={handleClose}>My Account</MenuItem>
           <MenuItem onClick={handleLogOut}>Logout</MenuItem>
-        </Grid>
+        </Stack>
       </Menu>
     </div>
   );

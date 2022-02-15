@@ -1,7 +1,5 @@
-import * as React from "react";
-import { useContext } from "react";
-import AppContext from "/Users/richie/Desktop/my-favorites/frontend/src/Context/AppContext.js";
-import { useEffect } from "react";
+import { useEffect, useState, useContext } from "react";
+import AppContext from "../../../../../Context/AppContext";
 import { Stepper, Step, StepButton, StepLabel, Stack } from "@mui/material";
 import PropTypes from "prop-types";
 import { styled } from "@mui/material/styles";
@@ -85,31 +83,6 @@ QontoStepIcon.propTypes = {
   completed: PropTypes.bool,
 };
 
-const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
-  [`&.${stepConnectorClasses.alternativeLabel}`]: {
-    top: 22,
-  },
-  [`&.${stepConnectorClasses.active}`]: {
-    [`& .${stepConnectorClasses.line}`]: {
-      backgroundImage:
-        "linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)",
-    },
-  },
-  [`&.${stepConnectorClasses.completed}`]: {
-    [`& .${stepConnectorClasses.line}`]: {
-      backgroundImage:
-        "linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)",
-    },
-  },
-  [`& .${stepConnectorClasses.line}`]: {
-    height: 3,
-    border: 0,
-    backgroundColor:
-      theme.palette.mode === "dark" ? theme.palette.grey[800] : "#eaeaf0",
-    borderRadius: 1,
-  },
-}));
-
 const ColorlibStepIconRoot = styled("div")(({ theme, ownerState }) => ({
   backgroundColor:
     theme.palette.mode === "dark" ? theme.palette.grey[700] : "#ccc",
@@ -172,33 +145,12 @@ ColorlibStepIcon.propTypes = {
   icon: PropTypes.node,
 };
 
-export default function SideStepper() {
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [scrollOffset, setScrollOffset] = React.useState();
-
-  const { steps } = useContext(AppContext);
-
+export default function SideStepper(props) {
   const handleStep = (step) => {
     window.scrollTo({
       top: step.scrollPos,
       behavior: "smooth",
     });
-  };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleScroll = () => {
-    let x = window.scrollY;
-
-    setScrollOffset(x);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-  }, [handleScroll]);
-
-  const activeStepHandler = (index) => {
-    let active = index <= activeStep;
-
-    return active;
   };
 
   return (
@@ -211,8 +163,8 @@ export default function SideStepper() {
       }}
     >
       <Stepper
+        className="stepAnimation"
         nonLinear
-        activeStep={activeStep}
         connector={<QontoConnector />}
         orientation="vertical"
         sx={{
@@ -229,37 +181,37 @@ export default function SideStepper() {
             marginLeft: "50%",
           },
           ".css-p46eja-MuiStepConnector-root .MuiStepConnector-line ": {
-            height: "100px",
+            height: "11vh",
           },
           ".css-obxkkc-MuiStepConnector-root .css-8t49rw-MuiStepConnector-line ":
             {
-              height: "100px",
+              height: "11vh",
             },
           overflow: "auto",
           display: "block",
 
-          height: "100%",
           width: 150,
           zindex: 1200,
 
           position: "fixed",
-          top: 90,
+          top: 170,
 
           right: 15,
         }}
       >
-        {steps.map((step, index) => {
+        {props.steps.map((step) => {
           return (
             <Step
               active={
-                scrollOffset >= step.scrollPos
-                  ? step.stepValue
-                  : activeStepHandler(index)
+                props.scrollOffset >= step.scrollPos ? step.stepValue : false
               }
               key={step.label}
             >
               <StepButton color="inherit" onClick={() => handleStep(step)}>
-                <StepLabel StepIconComponent={ColorlibStepIcon}>
+                <StepLabel
+                  key={step.label}
+                  StepIconComponent={ColorlibStepIcon}
+                >
                   {step.label}
                 </StepLabel>
               </StepButton>
@@ -270,3 +222,9 @@ export default function SideStepper() {
     </Stack>
   );
 }
+
+SideStepper.propTypes = {
+  scrollOffset: PropTypes.number,
+  steps: PropTypes.array,
+  orientation: PropTypes.string,
+};

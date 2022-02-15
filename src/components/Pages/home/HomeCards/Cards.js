@@ -43,7 +43,6 @@ const Cards = () => {
 
   return (
     <>
-      {`TEST DATA ___ SCROLL POS ( ${scrollOffset} )`}
       <Box
         id="aboutMe"
         sx={{
@@ -63,7 +62,7 @@ const Cards = () => {
             <ChevronLeftIcon />
           </Button>
         </Box>
-        <Box ref={box} className="smoothScroll" id="scroll" overflow="scroll">
+        <Box ref={box} className="smoothScroll" id="scroll" overflow="visible">
           <br></br>
           <Grid container ref={grid} spacing={3} wrap="nowrap" direction="row">
             <CardsArray map={dummyData} scroll={scrollOffset} />
