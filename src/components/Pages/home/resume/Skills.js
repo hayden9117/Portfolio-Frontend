@@ -9,30 +9,38 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { resumeData } from "./Data/remuseData";
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 function Skills() {
   const [expanded, setExpanded] = useState(false);
+
   const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
+    setExpanded(panel);
+    console.log(panel);
   };
+
   return (
     <Box
+      id="scrollBox"
       sx={{
         bgcolor: "background.paper",
-        width: 800,
-        height: "100%",
-        mt: 10,
+        width: "100%",
+        height: 450,
+        overflow: "scroll",
         marginBottom: 5,
       }}
+      onScroll={handleChange(resumeData.Skills.skillSet)}
     >
       <List sx={{ marginLeft: "auto", marginRight: "auto" }}>
-        {resumeData.Skills.skillSet.map((skills) => {
+        {resumeData.Skills.skillSet.map((skills, index, array) => {
           return (
-            <ListItem>
+            <ListItem
+              onMouseEnter={handleChange(skills.panel)}
+              onMouseLeave={handleChange(false)}
+              onMouseDown={handleChange(skills.panel)}
+            >
               <Accordion
-                expanded={expanded === skills.panel}
-                onChange={handleChange(skills.panel)}
+                expanded={expanded === skills.panel ? true : false}
                 sx={{ width: "100%", padding: 2 }}
               >
                 <AccordionSummary

@@ -7,16 +7,16 @@ export const HomeSideSteps = [
   {
     label: "Skill Sets",
     stepValue: 2,
-    scrollPos: 820,
+    scrollPos: 500,
   },
   {
     label: "Experience",
     stepValue: 3,
-    scrollPos: 2300,
+    scrollPos: 1060,
   },
   {
     label: "My Portfolio",
     stepValue: 4,
-    scrollPos: 3297,
+    scrollPos: 1700,
   },
 ];

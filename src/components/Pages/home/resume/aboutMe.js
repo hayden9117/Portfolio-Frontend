@@ -6,9 +6,9 @@ export const AboutMe = () => {
       id="aboutMe"
       sx={{
         bgcolor: "background.paper",
-        width: 800,
-        height: 800,
-        mt: 10,
+        width: "100%",
+        height: 360,
+        mt: 12,
         marginLeft: "auto",
         marginRight: "auto",
       }}
@@ -25,7 +25,10 @@ export const AboutMe = () => {
             marginBottom: 3,
           }}
         ></Avatar>
-        <Typography paragraph={true} sx={{ maxWidth: 430, textAlign: "left" }}>
+        <Typography
+          paragraph={true}
+          sx={{ maxWidth: "60%", textAlign: "left" }}
+        >
           {resumeData.Introduction.Intro}
         </Typography>
       </Stack>

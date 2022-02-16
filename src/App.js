@@ -1,11 +1,7 @@
 import "./App.css";
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Login from "./components/LogIn";
 import AppContext from "./Context/AppContext";
-import SignUp from "./components/SignUp";
-import MyFavoritesList from "./components/Pages/MyFavoritesList";
-import useToken from "./components/UseToken";
 import Home from "./components/Pages/home/Home";
 import { Box } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";

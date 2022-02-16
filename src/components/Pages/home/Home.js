@@ -15,7 +15,7 @@ function Home() {
 
   for (let i = 0; i < HomeSideSteps.length; i++) {
     let labelIndex =
-      scrollOffset >= HomeSideSteps[i].scrollPos
+      scrollOffset >= HomeSideSteps[i].scrollPos - 50
         ? HomeSideSteps[i].stepValue
         : null;
     if (typeof HomeSideSteps[labelIndex - 1] === "object") {
@@ -52,14 +52,13 @@ function Home() {
           },
         }}
       >
-        <Stack
-          direction={"column"}
-          spacing={5}
-          divider={<Divider orientation="vertical" flexItem />}
-        >
+        <Stack direction={"column"} spacing={5}>
           <AboutMe />
+          <Divider />
           <Skills />
+          <Divider />
           <FullWidthTabs />
+          <Divider sx={{ width: "100%" }} />
           <Cards />
         </Stack>
       </Box>
