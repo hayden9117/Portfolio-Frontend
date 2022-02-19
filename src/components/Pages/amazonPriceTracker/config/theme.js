@@ -4,26 +4,7 @@ export const lightTheme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#42a9fb",
-      // darker: "#700B97",
-      background: {
-        main: "#c2d2df",
-        paper: "#3E065F",
-      },
-    },
-    secondary: {
-      main: "#8E05C2",
-      background: {
-        main: "#c2d2df",
-        paper: "#3E065F",
-      },
-    },
-  },
-  components: {
-    MuiButton: {
-      style: {
-        backgroundcolor: "#700B97",
-      },
+      main: "#FFA500",
     },
   },
   typography: {
@@ -46,26 +27,7 @@ export const darkTheme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#42a9fb",
-      // darker: "#700B97",
-      background: {
-        main: "#c2d2df",
-        paper: "#3E065F",
-      },
-    },
-    secondary: {
-      main: "#8E05C2",
-      background: {
-        main: "#c2d2df",
-        paper: "#3E065F",
-      },
-    },
-  },
-  components: {
-    MuiButton: {
-      style: {
-        backgroundcolor: "#700B97",
-      },
+      main: "#754C00",
     },
   },
   typography: {

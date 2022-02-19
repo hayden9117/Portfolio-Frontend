@@ -62,14 +62,31 @@ const Cards = () => {
             <ChevronLeftIcon />
           </Button>
         </Box>
-        <Box ref={box} className="smoothScroll" id="scroll" overflow="visible">
+        <Box
+          component="div"
+          ref={box}
+          sx={{
+            "& .MuiGrid-container ": {
+              " @media screen and (max-width: 650px)": {
+                flexDirection: "row",
+              },
+            },
+            "& .MuiBox-root-6": {
+              " @media screen and (min-width: 650px)": {
+                overflow: "scroll",
+              },
+            },
+          }}
+          className="smoothScroll"
+          id="scroll"
+        >
           <br></br>
-          <Grid container ref={grid} spacing={3} wrap="nowrap" direction="row">
+          <Grid container ref={grid} spacing={3} wrap="nowrap" columns={3}>
             <CardsArray map={dummyData} scroll={scrollOffset} />
           </Grid>
           <br></br>
         </Box>
-        <Button color="primary" onClick={() => scroll(450)}>
+        <Button id="scrollBtn" color="primary" onClick={() => scroll(450)}>
           <ChevronRightIcon />
         </Button>
       </Box>

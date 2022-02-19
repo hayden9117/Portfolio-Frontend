@@ -39,7 +39,7 @@ function NavBar(props) {
       }}
     >
       <CssBaseline />
-      <AppBar sx={{ height: "150px" }}>
+      <AppBar sx={{ height: "150px", position: "fixed" }}>
         <Toolbar sx={{ height: "150px", alignContent: "center" }}>
           <Typography sx={{ position: "absolute" }} variant="h2">
             {props.title}

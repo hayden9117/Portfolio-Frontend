@@ -53,15 +53,14 @@ export default function FullWidthTabs() {
   return (
     <Box
       id="aboutMe"
+      overflow={"scroll"}
       sx={{
         bgcolor: "background.paper",
         width: "80%",
-        height: 1000,
-        marginLeft: "auto",
-        marginRight: "auto",
+        height: 500,
       }}
     >
-      <AppBar position="static">
+      <AppBar position="sticky" sx={{ zIndex: 100 }}>
         <Tabs
           value={value}
           onChange={handleChange}
@@ -79,10 +78,20 @@ export default function FullWidthTabs() {
         index={value}
         onChangeIndex={handleChangeIndex}
       >
-        <TabPanel value={value} index={0} dir={theme.direction}>
+        <TabPanel
+          overflow="scroll"
+          value={value}
+          index={0}
+          dir={theme.direction}
+        >
           <Airforce />
         </TabPanel>
-        <TabPanel value={value} index={1} dir={theme.direction}>
+        <TabPanel
+          overflow="scroll"
+          value={value}
+          index={1}
+          dir={theme.direction}
+        >
           <Spaceforce />
         </TabPanel>
       </SwipeableViews>

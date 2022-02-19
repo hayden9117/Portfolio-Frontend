@@ -19,7 +19,7 @@ function App() {
   const [title, setTitle] = useState([]);
 
   return (
-    <Box sx={{ height: "100%" }}>
+    <Box sx={{ height: "100%", width: "100%" }}>
       <AppContext.Provider
         value={{
           value,
@@ -46,13 +46,17 @@ function App() {
               <Route path="/" exact>
                 <Home />
               </Route>
-              <Route path="/priceTracker" exact>
-                <PriceTracker />
-              </Route>
             </Switch>
           </Router>
         </ThemeProvider>
       </AppContext.Provider>
+      <Router>
+        <Switch>
+          <Route path="/priceTracker" exact>
+            <PriceTracker />
+          </Route>
+        </Switch>
+      </Router>
     </Box>
   );
 }

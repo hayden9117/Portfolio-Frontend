@@ -54,9 +54,9 @@ function Home() {
       >
         <Stack direction={"column"} spacing={5}>
           <AboutMe />
-          <Divider />
+          <Divider sx={{ width: "100%" }} />
           <Skills />
-          <Divider />
+          <Divider sx={{ width: "100%" }} />
           <FullWidthTabs />
           <Divider sx={{ width: "100%" }} />
           <Cards />

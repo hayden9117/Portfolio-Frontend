@@ -1,12 +1,13 @@
 import { AppBar, Toolbar, Box, Button } from "@mui/material";
 import AccountMenu from "./Account/AccountMenu";
 import { useContext } from "react";
-import AppContext from "../../../../Context/AppContext";
+
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
+import PriceAppContext from "../Context/PriceAppContext";
 function PriceTrackerNav() {
-  const { checked, setChecked } = useContext(AppContext);
-  const { setMode } = useContext(AppContext);
+  const { checked, setChecked } = useContext(PriceAppContext);
+  const { setMode } = useContext(PriceAppContext);
 
   const toggleChecked = () => {
     setChecked(!checked);
@@ -25,7 +26,6 @@ function PriceTrackerNav() {
         height: "100%",
         width: "100%",
         textAlign: "center",
-        background: "primary",
       }}
     >
       <AppBar>

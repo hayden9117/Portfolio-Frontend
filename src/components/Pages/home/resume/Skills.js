@@ -8,7 +8,7 @@ import {
   AccordionDetails,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { resumeData } from "./Data/remuseData";
+import { resumeData } from "./Data/resumeData";
 import { useRef, useState, useEffect } from "react";
 
 function Skills() {
@@ -23,11 +23,9 @@ function Skills() {
     <Box
       id="scrollBox"
       sx={{
-        bgcolor: "background.paper",
-        width: "100%",
+        width: "80%",
         height: 450,
         overflow: "scroll",
-        marginBottom: 5,
       }}
       onScroll={handleChange(resumeData.Skills.skillSet)}
     >

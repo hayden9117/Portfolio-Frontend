@@ -26,7 +26,7 @@ function Login({ setToken }) {
       .then((result) => {
         if (result.message === "No match found, create new user.") {
           alert(result.message);
-          history.push("/signup");
+          history.push("/priceTracker/signup");
         }
 
         if (result.token === "test123") {
@@ -79,7 +79,9 @@ function Login({ setToken }) {
           Submit
         </Button>
         <div></div>
-        <Button onClick={() => handleSignUp("/signup")}>Sign UP</Button>
+        <Button onClick={() => handleSignUp("/priceTracker/signup")}>
+          Sign UP
+        </Button>
       </form>
     </Box>
   );

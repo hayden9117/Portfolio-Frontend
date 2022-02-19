@@ -27,7 +27,7 @@ function SignUp() {
           console.log(result);
           if (result.message === "successfully added new entry to database") {
             alert("successfully added new entry to database, Please Login");
-            history.push("/");
+            history.push("/priceTracker");
           }
         });
     } else {
@@ -39,39 +39,49 @@ function SignUp() {
   };
 
   return (
-    <FormControl variant="standard">
-      <Stack>
-        <TextField
-          label="create username"
-          value={newUserName}
-          onChange={(e) => setNewUserName(e.target.value)}
-          variant="outlined"
-          style={{ height: 80 }}
-        />
+    <Box
+      component="form"
+      sx={{
+        textAlign: "center",
+        marginTop: "12%",
+        "& .MuiTextField-root": { m: 2, width: "100ch" },
+      }}
+    >
+      <FormControl variant="standard">
+        <Stack>
+          <TextField
+            label="create username"
+            value={newUserName}
+            onChange={(e) => setNewUserName(e.target.value)}
+            variant="outlined"
+            style={{ height: 80 }}
+          />
 
-        <TextField
-          label="create password"
-          type="password"
-          value={newPassword}
-          onChange={(e) => setNewPassword(e.target.value)}
-          variant="outlined"
-          style={{ height: 80 }}
-        />
+          <TextField
+            label="create password"
+            type="password"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+            variant="outlined"
+            style={{ height: 80 }}
+          />
 
-        <TextField
-          label="re-type password"
-          type="password"
-          value={matchedPassWord}
-          onChange={(e) => setMatchedPassword(e.target.value)}
-          variant="outlined"
-        />
+          <TextField
+            label="re-type password"
+            type="password"
+            value={matchedPassWord}
+            onChange={(e) => setMatchedPassword(e.target.value)}
+            variant="outlined"
+            style={{ height: 80 }}
+          />
 
-        <Button onClick={handleSubmit}>Submit</Button>
+          <Button onClick={handleSubmit}>Submit</Button>
 
-        <Button onClick={() => handleLogIn("/")}>Login</Button>
-        <PasswordStrengthBar password={newPassword} />
-      </Stack>
-    </FormControl>
+          <Button onClick={() => handleLogIn("/priceTracker")}>Login</Button>
+          <PasswordStrengthBar password={newPassword} />
+        </Stack>
+      </FormControl>
+    </Box>
   );
 }
 

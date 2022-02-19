@@ -19,7 +19,7 @@ export default function AccountMenu() {
 
   const handleLogOut = () => {
     localStorage.clear();
-    history.push("/");
+    history.push("/priceTracker");
     window.location.reload(false);
   };
 

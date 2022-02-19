@@ -44,7 +44,7 @@ const QontoStepIconRoot = styled("div")(({ theme, ownerState }) => ({
   }),
   "& .QontoStepIcon-completedIcon": {
     color: "#784af4",
-    zIndex: 1,
+    zIndex: 9000,
     fontSize: 18,
   },
   "& .QontoStepIcon-circle": {
@@ -86,7 +86,7 @@ QontoStepIcon.propTypes = {
 const ColorlibStepIconRoot = styled("div")(({ theme, ownerState }) => ({
   backgroundColor:
     theme.palette.mode === "dark" ? theme.palette.grey[700] : "#ccc",
-  zIndex: 1,
+  zIndex: 9000,
   color: "#fff",
   width: 50,
   height: 50,
@@ -159,7 +159,7 @@ export default function SideStepper(props) {
         height: "500px",
         width: 200,
         paddingTop: "80px",
-        zIndex: 5,
+        zIndex: 9000,
       }}
     >
       <Stepper
@@ -191,7 +191,7 @@ export default function SideStepper(props) {
           display: "block",
 
           width: 150,
-          zindex: 1200,
+          zIndex: 9000,
 
           position: "fixed",
           top: 170,

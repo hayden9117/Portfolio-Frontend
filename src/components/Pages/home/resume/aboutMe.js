@@ -1,5 +1,5 @@
 import { Box, Stack, Typography, Avatar } from "@mui/material";
-import { resumeData } from "./Data/remuseData";
+import { resumeData } from "./Data/resumeData";
 export const AboutMe = () => {
   return (
     <Box
@@ -7,7 +7,7 @@ export const AboutMe = () => {
       sx={{
         bgcolor: "background.paper",
         width: "100%",
-        height: 360,
+        height: 400,
         mt: 12,
         marginLeft: "auto",
         marginRight: "auto",
@@ -25,12 +25,11 @@ export const AboutMe = () => {
             marginBottom: 3,
           }}
         ></Avatar>
-        <Typography
-          paragraph={true}
-          sx={{ maxWidth: "60%", textAlign: "left" }}
-        >
-          {resumeData.Introduction.Intro}
-        </Typography>
+        <Box overflow="scroll" sx={{ maxWidth: "60%", height: 350 }}>
+          <Typography variant="h5" paragraph={true} sx={{ textAlign: "left" }}>
+            {resumeData.Introduction.Intro}
+          </Typography>
+        </Box>
       </Stack>
     </Box>
   );

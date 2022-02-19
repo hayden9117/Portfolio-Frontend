@@ -107,8 +107,11 @@
 .MuiCardMedia-img {
   object-fit: fill !important ;
 }
-.smoothScroll {
-  scroll-behavior: smooth;
+@media screen and (max-width: 650px) {
+  .smoothScroll {
+    scroll-behavior: smooth;
+    overflow-x: scroll;
+  }
 }
 .cardsArbitrage {
   padding-bottom: 3;
@@ -132,7 +135,7 @@
   opacity: 0;
   transition: opacity 500ms ease-in;
 }
-
+/* 
 @media screen and (max-width: 650px) {
   .MuiBox-root-30 {
     overflow: scroll !important;
@@ -140,7 +143,7 @@
   .MuiGrid-container {
     flex-direction: row !important;
   }
-}
+} */
 
 @media screen and (max-width: 1150px) {
   .css-1uhjvr8-MuiStepper-root {

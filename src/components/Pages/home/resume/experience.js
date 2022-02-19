@@ -1,6 +1,6 @@
 import { Typography, Box, List, ListItem } from "@mui/material";
 
-import { resumeData } from "./Data/remuseData";
+import { resumeData } from "./Data/resumeData";
 
 export const Airforce = () => {
   return (
