@@ -28,6 +28,10 @@ export const darkTheme = createTheme({
     mode: "dark",
     primary: {
       main: "#754C00",
+      background: {
+        main: "#c2d2df",
+        paper: "#3E065F",
+      },
     },
   },
   typography: {
@@ -45,3 +49,15 @@ export const darkTheme = createTheme({
     ].join(","),
   },
 });
+
+export const overRides = {
+  // Style sheet name ⚛️
+  MuiCard: {
+    // Name of the rule
+    root: {
+      " .css-fky5tw-MuiPaper-root-MuiCard-root": {
+        overflow: "visible!important",
+      },
+    },
+  },
+};

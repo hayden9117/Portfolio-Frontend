@@ -1,15 +1,10 @@
-import { useState, useContext } from "react";
-import {
-  Box,
-  FormControl,
-  TextField,
-  Button,
-  InputAdornment,
-} from "@mui/material";
+import { useContext } from "react";
+import { Paper, InputBase, Button } from "@mui/material";
 import PriceAppContext from "../Context/PriceAppContext";
 
 function ProductInput() {
   const { url, setUrl } = useContext(PriceAppContext);
+  const { mounted, setMounted } = useContext(PriceAppContext);
   const postUrl = (url) => {
     const obj = { url: url, itemPrice: "temp", productname: "temp" };
     fetch(`http://localhost:3001/AmazonData`, {
@@ -26,10 +21,12 @@ function ProductInput() {
         console.log(result);
       })
       .catch(function () {
-        console.log("no token");
+        console.log("post incomplete");
       });
+    setMounted(!mounted);
   };
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     if (!/^https?:\/\//i.test(url)) {
       postUrl("http://" + url);
     } else {
@@ -38,30 +35,21 @@ function ProductInput() {
   };
 
   return (
-    <Box
+    <Paper
       component="form"
-      sx={{
-        width: "80%",
-        height: "50px",
-        bgColor: "red",
-        margin: "auto",
-        justifyContent: "column",
-      }}
+      sx={{ p: "2px 4px", display: "flex", alignItems: "center", width: "50%" }}
     >
-      <FormControl sx={{ display: "flex" }}>
-        <TextField
-          label=" Please enter the URL to the product you would like to track"
-          variant="outlined"
-          inputProps={{
-            min: 0,
-            style: { textAlign: "center" },
-          }}
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-        ></TextField>
-        <Button onClick={handleSubmit}>Submit</Button>
-      </FormControl>
-    </Box>
+      <InputBase
+        label=" Please enter the URL to the product you would like to track"
+        placeholder="Enter URL to track an Amazon product"
+        sx={{ ml: 1, flex: 1 }}
+        value={url}
+        onChange={(e) => setUrl(e.target.value)}
+      ></InputBase>
+      <Button variant="contained" sx={{ width: "30%" }} onClick={handleSubmit}>
+        Submit
+      </Button>
+    </Paper>
   );
 }
 

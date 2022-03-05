@@ -7,7 +7,7 @@ const dummyData = [
     description: "Track and store data on price changes on amazon products",
     updatedAt: "2020-01-01",
     scrollEnd: 450,
-    image: "/images/gamba-logo.jpg",
+    image: "/images/APT.png",
     link: "priceTracker",
     // image: navigating,
   },

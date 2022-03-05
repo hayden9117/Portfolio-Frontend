@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import DeleteForever from "@material-ui/icons/DeleteForever";
 import * as React from "react";
 
+
 function MyFavoritesList() {
   const { listName, setListName } = useContext(AppContext);
   const { setNavTitle } = useContext(AppContext);

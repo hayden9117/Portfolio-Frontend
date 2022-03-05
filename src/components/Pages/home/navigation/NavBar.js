@@ -39,22 +39,20 @@ function NavBar(props) {
       }}
     >
       <CssBaseline />
-      <AppBar sx={{ height: "150px", position: "fixed" }}>
+      <AppBar sx={{ height: "20%", position: "fixed" }}>
         <Toolbar sx={{ height: "150px", alignContent: "center" }}>
           <Typography sx={{ position: "absolute" }} variant="h2">
             {props.title}
           </Typography>
 
-          <Grid container sx={{ marginLeft: "80%" }}>
-            <Button
-              sx={{ position: "absolute", left: 180 }}
-              color={"inherit"}
-              onClick={toggleChecked}
-            >
-              {" "}
-              {checked === true ? <LightModeIcon /> : <DarkModeIcon />}
-            </Button>
-          </Grid>
+          <Button
+            sx={{ position: "fixed", left: "90%" }}
+            color={"inherit"}
+            onClick={toggleChecked}
+          >
+            {" "}
+            {checked === true ? <LightModeIcon /> : <DarkModeIcon />}
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>

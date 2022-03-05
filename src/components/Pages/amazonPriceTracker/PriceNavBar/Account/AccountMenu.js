@@ -1,13 +1,17 @@
 import * as React from "react";
-import { Button, Menu, MenuItem, Stack } from "@mui/material";
-
+import { Button, Menu, MenuItem, Stack, Divider } from "@mui/material";
+import useToken from "../../UseToken";
 import AccountCircleRounded from "@material-ui/icons/AccountCircleRounded";
+import { useState } from "react";
 import { useHistory } from "react-router";
+import AccountDialog from "./accountDialog";
 
 // import MyAccount from './MyAccount';
 
 export default function AccountMenu() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [openDialog, setOpenDialog] = useState(false);
+  const token = useToken();
   const history = useHistory();
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -16,7 +20,9 @@ export default function AccountMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  };
   const handleLogOut = () => {
     localStorage.clear();
     history.push("/priceTracker");
@@ -45,11 +51,17 @@ export default function AccountMenu() {
         }}
       >
         <Stack spacing={2} sx={{ padding: 2 }}>
-          <MenuItem onClick={handleClose}>Profile</MenuItem>
-          <MenuItem onClick={handleClose}>My Account</MenuItem>
+          <MenuItem onClick={handleOpenDialog}>Account Settings</MenuItem>
+          <Divider />
           <MenuItem onClick={handleLogOut}>Logout</MenuItem>
         </Stack>
       </Menu>
+      <AccountDialog
+        username={token.token.username}
+        setToken={token.setToken}
+        openDialog={openDialog}
+        setOpenDialog={setOpenDialog}
+      />
     </div>
   );
 }

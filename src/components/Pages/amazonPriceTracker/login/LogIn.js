@@ -1,4 +1,4 @@
-import { Button, TextField, Box } from "@mui/material";
+import { Button, TextField, Box, FormControl, Typography } from "@mui/material";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
@@ -30,8 +30,8 @@ function Login({ setToken }) {
         }
 
         if (result.token === "test123") {
-          console.log(result.token);
           setToken(result);
+          console.log(result);
 
           history.push("/");
         }
@@ -52,13 +52,20 @@ function Login({ setToken }) {
     <Box
       component="form"
       sx={{
-        textAlign: "center",
-        marginTop: "12%",
-        "& .MuiTextField-root": { m: 2, width: "100ch" },
+        width: "80%",
+        height: "50px",
+        bgColor: "red",
+        margin: "auto",
+        justifyContent: "column",
       }}
     >
-      <form>
-        <h1>Please Login</h1>
+      <FormControl sx={{ display: "flex" }}>
+        <Typography
+          variant="h3"
+          sx={{ alignSelf: "center", justifySelf: "center", paddingBottom: 2 }}
+        >
+          Please Login
+        </Typography>
         <TextField
           label="username"
           value={userName}
@@ -82,7 +89,7 @@ function Login({ setToken }) {
         <Button onClick={() => handleSignUp("/priceTracker/signup")}>
           Sign UP
         </Button>
-      </form>
+      </FormControl>
     </Box>
   );
 }

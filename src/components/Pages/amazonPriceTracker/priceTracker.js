@@ -1,10 +1,9 @@
-import { Box } from "@material-ui/core";
+import { Box, Stack } from "@mui/material";
 
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./login/LogIn";
 import SignUp from "./login/SignUp";
-import CartDummyData from "./CartDummyData";
 
 import PriceAppContext from "./Context/PriceAppContext";
 import AmazonPriceTracker from "./components/AmazonPriceTracker";
@@ -12,14 +11,13 @@ import useToken from "./UseToken";
 import PriceTrackerNav from "./PriceNavBar/PriceTrackerNav";
 import { ThemeProvider } from "@mui/material";
 import { lightTheme, darkTheme } from "./config/theme";
-import ProductInput from "./components/ProductInput";
 
 function PriceTracker() {
   const { token, setToken } = useToken();
   const [checked, setChecked] = useState(true);
   const [mode, setMode] = useState([]);
   const [url, setUrl] = useState("");
-  console.log(mode);
+  const [mounted, setMounted] = useState(false);
 
   if (!token) {
     return (
@@ -43,7 +41,7 @@ function PriceTracker() {
   }
 
   return (
-    <Box sx={{ height: "100%", width: "100%" }} mt={20}>
+    <Box sx={{ bgcolor: "background.paper", height: "100vh", width: "100vw" }}>
       <PriceAppContext.Provider
         value={{
           checked,
@@ -52,12 +50,15 @@ function PriceTracker() {
           setMode,
           url,
           setUrl,
+          mounted,
+          setMounted,
         }}
       >
         <ThemeProvider theme={checked === true ? lightTheme : darkTheme}>
           <PriceTrackerNav />
-          <ProductInput />
-          <AmazonPriceTracker />
+          <Stack direction={"column"} sx={{ mt: "-40%" }}>
+            <AmazonPriceTracker />
+          </Stack>
         </ThemeProvider>
       </PriceAppContext.Provider>
     </Box>

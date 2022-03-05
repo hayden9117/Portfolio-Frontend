@@ -1,7 +1,14 @@
 import PasswordStrengthBar from "react-password-strength-bar";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { FormControl, Box, Stack, Button, TextField } from "@mui/material";
+import {
+  FormControl,
+  Box,
+  Stack,
+  Button,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 function SignUp() {
   const [matchedPassWord, setMatchedPassword] = useState("");
@@ -42,12 +49,20 @@ function SignUp() {
     <Box
       component="form"
       sx={{
-        textAlign: "center",
-        marginTop: "12%",
-        "& .MuiTextField-root": { m: 2, width: "100ch" },
+        width: "80%",
+        height: "50px",
+        bgColor: "red",
+        margin: "auto",
+        justifyContent: "column",
       }}
     >
-      <FormControl variant="standard">
+      <FormControl sx={{ display: "flex" }}>
+        <Typography
+          variant="h4"
+          sx={{ alignSelf: "center", justifySelf: "center", paddingBottom: 2 }}
+        >
+          Please Sign Up
+        </Typography>
         <Stack>
           <TextField
             label="create username"
