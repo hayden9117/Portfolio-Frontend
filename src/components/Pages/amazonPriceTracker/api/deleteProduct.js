@@ -1,3 +1,5 @@
+import useToken from "../UseToken";
+
 export const deleteProduct = (url) => {
   fetch(`http://localhost:3001/deleteList`, {
     credentials: "include",
@@ -14,7 +16,9 @@ export const deleteProduct = (url) => {
     });
 };
 
-export const getAmazonData = () => {
+export const GetAmazonData = async () => {
+  const token = useToken();
+  let arr = [];
   fetch("http://localhost:3001/getAmazonData", {
     credentials: "include",
     method: "GET",
@@ -26,7 +30,14 @@ export const getAmazonData = () => {
     .then((response) => response.json())
     .then((res) => res.map((res) => res))
     .then((result) => {
-      return result;
+      result.forEach((res) => {
+        if (res.userID === token.token.token) {
+          arr.push(res);
+        }
+      });
+    })
+    .then(() => {
+      return arr;
     });
 };
 

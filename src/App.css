@@ -146,7 +146,7 @@
 } */
 
 @media screen and (max-width: 1150px) {
-  .css-1uhjvr8-MuiStepper-root {
+  .MuiStepper-root {
     display: none !important;
   }
 }

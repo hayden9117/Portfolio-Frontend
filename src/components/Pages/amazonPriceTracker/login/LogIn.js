@@ -29,7 +29,7 @@ function Login({ setToken }) {
           history.push("/priceTracker/signup");
         }
 
-        if (result.token === "test123") {
+        if (result.token) {
           setToken(result);
           console.log(result);
 

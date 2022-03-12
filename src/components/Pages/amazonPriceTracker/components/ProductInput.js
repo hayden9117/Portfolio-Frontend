@@ -1,12 +1,20 @@
 import { useContext } from "react";
+import useToken from "../UseToken";
 import { Paper, InputBase, Button } from "@mui/material";
 import PriceAppContext from "../Context/PriceAppContext";
 
 function ProductInput() {
   const { url, setUrl } = useContext(PriceAppContext);
   const { mounted, setMounted } = useContext(PriceAppContext);
+  const token = useToken();
+  console.log(token.token.username);
   const postUrl = (url) => {
-    const obj = { url: url, itemPrice: "temp", productname: "temp" };
+    const obj = {
+      userID: token.token.token,
+      url: url,
+      itemPrice: "temp",
+      productname: "temp",
+    };
     fetch(`http://localhost:3001/AmazonData`, {
       credentials: "include",
       method: "post",

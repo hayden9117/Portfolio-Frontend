@@ -2,13 +2,14 @@ import { FormControl, TextField, Typography, Box, Button } from "@mui/material";
 import { useState } from "react";
 
 function ProfileInfo(props) {
-  const { username, setToken } = props;
+  const { username, setToken, token } = props;
   const [matchedPassWord, setMatchedPassword] = useState("");
   const [newPassword, setNewPassword] = useState();
   const [newUserName, setNewUserName] = useState();
   const handleSubmit = (e) => {
     e.preventDefault();
     let bodyObject = {
+      id: token.token.token,
       username: newUserName,
       password: newPassword,
       oldUserName: username,
@@ -24,10 +25,7 @@ function ProfileInfo(props) {
     })
       .then((response) => response.json())
       .then((result) => {
-        if (result.token === "test123") {
-          setToken(result);
-          console.log(result);
-        }
+        setToken(result);
       });
   };
 

@@ -58,6 +58,7 @@ export default function AccountMenu() {
       </Menu>
       <AccountDialog
         username={token.token.username}
+        token={token}
         setToken={token.setToken}
         openDialog={openDialog}
         setOpenDialog={setOpenDialog}

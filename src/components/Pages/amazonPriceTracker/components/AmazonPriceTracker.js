@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import AnalyticDialog from "./analytics/analyticsDialog";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { DeleteAlert } from "./Alert/deleteAlert";
+import useToken from "../UseToken";
 import "./css/priceTracker.css";
 function AmazonPriceTracker() {
   const [open, setOpen] = useState(false);
@@ -20,7 +21,9 @@ function AmazonPriceTracker() {
   const [item, setItem] = useState({});
   const [timeData, setTimeData] = useState([]);
   const [list, setList] = useState([]);
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const arr = [];
+  const token = useToken();
   const handleProductLink = (url) => {
     const newWindow = window.open(url, "_blank", "noopener,noreferrer");
     if (newWindow) newWindow.opener = null;
@@ -41,9 +44,16 @@ function AmazonPriceTracker() {
       .then((response) => response.json())
       .then((res) => res.map((res) => res))
       .then((result) => {
-        setList(result);
+        result.forEach((res) => {
+          if (res.userID === token.token.token) {
+            arr.push(res);
+          }
+        });
+      })
+      .then(() => {
+        setList(arr);
       });
-  }, []);
+  }, [arr, token.token.token]);
 
   useEffect(() => {
     fetch("http://localhost:3001/getProductWeek", {
@@ -70,8 +80,7 @@ function AmazonPriceTracker() {
   };
 
   const d = new Date();
-  console.log(list);
-  console.log(timeData);
+
   for (let i = 0; i < list.length; i++) {
     const week = [];
     const currentDay = week[d.getDay()];
@@ -125,7 +134,7 @@ function AmazonPriceTracker() {
 
     // sets the current price of the product at the current day
     for (const day in list[i].data) {
-      if (list[i].data[day].id === d.getDay()) {
+      if (list[i].data[day].id === d.getDay() + 1) {
         list[i].data[day].price = graphPrice;
       }
     }
@@ -135,7 +144,7 @@ function AmazonPriceTracker() {
           let day = new Date(timeData[j].some_datetime);
 
           const daysUpdate = day.toString().slice(0, 11);
-          console.log(daysUpdate);
+
           timeData[j].daysToUpdate = daysUpdate;
 
           for (const day in list[i].data) {

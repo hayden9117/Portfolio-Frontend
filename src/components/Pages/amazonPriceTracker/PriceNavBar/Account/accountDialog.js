@@ -2,7 +2,7 @@ import { Dialog, Box, Stack, MenuItem, Divider } from "@mui/material";
 import ProfileInfo from "./Account Dialog Content/ProfileInfo";
 
 function AccountDialog(props) {
-  const { username, openDialog, setOpenDialog, setToken } = props;
+  const { username, openDialog, setOpenDialog, setToken, token } = props;
 
   const handleClose = () => {
     setOpenDialog(false);
@@ -20,7 +20,11 @@ function AccountDialog(props) {
             </Stack>
             <Divider orientation="vertical" flexItem />
             <Stack spacing={2} sx={{ padding: 2 }}></Stack>
-            <ProfileInfo username={username} setToken={setToken} />
+            <ProfileInfo
+              username={username}
+              token={token}
+              setToken={setToken}
+            />
           </Stack>
         </Box>
       </Dialog>
