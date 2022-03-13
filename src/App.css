@@ -107,12 +107,12 @@
 .MuiCardMedia-img {
   object-fit: fill !important ;
 }
-@media screen and (max-width: 650px) {
-  .smoothScroll {
-    scroll-behavior: smooth;
-    overflow-x: scroll;
-  }
+
+.smoothScroll {
+  scroll-behavior: smooth;
+  overflow-x: scroll;
 }
+
 .cardsArbitrage {
   padding-bottom: 3;
 }
@@ -135,24 +135,22 @@
   opacity: 0;
   transition: opacity 500ms ease-in;
 }
-/* 
-@media screen and (max-width: 650px) {
-  .MuiBox-root-30 {
-    overflow: scroll !important;
-  }
-  .MuiGrid-container {
-    flex-direction: row !important;
-  }
-} */
 
 @media screen and (max-width: 1150px) {
   .MuiStepper-root {
     display: none !important;
   }
+
+  #resume {
+    width: 100% !important;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
 @media screen and (min-width: 651px) {
   .MuiGrid-container {
-    flex-direction: column;
+    align-self: flex-start;
+    justify-content: flex-start;
   }
 }

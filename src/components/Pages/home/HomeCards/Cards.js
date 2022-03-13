@@ -6,6 +6,7 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import CardsArray from "./CardsArray";
 import { useEffect } from "react";
 import { useRef } from "react";
+import { Hidden } from "@mui/material";
 
 const Cards = () => {
   const box = useRef(null);
@@ -32,36 +33,18 @@ const Cards = () => {
     };
   }, [handleScroll]);
 
-  const scroll = (prop) => {
-    if (prop === 0) {
-      box.current.scrollTo(0, null);
-    }
-
-    box.current.scrollLeft += prop;
-    console.log(grid.current.clientWidth);
-  };
-
   return (
     <>
       <Box
-        id="aboutMe"
+        id="resume"
         sx={{
           display: "flex",
-          flexDirection: "row",
+
           maxHeight: 460,
-          width: 555,
-          justifyContent: "center",
+          width: "85%",
         }}
+        justifyContent="start"
       >
-        <Box sx={{ display: "flex" }}>
-          <Button
-            color="primary"
-            onClick={() => scroll(-450)}
-            variiant="contained"
-          >
-            <ChevronLeftIcon />
-          </Button>
-        </Box>
         <Box
           component="div"
           ref={box}
@@ -74,6 +57,7 @@ const Cards = () => {
             "& .MuiBox-root-6": {
               " @media screen and (min-width: 650px)": {
                 overflow: "scroll",
+                width: "85%",
               },
             },
           }}
@@ -81,14 +65,11 @@ const Cards = () => {
           id="scroll"
         >
           <br></br>
-          <Grid container ref={grid} spacing={3} wrap="nowrap" columns={3}>
+          <Grid container ref={grid} spacing={3} columns={3}>
             <CardsArray map={dummyData} scroll={scrollOffset} />
           </Grid>
           <br></br>
         </Box>
-        <Button id="scrollBtn" color="primary" onClick={() => scroll(450)}>
-          <ChevronRightIcon />
-        </Button>
       </Box>
     </>
   );

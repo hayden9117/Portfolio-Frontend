@@ -21,9 +21,9 @@ function Skills() {
 
   return (
     <Box
-      id="scrollBox"
+      id="resume"
       sx={{
-        width: "80%",
+        width: "85%",
         height: 450,
         overflow: "scroll",
       }}

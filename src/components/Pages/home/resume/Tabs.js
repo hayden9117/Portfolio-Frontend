@@ -52,11 +52,11 @@ export default function FullWidthTabs() {
 
   return (
     <Box
-      id="aboutMe"
+      id="resume"
       overflow={"scroll"}
       sx={{
         bgcolor: "background.paper",
-        width: "80%",
+        width: "85%",
         height: 500,
       }}
     >
