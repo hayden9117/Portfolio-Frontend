@@ -14,6 +14,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { DeleteAlert } from "./Alert/deleteAlert";
 import useToken from "../UseToken";
 import "./css/priceTracker.css";
+import { formatGraph } from "../helpers/formatGraph";
 function AmazonPriceTracker() {
   const [open, setOpen] = useState(false);
   const [openSnack, setOpenSnack] = useState(false);
