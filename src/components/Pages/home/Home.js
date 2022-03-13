@@ -46,9 +46,10 @@ function Home() {
         sx={{
           textAlign: "center",
           paddingTop: 20,
+          paddingLeft: 5,
 
           "& .css-pnq1z9-MuiStack-root": {
-            alignItems: "center",
+            alignItems: "start",
           },
         }}
       >

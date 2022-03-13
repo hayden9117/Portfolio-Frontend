@@ -23,7 +23,7 @@ export const Airforce = () => {
 
 export const Spaceforce = () => {
   return (
-    <Box textAlign={"left"}>
+    <Box textAlign={"left"} id="resume">
       <Typography variant="h5">
         Full Stack Software Developer - United States spaceforce
       </Typography>

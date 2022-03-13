@@ -6,12 +6,14 @@ import {
   CssBaseline,
   Button,
   Grid,
+  IconButton,
 } from "@mui/material";
 import React from "react";
 import { useContext, useState, useEffect } from "react";
 import AppContext from "../../../../Context/AppContext";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
+import GitHub from "@mui/icons-material/GitHub";
 import PropTypes from "prop-types";
 
 function NavBar(props) {
@@ -20,6 +22,14 @@ function NavBar(props) {
 
   const toggleChecked = () => {
     setChecked(!checked);
+  };
+  const handleGitHub = () => {
+    const newWindow = window.open(
+      "https://github.com/hayden9117?tab=repositories",
+      "_blank",
+      "noopener,noreferrer"
+    );
+    if (newWindow) newWindow.opener = null;
   };
 
   if (checked === true) {
@@ -44,15 +54,27 @@ function NavBar(props) {
           <Typography sx={{ position: "absolute" }} variant="h2">
             {props.title}
           </Typography>
-
-          <Button
+          <IconButton
+            sx={{ position: "fixed", left: "85%" }}
+            color={"inherit"}
+            onClick={handleGitHub}
+            size="large"
+          >
+            <GitHub fontSize="inherit" />
+          </IconButton>
+          <IconButton
             sx={{ position: "fixed", left: "90%" }}
             color={"inherit"}
             onClick={toggleChecked}
+            size="large"
           >
             {" "}
-            {checked === true ? <LightModeIcon /> : <DarkModeIcon />}
-          </Button>
+            {checked === true ? (
+              <LightModeIcon fontSize="inherit" />
+            ) : (
+              <DarkModeIcon fontSize="inherit" />
+            )}
+          </IconButton>
         </Toolbar>
       </AppBar>
     </Box>

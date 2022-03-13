@@ -3,14 +3,12 @@ import { resumeData } from "./Data/resumeData";
 export const AboutMe = () => {
   return (
     <Box
-      id="aboutMe"
+      id="resume"
       sx={{
         bgcolor: "background.paper",
-        width: "100%",
+        width: "85%",
         height: 400,
         mt: 12,
-        marginLeft: "auto",
-        marginRight: "auto",
       }}
     >
       <Stack direction="row" spacing={2}>
