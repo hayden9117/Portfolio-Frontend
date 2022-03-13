@@ -40,7 +40,12 @@ function Home() {
   }, [handleScroll]);
 
   return (
-    <Box>
+    <Box
+      sx={{
+        height: "100%",
+        width: "100%",
+      }}
+    >
       <NavBar title={title} />
       <Box
         sx={{

@@ -1,4 +1,11 @@
-import { AppBar, Toolbar, Box, Button, Typography } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  Box,
+  Button,
+  Typography,
+  CssBaseline,
+} from "@mui/material";
 import AccountMenu from "./Account/AccountMenu";
 import { useContext } from "react";
 import useToken from "../UseToken";
@@ -6,6 +13,7 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import PriceAppContext from "../Context/PriceAppContext";
 import ProductInput from "../components/ProductInput";
+
 function PriceTrackerNav() {
   const { checked, setChecked } = useContext(PriceAppContext);
   const { setMode } = useContext(PriceAppContext);
@@ -31,6 +39,7 @@ function PriceTrackerNav() {
         textAlign: "center",
       }}
     >
+      <CssBaseline />
       <AppBar>
         <Toolbar>
           <ProductInput />

@@ -1,5 +1,6 @@
 export const formatGraph = (props) => {
-  const { list, timeData } = props;
+  const list = props.list;
+  const timeData = props.timeData;
   const d = new Date();
 
   for (let i = 0; i < list.length; i++) {
