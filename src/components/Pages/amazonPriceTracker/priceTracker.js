@@ -56,7 +56,7 @@ function PriceTracker() {
       >
         <ThemeProvider theme={checked === true ? lightTheme : darkTheme}>
           <PriceTrackerNav />
-          <Stack direction={"column"} sx={{ mt: "-40%" }}>
+          <Stack direction={"column"}>
             <AmazonPriceTracker />
           </Stack>
         </ThemeProvider>
