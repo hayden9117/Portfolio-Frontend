@@ -1,7 +1,7 @@
 import useToken from "../UseToken";
 
 export const deleteProduct = (url) => {
-  fetch(`http://localhost:3001/deleteList`, {
+  fetch(`https://richiehayden-portfolio-backend.herokuapp.com/deleteList`, {
     credentials: "include",
     method: "delete",
     headers: {
@@ -19,7 +19,7 @@ export const deleteProduct = (url) => {
 export const GetAmazonData = async () => {
   const token = useToken();
   let arr = [];
-  fetch("http://localhost:3001/getAmazonData", {
+  fetch("https://richiehayden-portfolio-backend.herokuapp.com/getAmazonData", {
     credentials: "include",
     method: "GET",
     headers: {
