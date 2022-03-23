@@ -34,14 +34,17 @@ function AmazonPriceTracker() {
     setItem(props);
   };
   useEffect(() => {
-    fetch("http://localhost:3001/getAmazonData", {
-      credentials: "include",
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        charset: "UTF-8",
-      },
-    })
+    fetch(
+      "https://richiehayden-portfolio-backend.herokuapp.com/getAmazonData",
+      {
+        credentials: "include",
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          charset: "UTF-8",
+        },
+      }
+    )
       .then((response) => response.json())
       .then((res) => res.map((res) => res))
       .then((result) => {
@@ -57,15 +60,18 @@ function AmazonPriceTracker() {
   }, [arr, token.token.token]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/getProductWeek", {
-      credentials: "include",
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        charset: "UTF-8",
-      },
-    })
+    fetch(
+      "https://richiehayden-portfolio-backend.herokuapp.com/getProductWeek",
+      {
+        credentials: "include",
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          charset: "UTF-8",
+        },
+      }
+    )
       .then((response) => response.json())
       .then((res) => res.map((res) => res))
       .then((result) => {
