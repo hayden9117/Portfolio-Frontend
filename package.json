@@ -24,7 +24,7 @@
     "react-swipeable-views": "^0.14.0",
     "react-transition-group": "^4.4.2",
     "web-vitals": "^1.1.2"
-  },
+  }, 
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -48,5 +48,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+   "proxy": "http://localhost:3001"
 }
