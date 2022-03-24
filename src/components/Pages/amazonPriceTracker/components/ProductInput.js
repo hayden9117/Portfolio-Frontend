@@ -15,7 +15,7 @@ function ProductInput() {
       itemPrice: "temp",
       productname: "temp",
     };
-    fetch(`https://richiehayden-portfolio-backend.herokuapp.com//AmazonData`, {
+    fetch(`https://richiehayden-portfolio-backend.herokuapp.com/AmazonData`, {
       credentials: "include",
       method: "post",
       headers: {
