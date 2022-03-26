@@ -31,7 +31,18 @@ export const AboutMe = () => {
           padding: "0 20px 20px 0",
         }}
       ></Avatar>
-      <Typography variant="h5" paragraph={true} sx={{ textAlign: "left" }}>
+      <Typography
+        variant="h5"
+        paragraph={true}
+        sx={{
+          textAlign: "left",
+          " @media screen and (max-width: 650px)": {
+            textAlign: "center",
+            ml: "auto",
+            mr: "auto",
+          },
+        }}
+      >
         {resumeData.Introduction.Intro}
       </Typography>
     </Box>
