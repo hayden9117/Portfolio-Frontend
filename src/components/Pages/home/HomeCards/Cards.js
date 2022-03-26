@@ -36,7 +36,7 @@ const Cards = () => {
   return (
     <>
       <Box
-        id="resume"
+        id="portfolio"
         sx={{
           display: "flex",
 

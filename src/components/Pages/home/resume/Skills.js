@@ -16,12 +16,11 @@ function Skills() {
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(panel);
-    console.log(panel);
   };
 
   return (
     <Box
-      id="resume"
+      id="skills"
       sx={{
         width: "85%",
       }}

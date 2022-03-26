@@ -4,13 +4,53 @@ import Cards from "./HomeCards/Cards";
 import SideStepper from "./navigation/side-stepper/sideStepper";
 import FullWidthTabs from "./resume/Tabs";
 import { AboutMe } from "./resume/aboutMe";
-import { HomeSideSteps } from "../../comman/helpers/StepperHelper";
 import Skills from "./resume/Skills";
 import { Divider } from "@mui/material";
 import NavBar from "./navigation/NavBar";
 
 function Home() {
   const [scrollOffset, setScrollOffset] = useState(0);
+  const [aboutMeHeight, setAboutMeHeight] = useState();
+  const [skillsHeight, setSkillsHeight] = useState();
+  const [experienceHeight, setSExperienceHeight] = useState();
+  //eslint-disable-next-line react-hooks/exhaustive-deps
+  const handleScroll = () => {
+    let x = window.scrollY;
+
+    setScrollOffset(x);
+  };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  let HomeSideSteps = [
+    {
+      label: "About Me",
+      stepValue: 1,
+      scrollPos: 0,
+    },
+    {
+      label: "Skill Sets",
+      stepValue: 2,
+      scrollPos: aboutMeHeight + 200,
+    },
+    {
+      label: "Experience",
+      stepValue: 3,
+      scrollPos: aboutMeHeight + skillsHeight + 200,
+    },
+    {
+      label: "My Portfolio",
+      stepValue: 4,
+      scrollPos: aboutMeHeight + skillsHeight + experienceHeight + 300,
+    },
+  ];
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      handleScroll();
+      setAboutMeHeight(document.getElementById("aboutMe").scrollHeight);
+      setSkillsHeight(document.getElementById("skills").scrollHeight);
+      setSExperienceHeight(document.getElementById("experience").scrollHeight);
+    });
+  }, [HomeSideSteps, handleScroll]);
 
   for (let i = 0; i < HomeSideSteps.length; i++) {
     let labelIndex =
@@ -21,19 +61,6 @@ function Home() {
       var title = HomeSideSteps[labelIndex - 1].label;
     }
   }
-  //eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleScroll = () => {
-    let x = window.scrollY;
-
-    setScrollOffset(x);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      handleScroll();
-    });
-  }, [handleScroll]);
-
   return (
     <Box
       sx={{
@@ -41,7 +68,7 @@ function Home() {
         width: "100%",
       }}
     >
-      <NavBar title={title} />
+      <NavBar title={title} steps={HomeSideSteps} />
       <Box
         sx={{
           textAlign: "center",

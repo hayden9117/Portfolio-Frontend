@@ -52,7 +52,7 @@ export default function FullWidthTabs() {
 
   return (
     <Box
-      id="resume"
+      id="experience"
       sx={{
         bgcolor: "background.paper",
         width: "85%",

@@ -130,7 +130,11 @@ function NavBar(props) {
                 <MenuIcon />
               </IconButton>
 
-              <NavDrawer open={open} setOpen={() => setOpen()} />
+              <NavDrawer
+                open={open}
+                setOpen={() => setOpen()}
+                steps={props.steps}
+              />
             </Box>
 
             <Typography
