@@ -4,32 +4,36 @@ export const AboutMe = () => {
   return (
     <Box
       id="resume"
-      overflow={"scroll"}
       sx={{
         bgcolor: "background.paper",
         width: "85%",
-        height: 400,
         mt: 12,
-        flexDirection: "column",
+        mb: 10,
       }}
     >
-      <Box sx={{ height: 350 }}>
-        <Avatar
-          variant="rounded"
-          srcSet="/images/aleyesk.jpeg"
-          sx={{
-            height: 350,
-            width: 350,
-            marginLeft: 3,
-            marginBottom: 3,
+      <Avatar
+        variant="rounded"
+        srcSet="/images/aleyesk.jpeg"
+        sx={{
+          height: 350,
+          width: 350,
+
+          " @media screen and (min-width: 650px)": {
             float: "left",
-            padding: "0 20px 20px 0",
-          }}
-        ></Avatar>
-        <Typography variant="h5" paragraph={true} sx={{ textAlign: "left" }}>
-          {resumeData.Introduction.Intro}
-        </Typography>
-      </Box>
+          },
+          " @media screen and (max-width: 650px)": {
+            height: 450,
+            width: 450,
+            ml: "auto",
+            mr: "auto",
+            padding: "10px 10px 10px 10px",
+          },
+          padding: "0 20px 20px 0",
+        }}
+      ></Avatar>
+      <Typography variant="h5" paragraph={true} sx={{ textAlign: "left" }}>
+        {resumeData.Introduction.Intro}
+      </Typography>
     </Box>
   );
 };

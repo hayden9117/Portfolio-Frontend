@@ -24,8 +24,6 @@ function Skills() {
       id="resume"
       sx={{
         width: "85%",
-        height: 450,
-        overflow: "scroll",
       }}
       onScroll={handleChange(resumeData.Skills.skillSet)}
     >

@@ -53,11 +53,9 @@ export default function FullWidthTabs() {
   return (
     <Box
       id="resume"
-      overflow={"scroll"}
       sx={{
         bgcolor: "background.paper",
         width: "85%",
-        height: 500,
       }}
     >
       <AppBar position="sticky" sx={{ zIndex: 100 }}>

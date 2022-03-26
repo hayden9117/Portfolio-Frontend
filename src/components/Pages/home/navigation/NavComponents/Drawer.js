@@ -1,5 +1,5 @@
 import { IconButton, Button } from "@mui/material";
-import React, { useContext, useState } from "react";
+import React from "react";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@mui/material/ListItem";
@@ -8,7 +8,6 @@ import { useTheme } from "@mui/material/styles";
 import List from "@mui/material/List";
 import { Drawer } from "@mui/material";
 import { HomeSideSteps } from "../../../../comman/helpers/StepperHelper";
-import AppContext from "../../../../../Context/AppContext";
 
 export const NavDrawer = (props) => {
   console.log(props);
