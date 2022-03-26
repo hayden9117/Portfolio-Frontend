@@ -1,5 +1,4 @@
-import { useEffect, useState, useContext } from "react";
-import AppContext from "../../../Context/AppContext";
+import { useEffect, useState } from "react";
 import { Box, Stack } from "@mui/material";
 import Cards from "./HomeCards/Cards";
 import SideStepper from "./navigation/side-stepper/sideStepper";
@@ -29,10 +28,6 @@ function Home() {
     setScrollOffset(x);
   };
 
-  // useEffect(() => {
-  //   console.log(title);
-  // });
-
   useEffect(() => {
     window.addEventListener("scroll", () => {
       handleScroll();
@@ -50,8 +45,8 @@ function Home() {
       <Box
         sx={{
           textAlign: "center",
-          paddingTop: 20,
-          paddingLeft: 5,
+          paddingTop: 5,
+          paddingLeft: 1,
 
           "& .css-pnq1z9-MuiStack-root": {
             alignItems: "start",
