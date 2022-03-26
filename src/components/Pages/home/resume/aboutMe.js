@@ -3,7 +3,7 @@ import { resumeData } from "./Data/resumeData";
 export const AboutMe = () => {
   return (
     <Box
-      id="resume"
+      id="aboutMe"
       sx={{
         bgcolor: "background.paper",
         width: "85%",

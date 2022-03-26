@@ -1,4 +1,4 @@
-export const HomeSideSteps = [
+export let HomeSideSteps = [
   {
     label: "About Me",
     stepValue: 1,

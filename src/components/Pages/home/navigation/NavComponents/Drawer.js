@@ -7,7 +7,6 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import { useTheme } from "@mui/material/styles";
 import List from "@mui/material/List";
 import { Drawer } from "@mui/material";
-import { HomeSideSteps } from "../../../../comman/helpers/StepperHelper";
 
 export const NavDrawer = (props) => {
   console.log(props);
@@ -33,7 +32,7 @@ export const NavDrawer = (props) => {
         </IconButton>
       </div>
       <List>
-        {HomeSideSteps.map((step) => {
+        {props.steps.map((step) => {
           return (
             <ListItem button key={step}>
               <ListItemIcon>
