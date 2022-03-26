@@ -1,34 +1,31 @@
-import { IconButton } from "@mui/material";
-import React from "react";
-import { Link } from "react-router-dom";
+import { IconButton, Button } from "@mui/material";
+import React, { useContext, useState } from "react";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
 import { useTheme } from "@mui/material/styles";
-import Divider from "@material-ui/core/Divider";
 import List from "@mui/material/List";
 import { Drawer } from "@mui/material";
-import IconsArray from "./NavBarIcons";
+import { HomeSideSteps } from "../../../../comman/helpers/StepperHelper";
 import AppContext from "../../../../../Context/AppContext";
-import { useContext } from "react";
 
-export const NavDrawer = () => {
-  const { open, setOpen } = useContext(AppContext);
-
+export const NavDrawer = (props) => {
+  console.log(props);
   const theme = useTheme();
-
-  const handleDrawerClose = () => {
-    setOpen(false);
+  const handleClose = () => {
+    props.setOpen(false);
   };
-
+  const handleStep = (step) => {
+    window.scrollTo({
+      top: step.scrollPos,
+      behavior: "smooth",
+    });
+  };
   return (
-    <Drawer variant="persistent" anchor="left" open={open}>
+    <Drawer variant="persistent" anchor="left" open={props.open}>
       <div>
-        <IconButton color="primary" onClick={handleDrawerClose}>
+        <IconButton color="primary" onClick={handleClose}>
           {theme.direction === "ltr" ? (
             <ChevronLeftIcon />
           ) : (
@@ -36,18 +33,13 @@ export const NavDrawer = () => {
           )}
         </IconButton>
       </div>
-      <Divider />
-      <IconsArray />
-      <Divider />
       <List>
-        {["Deleted List"].map((text, index) => {
-          let path = text.replace(/ /g, "");
+        {HomeSideSteps.map((step) => {
           return (
-            <ListItem button key={text} component={Link} to={path}>
+            <ListItem button key={step}>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                <Button onClick={() => handleStep(step)}>{step.label}</Button>
               </ListItemIcon>
-              <ListItemText primary={text} />
             </ListItem>
           );
         })}

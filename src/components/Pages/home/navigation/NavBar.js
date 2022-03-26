@@ -12,8 +12,8 @@ import {
   Avatar,
   autocompleteClasses,
 } from "@mui/material";
-import React from "react";
-import { useContext, useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useContext } from "react";
 import AppContext from "../../../../Context/AppContext";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
@@ -23,35 +23,17 @@ import { Container } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Tooltip } from "@mui/material";
 import { HomeSideSteps } from "../../../comman/helpers/StepperHelper";
+import { NavDrawer } from "./NavComponents/Drawer";
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function NavBar(props) {
   const { checked, setChecked } = useContext(AppContext);
   const { setMode } = useContext(AppContext);
-  const [anchorElNav, setAnchorElNav] = useState(null);
-  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [open, setOpen] = useState(false);
 
-  const handleStep = (step) => {
-    window.scrollTo({
-      top: step.scrollPos,
-      behavior: "smooth",
-    });
-  };
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+  const handleOpenNavMenu = () => {
+    setOpen(true);
   };
 
   const toggleChecked = () => {
@@ -131,7 +113,6 @@ function NavBar(props) {
               component="div"
               sx={{
                 mr: 2,
-
                 display: { xs: "none", md: "flex" },
               }}
             >
@@ -148,38 +129,15 @@ function NavBar(props) {
               >
                 <MenuIcon />
               </IconButton>
-              <Menu
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
-                sx={{
-                  display: { xs: "block", md: "none" },
-                }}
-              >
-                {HomeSideSteps.map((step) => {
-                  return (
-                    <Button onClick={() => handleStep(step)}>
-                      {step.label}
-                    </Button>
-                  );
-                })}
-              </Menu>
+
+              <NavDrawer open={open} setOpen={() => setOpen()} />
             </Box>
 
             <Typography
               variant="h4"
               noWrap
               component="div"
-              sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
+              sx={{ flexGrow: 2, display: { xs: "flex", md: "none" } }}
             >
               {props.title}
             </Typography>
