@@ -73,11 +73,7 @@ function Home() {
         sx={{
           textAlign: "center",
           paddingTop: 5,
-          paddingLeft: 1,
-
-          "& .css-pnq1z9-MuiStack-root": {
-            alignItems: "start",
-          },
+          paddingLeft: 5,
         }}
       >
         <Stack direction={"column"} spacing={5}>
