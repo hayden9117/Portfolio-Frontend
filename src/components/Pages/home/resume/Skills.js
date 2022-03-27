@@ -33,9 +33,8 @@ function Skills() {
         {resumeData.Skills.skillSet.map((skills, index, array) => {
           return (
             <ListItem
-              onMouseEnter={handleChange(skills.panel)}
-              onMouseLeave={handleChange(false)}
-              onMouseDown={handleChange(skills.panel)}
+              onClick={handleChange(skills.panel)}
+              onClose={handleChange(false)}
             >
               <Accordion
                 expanded={expanded === skills.panel ? true : false}
