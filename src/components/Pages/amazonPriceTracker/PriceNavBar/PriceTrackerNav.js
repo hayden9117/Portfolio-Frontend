@@ -2,8 +2,9 @@ import {
   AppBar,
   Toolbar,
   Box,
-  Button,
-  Typography,
+  Tooltip,
+  Container,
+  IconButton,
   CssBaseline,
 } from "@mui/material";
 import AccountMenu from "./Account/AccountMenu";
@@ -32,7 +33,6 @@ function PriceTrackerNav() {
   return (
     <Box
       sx={{
-        bgcolor: "background.paper",
         display: "flex",
         height: "100%",
         width: "100%",
@@ -40,23 +40,74 @@ function PriceTrackerNav() {
       }}
     >
       <CssBaseline />
-      <AppBar>
-        <Toolbar>
-          <ProductInput />
-          <Box
-            sx={{ position: "fixed", right: "0%", display: "flex" }}
-            justifyContent="start"
-          >
-            <Typography variant="h5">{`Welcome, ${token.token.username}`}</Typography>
-            <AccountMenu />
-            <Button color={"inherit"} onClick={toggleChecked}>
-              {" "}
-              {checked === true ? <LightModeIcon /> : <DarkModeIcon />}
-            </Button>
-          </Box>
-        </Toolbar>
+      <AppBar sx={{ height: "15", position: "fixed" }}>
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+            <Box
+              sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
+            ></Box>
+
+            <Box
+              sx={{ position: "fixed", right: "2%", display: "flex" }}
+              justifyContent="start"
+            >
+              <ProductInput />
+              <Tooltip title="Toggle light/dark mode">
+                <AccountMenu />
+                <IconButton
+                  sx={{ p: 2 }}
+                  color={"inherit"}
+                  onClick={toggleChecked}
+                  size="large"
+                >
+                  {" "}
+                  {checked === true ? (
+                    <LightModeIcon fontSize="inherit" />
+                  ) : (
+                    <DarkModeIcon fontSize="inherit" />
+                  )}
+                </IconButton>
+              </Tooltip>
+            </Box>
+          </Toolbar>
+        </Container>
       </AppBar>
     </Box>
+
+    // <Box
+    //   sx={{
+    //     bgcolor: "background.paper",
+    //     display: "flex",
+    //     height: "100%",
+    //     width: "100%",
+    //     textAlign: "center",
+    //   }}
+    // >
+    //   <CssBaseline />
+    //   <AppBar>
+    //     <Toolbar>
+    //       <ProductInput />
+    //       <Box
+    //         sx={{ position: "fixed", right: "0%", display: "flex" }}
+    //         justifyContent="start"
+    //       >
+    //         <Typography
+    //           sx={{
+    //             " @media screen and (max-width: 650px)": {
+    //               display: "none",
+    //             },
+    //           }}
+    //           variant="h5"
+    //         >{`Welcome, ${token.token.username}`}</Typography>
+    //         <AccountMenu />
+    //         <Button color={"inherit"} onClick={toggleChecked}>
+    //           {" "}
+    //           {checked === true ? <LightModeIcon /> : <DarkModeIcon />}
+    //         </Button>
+    //       </Box>
+    //     </Toolbar>
+    //   </AppBar>
+    // </Box>
   );
 }
 export default PriceTrackerNav;
