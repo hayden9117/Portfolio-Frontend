@@ -43,16 +43,14 @@ function PriceTrackerNav() {
       <AppBar sx={{ height: "15", position: "fixed" }}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <Box
-              sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
-            ></Box>
+            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+              <ProductInput />
+            </Box>
 
             <Box
               sx={{ position: "fixed", right: "2%", display: "flex" }}
               justifyContent="start"
             >
-              <ProductInput />
-
               <AccountMenu />
               <Tooltip title="Toggle light/dark mode">
                 <IconButton
