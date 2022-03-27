@@ -59,7 +59,7 @@ export default function FullWidthTabs() {
         " @media screen and (max-width: 650px)": {
           ml: "auto",
           mr: "auto",
-          padding: "0px 0px 0px 50px",
+          padding: "0px 0px 0px 15px",
         },
       }}
     >

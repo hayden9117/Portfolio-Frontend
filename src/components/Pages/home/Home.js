@@ -62,12 +62,7 @@ function Home() {
     }
   }
   return (
-    <Box
-      sx={{
-        height: "100%",
-        width: "100%",
-      }}
-    >
+    <>
       <NavBar title={title} steps={HomeSideSteps} />
       <Box
         sx={{
@@ -88,7 +83,7 @@ function Home() {
       </Box>
 
       <SideStepper scrollOffset={scrollOffset} steps={HomeSideSteps} />
-    </Box>
+    </>
   );
 }
 export default Home;
