@@ -52,8 +52,9 @@ function PriceTrackerNav() {
               justifyContent="start"
             >
               <ProductInput />
+
+              <AccountMenu />
               <Tooltip title="Toggle light/dark mode">
-                <AccountMenu />
                 <IconButton
                   sx={{ p: 2 }}
                   color={"inherit"}
