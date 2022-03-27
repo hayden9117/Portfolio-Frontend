@@ -43,7 +43,7 @@ function PriceTrackerNav() {
       <AppBar sx={{ height: "15", position: "fixed" }}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            <Box sx={{ flexGrow: 1, display: { xs: "flex" } }}>
               <ProductInput />
             </Box>
 
