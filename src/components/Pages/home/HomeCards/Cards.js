@@ -11,9 +11,9 @@ const Cards = () => {
         id="portfolio"
         sx={{
           display: "flex",
-          paddingLeft: 50,
+          paddingLeft: 30,
 
-          width: "85%",
+          width: "90%",
           " @media screen and (max-width: 651px)": {
             width: "100%",
           },
