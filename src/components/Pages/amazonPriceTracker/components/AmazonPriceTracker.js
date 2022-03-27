@@ -13,6 +13,7 @@ import AnalyticDialog from "./analytics/analyticsDialog";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { DeleteAlert } from "./Alert/deleteAlert";
 import useToken from "../UseToken";
+import { GetAmazonData, GetProductTimeData } from "../api/api";
 import "./css/priceTracker.css";
 
 function AmazonPriceTracker() {
@@ -23,7 +24,7 @@ function AmazonPriceTracker() {
   const [timeData, setTimeData] = useState([]);
   const [list, setList] = useState([]);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const arr = [];
+  let arr = [];
   const token = useToken();
   const handleProductLink = (url) => {
     const newWindow = window.open(url, "_blank", "noopener,noreferrer");
@@ -33,53 +34,77 @@ function AmazonPriceTracker() {
     setOpen(bool.open);
     setItem(props);
   };
-  useEffect(() => {
-    fetch(
-      "https://richiehayden-portfolio-backend.herokuapp.com/getAmazonData",
-      {
-        credentials: "include",
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          charset: "UTF-8",
-        },
-      }
-    )
-      .then((response) => response.json())
-      .then((res) => res.map((res) => res))
-      .then((result) => {
-        result.forEach((res) => {
-          if (res.userID === token.token.token) {
-            arr.push(res);
-          }
-        });
-      })
-      .then(() => {
-        setList(arr);
-      });
-  }, [arr, token.token.token]);
 
-  useEffect(() => {
-    fetch(
-      "https://richiehayden-portfolio-backend.herokuapp.com/getProductWeek",
-      {
-        credentials: "include",
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          charset: "UTF-8",
-        },
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const handleData = async () => {
+    const response = await GetAmazonData();
+    response.forEach((res) => {
+      if (res.userID === token.token.token) {
+        arr.push(res);
       }
-    )
-      .then((response) => response.json())
-      .then((res) => res.map((res) => res))
-      .then((result) => {
-        result.forEach(() => {
-          setTimeData(result);
-        });
-      });
+      setList(arr);
+    });
+  };
+  const handleTimeData = async () => {
+    const response = await GetProductTimeData();
+    response.forEach(() => {
+      setTimeData(response);
+    });
+  };
+  console.log(list);
+  useEffect(() => {
+    handleData();
+    handleTimeData();
   }, []);
+
+  // useEffect(() => {
+  //   setList(GetAmazonData());
+  //   fetch(
+  //     "https://richiehayden-portfolio-backend.herokuapp.com/getAmazonData",
+  //     {
+  //       credentials: "include",
+  //       method: "GET",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         charset: "UTF-8",
+  //       },
+  //     }
+  //   )
+  //     .then((response) => response.json())
+  //     .then((res) => res.map((res) => res))
+  //     .then((result) => {
+  //       result.forEach((res) => {
+  //         if (res.userID === token.token.token) {
+  //           arr.push(res);
+  //         }
+  //       });
+  //     })
+  //     .then(() => {
+  //       setList(arr);
+  //     });
+  // }, [arr, token.token.token]);
+
+  // useEffect(() => {
+  // fetch(
+  //   "https://richiehayden-portfolio-backend.herokuapp.com/getProductWeek",
+  //   {
+  //   fetch("http://localhost:3001/getProductWeek", {
+  //     credentials: "include",
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Accept: "application/json",
+  //       charset: "UTF-8",
+  //     },
+  //   })
+  //     .then((response) => response.json())
+  //     .then((res) => res.map((res) => res))
+  //     .then((result) => {
+  //       result.forEach(() => {
+  //         setTimeData(result);
+  //       });
+  //     });
+  // }, []);
 
   const handleDelete = (id) => {
     setOpenSnack(true);

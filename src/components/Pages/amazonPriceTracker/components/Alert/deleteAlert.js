@@ -1,6 +1,6 @@
 import { Button, Snackbar } from "@mui/material";
 
-import { deleteProduct } from "../../api/deleteProduct";
+import { deleteProduct } from "../../api/api";
 export const DeleteAlert = (props) => {
   const { open, setOpenSnack, id } = props;
 
