@@ -21,6 +21,7 @@ function SignUp() {
 
     if (matchedPassWord === newPassword) {
       fetch(`https://richiehayden-portfolio-backend.herokuapp.com/newuser`, {
+        // fetch(`http://localhost:3001/newuser`, {
         credentials: "include",
         method: "post",
         headers: {
