@@ -56,6 +56,11 @@ export default function FullWidthTabs() {
       sx={{
         bgcolor: "background.paper",
         width: "85%",
+        " @media screen and (max-width: 650px)": {
+          ml: "auto",
+          mr: "auto",
+          padding: "0px 0px 0px 50px",
+        },
       }}
     >
       <AppBar position="sticky" sx={{ zIndex: 100 }}>

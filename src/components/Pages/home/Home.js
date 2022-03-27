@@ -34,7 +34,7 @@ function Home() {
     {
       label: "Experience",
       stepValue: 3,
-      scrollPos: aboutMeHeight + skillsHeight + 200,
+      scrollPos: aboutMeHeight + skillsHeight + 250,
     },
     {
       label: "My Portfolio",
@@ -72,8 +72,8 @@ function Home() {
       <Box
         sx={{
           textAlign: "center",
-          paddingTop: 5,
-          paddingLeft: 5,
+
+          " @media screen and (max-width: 650px)": {},
         }}
       >
         <Stack direction={"column"} spacing={5}>

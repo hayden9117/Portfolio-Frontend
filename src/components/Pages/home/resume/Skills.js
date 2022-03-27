@@ -23,6 +23,9 @@ function Skills() {
       id="skills"
       sx={{
         width: "85%",
+        " @media screen and (max-width: 650px)": {
+          width: "100%",
+        },
       }}
       onScroll={handleChange(resumeData.Skills.skillSet)}
     >

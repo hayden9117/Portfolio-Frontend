@@ -72,10 +72,6 @@
   padding: 10px;
 }
 
-.gambaLogo {
-  height: 20mm;
-}
-
 .navBar {
   color: #0d99fb;
 }
@@ -141,16 +137,25 @@
     display: none !important;
   }
 
-  #resume {
-    width: 100% !important;
+  #portfolio {
+    width: 95% !important;
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-}
 
-@media screen and (min-width: 651px) {
-  .MuiGrid-container {
-    align-self: flex-start;
-    justify-content: flex-start;
+  #aboutMe {
+    width: 95% !important;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  #skills {
+    width: 95% !important;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  #experience {
+    width: 95% !important;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
