@@ -9,6 +9,12 @@ export const AboutMe = () => {
         width: "85%",
         mt: 12,
         mb: 10,
+        " @media screen and (max-width: 650px)": {
+          ml: "auto",
+          mr: "auto",
+          padding: "10px 10px 10px 10px",
+          wifth: "100%",
+        },
       }}
     >
       <Avatar
@@ -22,8 +28,6 @@ export const AboutMe = () => {
             float: "left",
           },
           " @media screen and (max-width: 650px)": {
-            height: 450,
-            width: 450,
             ml: "auto",
             mr: "auto",
             padding: "10px 10px 10px 10px",
