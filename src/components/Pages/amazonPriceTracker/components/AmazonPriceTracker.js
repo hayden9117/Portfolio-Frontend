@@ -57,55 +57,6 @@ function AmazonPriceTracker() {
     handleTimeData();
   }, []);
 
-  // useEffect(() => {
-  //   setList(GetAmazonData());
-  //   fetch(
-  //     "https://richiehayden-portfolio-backend.herokuapp.com/getAmazonData",
-  //     {
-  //       credentials: "include",
-  //       method: "GET",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         charset: "UTF-8",
-  //       },
-  //     }
-  //   )
-  //     .then((response) => response.json())
-  //     .then((res) => res.map((res) => res))
-  //     .then((result) => {
-  //       result.forEach((res) => {
-  //         if (res.userID === token.token.token) {
-  //           arr.push(res);
-  //         }
-  //       });
-  //     })
-  //     .then(() => {
-  //       setList(arr);
-  //     });
-  // }, [arr, token.token.token]);
-
-  // useEffect(() => {
-  // fetch(
-  //   "https://richiehayden-portfolio-backend.herokuapp.com/getProductWeek",
-  //   {
-  //   fetch("http://localhost:3001/getProductWeek", {
-  //     credentials: "include",
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Accept: "application/json",
-  //       charset: "UTF-8",
-  //     },
-  //   })
-  //     .then((response) => response.json())
-  //     .then((res) => res.map((res) => res))
-  //     .then((result) => {
-  //       result.forEach(() => {
-  //         setTimeData(result);
-  //       });
-  //     });
-  // }, []);
-
   const handleDelete = (id) => {
     setOpenSnack(true);
     setId(id);
@@ -205,6 +156,7 @@ function AmazonPriceTracker() {
       sx={{
         height: 500,
         display: "flex",
+        marginTop: 15,
         borderTop: 1,
         borderBottom: 1,
       }}
@@ -223,9 +175,6 @@ function AmazonPriceTracker() {
         justifyContent="start"
         alignItems={"center"}
       >
-        <Typography variant="h5">
-          Place holder for future product category feature
-        </Typography>
         <Stack spacing={3} direction="row" alignContent={"center"}>
           {list.map((item) => {
             return (
