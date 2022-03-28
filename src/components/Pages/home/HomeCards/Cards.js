@@ -13,7 +13,7 @@ const Cards = () => {
           display: "flex",
           paddingLeft: 30,
 
-          width: "90%",
+          width: "85%",
           " @media screen and (max-width: 651px)": {
             width: "100%",
           },
@@ -31,7 +31,7 @@ const Cards = () => {
             "& .MuiBox-root-6": {
               " @media screen and (min-width: 650px)": {
                 overflow: "scroll",
-                width: "85%",
+                width: "80%",
               },
             },
           }}

@@ -21,12 +21,11 @@ function CardsArray(props) {
                 <CardHeader
                   titleTypographyProps={{ variant: "h6" }}
                   title={item.name}
-                  subheader={`Updated at: ${item.updatedAt}`}
                 />
                 <CardMedia
                   component="img"
                   data-testid="image"
-                  height="194"
+                  height="180"
                   image={item.image}
                   alt="application"
                 />
@@ -36,7 +35,7 @@ function CardsArray(props) {
                     <br />
                   </Typography>
 
-                  <Button href={item.link} variant="contained" color="primary">
+                  <Button href={item.link} variant="contained" color="inherit">
                     {" "}
                     Check Out App
                   </Button>
