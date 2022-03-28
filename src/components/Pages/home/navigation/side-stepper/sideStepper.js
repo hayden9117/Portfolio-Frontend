@@ -34,21 +34,14 @@ export default function SideStepper(props) {
             justifyContent: "flex-start",
             alignItems: "flex-start",
           },
-          "& .css-p46eja-MuiStepConnector-root": {
+          "& .MuiStepConnector-root": {
             marginLeft: "50%",
           },
 
-          "& .css-obxkkc-MuiStepConnector-root": {
-            marginLeft: "50%",
-          },
-          ".css-p46eja-MuiStepConnector-root .MuiStepConnector-line ": {
+          ".MuiStepConnector-root .MuiStepConnector-line ": {
             height: "11vh",
           },
-          ".css-obxkkc-MuiStepConnector-root .css-8t49rw-MuiStepConnector-line ":
-            {
-              height: "11vh",
-            },
-          overflow: "auto",
+
           display: "block",
 
           width: 150,

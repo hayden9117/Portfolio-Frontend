@@ -26,6 +26,7 @@ export const AboutMe = () => {
 
           " @media screen and (min-width: 650px)": {
             float: "left",
+            padding: "10px 10px 0px 20px",
           },
           " @media screen and (max-width: 650px)": {
             ml: "auto",
@@ -39,6 +40,7 @@ export const AboutMe = () => {
         variant="h5"
         paragraph={true}
         sx={{
+          padding: "10px 10px 10px 10px",
           textAlign: "left",
           " @media screen and (max-width: 650px)": {
             textAlign: "center",
