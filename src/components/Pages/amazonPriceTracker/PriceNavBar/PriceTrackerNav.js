@@ -31,7 +31,17 @@ function PriceTrackerNav() {
     setMode("dark");
   }
   return (
-    <>
+    <Box
+      sx={{
+        bgcolor: "background.paper",
+        display: "flex",
+        height: "100%",
+        width: "100%",
+        textAlign: "center",
+        position: "fixed",
+        zIndex: 1,
+      }}
+    >
       <CssBaseline />
       <AppBar sx={{ height: "15", position: "fixed" }}>
         <Container maxWidth="xl">
@@ -64,7 +74,7 @@ function PriceTrackerNav() {
           </Toolbar>
         </Container>
       </AppBar>
-    </>
+    </Box>
   );
 }
 export default PriceTrackerNav;

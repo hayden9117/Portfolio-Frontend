@@ -24,14 +24,23 @@ function AnalyticDialog(props) {
   return (
     <>
       <Dialog open={open} onClose={handleClose}>
-        <Box sx={{ height: "100%", width: "100%", display: "flex" }}>
+        <Box sx={{ height: "100%", width: "80%" }}>
           <Stack spacing={-2} sx={{ padding: 2, display: "flex" }}>
             <Stack
               spacing={2}
               sx={{ padding: 2, display: "flex" }}
               direction="row"
             >
-              <Stack spacing={2} sx={{ padding: 2, display: "flex" }}>
+              <Stack
+                spacing={2}
+                sx={{
+                  padding: 2,
+                  display: "flex",
+                  " @media screen and (max-width: 651px)": {
+                    display: "none",
+                  },
+                }}
+              >
                 <MenuItem onClick={() => setSelection("weekly")}>
                   weekly
                 </MenuItem>
@@ -43,7 +52,15 @@ function AnalyticDialog(props) {
                 </MenuItem>
               </Stack>
               <Divider orientation="vertical" flexItem />
-              <Stack spacing={2} sx={{ padding: 2, display: "flex" }}>
+              <Stack
+                spacing={2}
+                sx={{
+                  padding: 2,
+                  " @media screen and (max-width: 651px)": {
+                    widows: "300px",
+                  },
+                }}
+              >
                 <FormControl>
                   <Typography>{`Current price: $ ${item.itemprice}`}</Typography>
                   {item.some_datetime ? (
@@ -58,7 +75,16 @@ function AnalyticDialog(props) {
               </Stack>
             </Stack>
             <Divider flexItem />
-            <Stack spacing={2} sx={{ padding: 2 }} direction="row">
+            <Stack
+              spacing={2}
+              sx={{
+                padding: 2,
+                " @media screen and (max-width: 651px)": {
+                  width: "100%",
+                },
+              }}
+              direction="row"
+            >
               <ProductGraph priceData={item.data} selection={selection} />
             </Stack>
           </Stack>
