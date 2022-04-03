@@ -55,6 +55,7 @@ function AmazonPriceTracker() {
   useEffect(() => {
     handleData();
     handleTimeData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleDelete = (id) => {
@@ -154,79 +155,73 @@ function AmazonPriceTracker() {
   return (
     <Box
       sx={{
-        height: 500,
-        display: "flex",
-        marginTop: 15,
-        borderTop: 1,
-        borderBottom: 1,
+        width: "100%",
+        height: "550px",
+        marginLeft: "5%",
+        marginRight: "5%",
+        mt: 20,
+        zIndex: 2,
       }}
+      overflow="scroll"
       justifyContent="start"
       alignItems={"center"}
     >
-      <Box
-        sx={{
-          bgcolor: "background.paper",
-          width: "100%",
-          height: "450px",
-          marginLeft: "5%",
-          marginRight: "5%",
-        }}
+      <Stack
+        spacing={3}
+        direction="row"
+        alignContent={"center"}
         overflow="scroll"
-        justifyContent="start"
-        alignItems={"center"}
       >
-        <Stack spacing={3} direction="row" alignContent={"center"}>
-          {list.map((item) => {
-            return (
-              <>
-                <Card raised>
-                  <CardContent>
-                    <CardHeader
-                      titleTypographyProps={{ variant: "h6" }}
-                      title={truncate(item.productname)}
-                      subheader={
-                        item.some_datetime ? (
-                          <Typography>{`Date product was added : ${item.some_datetime.slice(
-                            0,
-                            10
-                          )}`}</Typography>
-                        ) : (
-                          ""
-                        )
-                      }
-                    />
-                    <br />
-                    <Typography variant="h5" component="div">
-                      {`Current Price:    $ ${item.itemprice}`}
-                    </Typography>
+        {list.map((item) => {
+          return (
+            <>
+              <Card raised sx={{ minHeight: 300, minWidth: 300 }}>
+                <CardContent>
+                  <CardHeader
+                    titleTypographyProps={{ variant: "h6" }}
+                    title={truncate(item.productname)}
+                    subheader={
+                      item.some_datetime ? (
+                        <Typography>{`Date product was added : ${item.some_datetime.slice(
+                          0,
+                          10
+                        )}`}</Typography>
+                      ) : (
+                        ""
+                      )
+                    }
+                  />
+                  <br />
+                  <Typography variant="h5" component="div">
+                    {`Current Price:    $ ${item.itemprice}`}
+                  </Typography>
 
-                    <CardActions>
-                      <Button onClick={() => handleProductLink(item.url)}>
-                        Link To Page
-                      </Button>
-                      <Button
-                        onClick={() => handleAnalytics(item, { open: true })}
-                      >
-                        Show Analytics
-                      </Button>
-                      <Button
-                        onClick={() => handleDelete(item.url)}
-                        sx={{ alignSelf: "end" }}
-                      >
-                        <DeleteIcon />
-                      </Button>
-                    </CardActions>
-                  </CardContent>
-                </Card>
-                <br></br>
-              </>
-            );
-          })}
-        </Stack>
+                  <CardActions>
+                    <Button onClick={() => handleProductLink(item.url)}>
+                      Link To Page
+                    </Button>
+                    <Button
+                      onClick={() => handleAnalytics(item, { open: true })}
+                    >
+                      Show Analytics
+                    </Button>
+                    <Button
+                      onClick={() => handleDelete(item.url)}
+                      sx={{ alignSelf: "end" }}
+                    >
+                      <DeleteIcon />
+                    </Button>
+                  </CardActions>
+                </CardContent>
+              </Card>
+              <br></br>
+            </>
+          );
+        })}
+      </Stack>
 
-        <AnalyticDialog item={item} open={open} setOpen={setOpen} />
-        <DeleteAlert open={openSnack} setOpenSnack={setOpenSnack} id={id} />
-      </Box>
+      <AnalyticDialog item={item} open={open} setOpen={setOpen} />
+      <DeleteAlert open={openSnack} setOpenSnack={setOpenSnack} id={id} />
     </Box>
   );
 }

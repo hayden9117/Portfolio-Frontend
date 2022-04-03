@@ -19,6 +19,7 @@ export const GetAmazonData = async (res) => {
   return await fetch(
     `https://richiehayden-portfolio-backend.herokuapp.com/getAmazonData`,
     {
+      // fetch(`http://localhost:3001/getAmazonData`, {
       credentials: "include",
       method: "GET",
       headers: {
