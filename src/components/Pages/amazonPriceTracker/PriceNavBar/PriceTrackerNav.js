@@ -43,7 +43,7 @@ function PriceTrackerNav() {
       }}
     >
       <CssBaseline />
-      <AppBar sx={{ height: "15", position: "fixed" }}>
+      <AppBar sx={{ height: "15", position: "fixed", zIndex: 999 }}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Box sx={{ flexGrow: 1, display: { xs: "flex" } }}>
