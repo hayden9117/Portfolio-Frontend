@@ -4,13 +4,7 @@ import {
   Toolbar,
   Typography,
   CssBaseline,
-  Button,
-  Grid,
   IconButton,
-  MenuItem,
-  Menu,
-  Avatar,
-  autocompleteClasses,
 } from "@mui/material";
 import React, { useState } from "react";
 import { useContext } from "react";
@@ -22,10 +16,8 @@ import PropTypes from "prop-types";
 import { Container } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Tooltip } from "@mui/material";
-import { HomeSideSteps } from "../../../comman/helpers/StepperHelper";
+
 import { NavDrawer } from "./NavComponents/Drawer";
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function NavBar(props) {
   const { checked, setChecked } = useContext(AppContext);
@@ -149,14 +141,16 @@ function NavBar(props) {
               sx={{ position: "fixed", right: "2%", display: "flex" }}
               justifyContent="start"
             >
-              <IconButton
-                sx={{ p: 2 }}
-                color={"inherit"}
-                onClick={handleGitHub}
-                size="large"
-              >
-                <GitHub fontSize="inherit" />
-              </IconButton>
+              <Tooltip title="Link's to Richie's Github">
+                <IconButton
+                  sx={{ p: 2 }}
+                  color={"inherit"}
+                  onClick={handleGitHub}
+                  size="large"
+                >
+                  <GitHub fontSize="inherit" />
+                </IconButton>
+              </Tooltip>
               <Tooltip title="Toggle light/dark mode">
                 <IconButton
                   sx={{ p: 2 }}
