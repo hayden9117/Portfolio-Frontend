@@ -10,9 +10,9 @@ import NavBar from "./navigation/NavBar";
 
 function Home() {
   const [scrollOffset, setScrollOffset] = useState(0);
-  const [aboutMeHeight, setAboutMeHeight] = useState();
-  const [skillsHeight, setSkillsHeight] = useState();
-  const [experienceHeight, setSExperienceHeight] = useState();
+  const [aboutMeHeight, setAboutMeHeight] = useState(450);
+  const [skillsHeight, setSkillsHeight] = useState(1500);
+  const [experienceHeight, setSExperienceHeight] = useState(2000);
   //eslint-disable-next-line react-hooks/exhaustive-deps
   const handleScroll = () => {
     let x = window.scrollY;
@@ -52,6 +52,10 @@ function Home() {
     });
   }, [HomeSideSteps, handleScroll]);
 
+  // calls handle scroll on initial render, sets scroll position for each components on enitial page load
+  useEffect(() => {
+    handleScroll();
+  }, []);
   for (let i = 0; i < HomeSideSteps.length; i++) {
     let labelIndex =
       scrollOffset >= HomeSideSteps[i].scrollPos - 50
