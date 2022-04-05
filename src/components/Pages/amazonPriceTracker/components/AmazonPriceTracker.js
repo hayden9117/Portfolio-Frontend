@@ -118,7 +118,7 @@ function AmazonPriceTracker() {
 
     // sets the current price of the product at the current day
     for (const day in list[i].data) {
-      if (list[i].data[day].id === d.getDay() + 1) {
+      if (list[i].data[day].id === d.getDay()) {
         list[i].data[day].price = graphPrice;
       }
     }
