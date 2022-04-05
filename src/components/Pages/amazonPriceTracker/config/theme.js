@@ -5,6 +5,10 @@ export const lightTheme = createTheme({
     mode: "light",
     primary: {
       main: "#FFA500",
+      background: {
+        main: "#c2d2df",
+        paper: "#3E065F",
+      },
     },
   },
   typography: {

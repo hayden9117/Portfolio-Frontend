@@ -9,7 +9,6 @@ import List from "@mui/material/List";
 import { Drawer } from "@mui/material";
 
 export const NavDrawer = (props) => {
-  console.log(props);
   const theme = useTheme();
   const handleClose = () => {
     props.setOpen(false);
@@ -34,7 +33,7 @@ export const NavDrawer = (props) => {
       <List>
         {props.steps.map((step) => {
           return (
-            <ListItem button key={step}>
+            <ListItem button key={step.label}>
               <ListItemIcon>
                 <Button onClick={() => handleStep(step)}>{step.label}</Button>
               </ListItemIcon>
