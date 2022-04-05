@@ -9,13 +9,17 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { resumeData } from "./Data/resumeData";
-import { useRef, useState, useEffect } from "react";
+import { useState } from "react";
 
 function Skills() {
   const [expanded, setExpanded] = useState(false);
 
   const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(panel);
+    if (panel === expanded) {
+      setExpanded(null);
+    } else {
+      setExpanded(panel);
+    }
   };
 
   return (

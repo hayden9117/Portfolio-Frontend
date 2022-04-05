@@ -22,6 +22,7 @@ function ProductGraph(props) {
         ],
         borderColor: "black",
         borderWidth: 2,
+        maintainAspectRatio: true,
       },
     ],
   });
