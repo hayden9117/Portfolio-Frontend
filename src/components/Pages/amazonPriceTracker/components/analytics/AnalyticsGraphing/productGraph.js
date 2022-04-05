@@ -26,7 +26,7 @@ function ProductGraph(props) {
       },
     ],
   });
-
+  alert(priceData);
   return (
     <Box
       sx={{ Height: "100%", width: "100%", border: "1px dashed grey" }}

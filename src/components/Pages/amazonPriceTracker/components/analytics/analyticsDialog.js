@@ -15,7 +15,7 @@ function AnalyticDialog(props) {
   const { item, open, setOpen } = props;
 
   const [selection, setSelection] = useState("weekly");
-  alert(item.data);
+
   const handleClose = () => {
     setOpen(false);
   };
