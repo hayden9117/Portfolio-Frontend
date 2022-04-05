@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Box, Divider, Grid, Stack, Typography } from "@mui/material";
-import AdjustOutlinedIcon from "@mui/icons-material/AdjustOutlined";
+import { Box } from "@mui/material";
+
 import PropTypes from "prop-types";
 import LineChart from "./chart";
 
