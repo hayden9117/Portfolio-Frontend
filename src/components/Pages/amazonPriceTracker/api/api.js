@@ -1,6 +1,6 @@
 export const deleteProduct = (url) => {
   // fetch(`https://richiehayden-portfolio-backend.herokuapp.com/deleteList`, {
-  fetch(`http://localhost:3001/deleteList`, {
+  fetch(`https://richiehayden-portfolio-backend.herokuapp.com/deleteList`, {
     credentials: "include",
     method: "delete",
     headers: {
@@ -16,26 +16,32 @@ export const deleteProduct = (url) => {
 };
 
 export const GetAmazonData = async (res) => {
-  return await fetch(`http://localhost:3001/getAmazonData`, {
-    // fetch(`http://localhost:3001/getAmazonData`, {
-    credentials: "include",
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      charset: "UTF-8",
-    },
-  }).then((response) => response.json());
+  return await fetch(
+    `https://richiehayden-portfolio-backend.herokuapp.com/getAmazonData`,
+    {
+      // fetch(`http://localhost:3001/getAmazonData`, {
+      credentials: "include",
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        charset: "UTF-8",
+      },
+    }
+  ).then((response) => response.json());
 };
 
 export const GetProductTimeData = async () => {
-  return await fetch("http://localhost:3001/getProductWeek", {
-    credentials: "include",
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      charset: "UTF-8",
-    },
-  }).then((response) => response.json());
+  return await fetch(
+    "https://richiehayden-portfolio-backend.herokuapp.com/getProductWeek",
+    {
+      credentials: "include",
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        charset: "UTF-8",
+      },
+    }
+  ).then((response) => response.json());
 };
 
 export const postUrl = async (url, token) => {
@@ -47,15 +53,18 @@ export const postUrl = async (url, token) => {
     productname: "temp",
   };
   // fetch(`https://richiehayden-portfolio-backend.herokuapp.com/AmazonData`, {
-  return fetch(`http://localhost:3001/AmazonData`, {
-    credentials: "include",
-    method: "post",
-    headers: {
-      "Content-Type": "application/json",
-      charset: "UTF-8",
-    },
-    body: JSON.stringify(obj),
-  })
+  return fetch(
+    `https://richiehayden-portfolio-backend.herokuapp.com/AmazonData`,
+    {
+      credentials: "include",
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+        charset: "UTF-8",
+      },
+      body: JSON.stringify(obj),
+    }
+  )
     .then((response) => response.json())
     .then((result) => {
       console.log(result);
