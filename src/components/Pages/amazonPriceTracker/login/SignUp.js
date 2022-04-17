@@ -20,7 +20,7 @@ function SignUp() {
     let bodyObject = { username: newUserName, password: newPassword };
 
     if (matchedPassWord === newPassword) {
-      // fetch(`https://richiehayden-portfolio-backend.herokuapp.com/newuser`, {
+      // ftch(`https://richiehayden-portfolio-backend.herokuapp.com/newuser`, {
       fetch(`https://richiehayden-portfolio-backend.herokuapp.com/newuser`, {
         credentials: "include",
         method: "post",
