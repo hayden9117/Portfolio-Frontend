@@ -34,16 +34,14 @@ function PriceTrackerNav() {
     <Box
       sx={{
         bgcolor: "background.paper",
-        display: "flex",
-        height: "100%",
-        width: "100%",
+
         textAlign: "center",
-        position: "fixed",
+
         zIndex: 1,
       }}
     >
       <CssBaseline />
-      <AppBar sx={{ height: "15", position: "fixed", zIndex: 999 }}>
+      <AppBar sx={{ height: "15", position: "fixed" }}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Box sx={{ flexGrow: 1, display: { xs: "flex" } }}>

@@ -1,6 +1,6 @@
 export const deleteProduct = (url) => {
+  // fetch(`https://richiehayden-portfolio-backend.herokuapp.com/deleteList`, {
   fetch(`https://richiehayden-portfolio-backend.herokuapp.com/deleteList`, {
-    // fetch(`http://localhost:3001/deleteList`, {
     credentials: "include",
     method: "delete",
     headers: {
@@ -42,4 +42,34 @@ export const GetProductTimeData = async () => {
       },
     }
   ).then((response) => response.json());
+};
+
+export const postUrl = async (url, token) => {
+  console.log(token);
+  const obj = {
+    userID: token.token.token,
+    url: url,
+    itemPrice: "temp",
+    productname: "temp",
+  };
+  // fetch(`https://richiehayden-portfolio-backend.herokuapp.com/AmazonData`, {
+  return fetch(
+    `https://richiehayden-portfolio-backend.herokuapp.com/AmazonData`,
+    {
+      credentials: "include",
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+        charset: "UTF-8",
+      },
+      body: JSON.stringify(obj),
+    }
+  )
+    .then((response) => response.json())
+    .then((result) => {
+      console.log(result);
+    })
+    .catch(function () {
+      console.log("post incomplete");
+    });
 };

@@ -1,45 +1,21 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import useToken from "../UseToken";
 import { Paper, InputBase, Button } from "@mui/material";
 import PriceAppContext from "../Context/PriceAppContext";
+import { postUrl } from "../api/api";
 
 function ProductInput() {
   const { url, setUrl } = useContext(PriceAppContext);
-  const { mounted, setMounted } = useContext(PriceAppContext);
+
   const token = useToken();
   console.log(token.token.username);
-  const postUrl = (url) => {
-    const obj = {
-      userID: token.token.token,
-      url: url,
-      itemPrice: "temp",
-      productname: "temp",
-    };
-    fetch(`https://richiehayden-portfolio-backend.herokuapp.com/AmazonData`, {
-      // fetch(`http://localhost:3001/AmazonData`, {
-      credentials: "include",
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-        charset: "UTF-8",
-      },
-      body: JSON.stringify(obj),
-    })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-      })
-      .catch(function () {
-        console.log("post incomplete");
-      });
-    setMounted(!mounted);
-  };
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!/^https?:\/\//i.test(url)) {
-      postUrl("http://" + url);
+      await postUrl("http://" + url, token);
     } else {
-      postUrl(url);
+      await postUrl(url, token);
     }
   };
 

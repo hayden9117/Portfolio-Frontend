@@ -13,8 +13,7 @@ function Login({ setToken }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // fetch(`http://localhost:3001/login`, {
-    fetch(`https://richiehayden-portfolio-backend.herokuapp.com/login`, {
+    fetch(`https://richiehayden-portfolio-backend.herokuapp.com/Login`, {
       credentials: "include",
       method: "post",
       headers: {
