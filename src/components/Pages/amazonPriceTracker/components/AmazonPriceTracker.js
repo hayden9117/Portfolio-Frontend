@@ -60,7 +60,7 @@ function AmazonPriceTracker(props) {
     }
     return str;
   };
-
+  console.log(list);
   return (
     <Stack
       sx={{

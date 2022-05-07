@@ -30,18 +30,27 @@ export const GetAmazonData = async (res) => {
   ).then((response) => response.json());
 };
 
-export const GetProductTimeData = async () => {
+export const GetProductTimeData = async (url, token) => {
+  const obj = {
+    userID: token,
+    url: url,
+  };
   return await fetch(
     "https://richiehayden-portfolio-backend.herokuapp.com/getProductWeek",
     {
       credentials: "include",
-      method: "GET",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         charset: "UTF-8",
       },
+      body: JSON.stringify(obj),
     }
-  ).then((response) => response.json());
+  )
+    .then((response) => response.json())
+    .catch(function () {
+      console.log("post incomplete");
+    });
 };
 
 export const postUrl = async (url, token) => {
