@@ -10,7 +10,8 @@ import {
   Typography,
 } from "@mui/material";
 
-function SignUp() {
+function SignUp(props) {
+  const { signUp, setSignUp } = props;
   const [matchedPassWord, setMatchedPassword] = useState("");
   const [newPassword, setNewPassword] = useState();
   const [newUserName, setNewUserName] = useState();
@@ -21,7 +22,7 @@ function SignUp() {
 
     if (matchedPassWord === newPassword) {
       // ftch(`https://richiehayden-portfolio-backend.herokuapp.com/newuser`, {
-      fetch(`https://richiehayden-portfolio-backend.herokuapp.com/newuser`, {
+      fetch(`http://localhost:3001/newuser`, {
         credentials: "include",
         method: "post",
         headers: {
@@ -42,62 +43,51 @@ function SignUp() {
       alert("password does not match");
     }
   };
-  const handleLogIn = (e) => {
-    history.push(e);
+  const handleLogIn = () => {
+    setSignUp(!signUp);
   };
 
   return (
-    <Box
-      component="form"
-      sx={{
-        width: "80%",
-        height: "50px",
-        bgColor: "red",
-        margin: "auto",
-        justifyContent: "column",
-      }}
-    >
-      <FormControl sx={{ display: "flex" }}>
-        <Typography
-          variant="h4"
-          sx={{ alignSelf: "center", justifySelf: "center", paddingBottom: 2 }}
-        >
-          Please Sign Up
-        </Typography>
-        <Stack>
-          <TextField
-            label="create username"
-            value={newUserName}
-            onChange={(e) => setNewUserName(e.target.value)}
-            variant="outlined"
-            style={{ height: 80 }}
-          />
+    <FormControl sx={{ display: "flex" }}>
+      <Typography
+        variant="h4"
+        sx={{ alignSelf: "center", justifySelf: "center", paddingBottom: 2 }}
+      >
+        Please Sign Up
+      </Typography>
+      <Stack>
+        <TextField
+          label="create username"
+          value={newUserName}
+          onChange={(e) => setNewUserName(e.target.value)}
+          variant="outlined"
+          style={{ height: 80 }}
+        />
 
-          <TextField
-            label="create password"
-            type="password"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-            variant="outlined"
-            style={{ height: 80 }}
-          />
+        <TextField
+          label="create password"
+          type="password"
+          value={newPassword}
+          onChange={(e) => setNewPassword(e.target.value)}
+          variant="outlined"
+          style={{ height: 80 }}
+        />
 
-          <TextField
-            label="re-type password"
-            type="password"
-            value={matchedPassWord}
-            onChange={(e) => setMatchedPassword(e.target.value)}
-            variant="outlined"
-            style={{ height: 80 }}
-          />
+        <TextField
+          label="re-type password"
+          type="password"
+          value={matchedPassWord}
+          onChange={(e) => setMatchedPassword(e.target.value)}
+          variant="outlined"
+          style={{ height: 80 }}
+        />
 
-          <Button onClick={handleSubmit}>Submit</Button>
+        <Button onClick={handleSubmit}>Submit</Button>
 
-          <Button onClick={() => handleLogIn("/priceTracker")}>Login</Button>
-          <PasswordStrengthBar password={newPassword} />
-        </Stack>
-      </FormControl>
-    </Box>
+        <Button onClick={() => handleLogIn("/priceTracker")}>Login</Button>
+        <PasswordStrengthBar password={newPassword} />
+      </Stack>
+    </FormControl>
   );
 }
 

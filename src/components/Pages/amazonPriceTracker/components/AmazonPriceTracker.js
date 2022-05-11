@@ -1,6 +1,5 @@
 import {
   Box,
-  Paper,
   useTheme,
   CardHeader,
   Typography,
@@ -11,14 +10,14 @@ import {
   Stack,
   MobileStepper,
 } from "@mui/material";
-import PriceAppContext from "../Context/PriceAppContext";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import AnalyticDialog from "./analytics/analyticsDialog";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { DeleteAlert } from "./Alert/deleteAlert";
 
 import "./css/priceTracker.css";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
+import useToken from "../UseToken";
 
 function AmazonPriceTracker(props) {
   const { list } = props;
@@ -26,9 +25,14 @@ function AmazonPriceTracker(props) {
   const [openSnack, setOpenSnack] = useState(false);
   const [id, setId] = useState("");
   const [item, setItem] = useState({});
-
+  const [maxList, setMaxList] = useState(0);
+  const { token } = useToken();
   const [activeStep, setActiveStep] = useState(0);
-  const maxList = list.length;
+
+  useEffect(() => {
+    setMaxList(list.length);
+  }, [list.length]);
+
   const theme = useTheme();
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -61,6 +65,7 @@ function AmazonPriceTracker(props) {
     return str;
   };
   console.log(list);
+
   return (
     <Stack
       sx={{

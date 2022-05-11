@@ -2,7 +2,7 @@ import * as React from "react";
 import { Button, Menu, MenuItem, Stack, Divider } from "@mui/material";
 import useToken from "../../UseToken";
 import AccountCircleRounded from "@material-ui/icons/AccountCircleRounded";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import AccountDialog from "./accountDialog";
 
