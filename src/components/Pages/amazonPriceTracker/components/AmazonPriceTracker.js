@@ -64,7 +64,7 @@ function AmazonPriceTracker(props) {
     }
     return str;
   };
-  console.log(list);
+  console.log(item);
 
   return (
     <Stack
