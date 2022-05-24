@@ -1,4 +1,5 @@
 import React from "react";
+import { useContext } from "react";
 import {
   Card,
   Grid,
@@ -9,8 +10,11 @@ import {
   Button,
 } from "@mui/material";
 import CardDialog from "./CardDialog";
+import AppContext from "../../../../Context/AppContext";
 
 function CardsArray(props) {
+  const { checked } = useContext(AppContext);
+
   return (
     <>
       {props.map?.map((item) => {
@@ -35,10 +39,14 @@ function CardsArray(props) {
                     <br />
                   </Typography>
 
-                  <Button href={item.link} variant="contained" color="inherit">
-                    {" "}
-                    Check Out App
-                  </Button>
+                  {checked === true ? (
+                    <Button href={item.link}> Check Out App</Button>
+                  ) : (
+                    <Button href={item.link} color="secondary">
+                      {" "}
+                      Check Out App
+                    </Button>
+                  )}
                 </CardContent>
               </Card>
             </Grid>

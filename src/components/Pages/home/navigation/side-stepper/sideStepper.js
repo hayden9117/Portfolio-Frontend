@@ -61,7 +61,7 @@ export default function SideStepper(props) {
               }
               key={step.label}
             >
-              <StepButton color="inherit" onClick={() => handleStep(step)}>
+              <StepButton onClick={() => handleStep(step)}>
                 <StepLabel
                   key={step.label}
                   StepIconComponent={ColorlibStepIcon}

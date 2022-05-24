@@ -9,7 +9,6 @@ import {
   ListItemText,
   DialogTitle,
   DialogContent,
-  DialogContent,
   DialogActions,
   Dialog,
   RadioGroup,
@@ -74,13 +73,7 @@ function ConfirmationDialogRaw(props) {
     >
       <DialogTitle id="confirmation-dialog-title">Phone Ringtone</DialogTitle>
       <DialogContent dividers>
-        <RadioGroup
-          ref={radioGroupRef}
-          aria-label="ringtone"
-          name="ringtone"
-          value={value}
-          onChange={handleChange}
-        >
+        <RadioGroup ref={radioGroupRef} value={value} onChange={handleChange}>
           {options.map((option) => (
             <FormControlLabel
               value={option}
@@ -148,8 +141,6 @@ export default function MyAccount() {
           button
           divider
           aria-haspopup="true" // eslint-disable-line
-          aria-controls="ringtone-menu"
-          aria-label="phone ringtone"
           onClick={handleClickListItem}
           role="listitem"
         >

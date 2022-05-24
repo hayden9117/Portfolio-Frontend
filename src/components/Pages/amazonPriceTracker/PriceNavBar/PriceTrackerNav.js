@@ -28,9 +28,7 @@ function PriceTrackerNav() {
     <Box
       sx={{
         bgcolor: "background.paper",
-
         textAlign: "center",
-
         zIndex: 1,
       }}
     >
