@@ -1,7 +1,7 @@
 export const resumeData = {
   Introduction: {
     Intro:
-      "I am a software developer who is passionate about learning new technologies and want to continue to learn to advance my skill set. I began my coding journey through self-teaching and learning from mentors in the field. I continued to advance by being selected into the Spaceforce Supra Coder program which is highly competitive and has a selection rate of less than 4 percent of applicants. Through this program, I received a certificate from the Software Development Immersive provided by Galvanize. After which, I attended a 3-month internship with KBR before interviewing for a position as a full-stack developer for the Spaceforce. I am currently pursuing a BS in Computer Science part-time through CSU Global-Campus to develop and expand my knowledge in the field.",
+      "I am a software developer who is passionate about learning new technologies and advancing my skill set. My coding journey began through self-teaching and learning from mentors in the field. I continued my learning in the Spaceforce Supra Coder program, which is highly competitive and has a selection rate of less than 4 percent. Through this program, I received a certificate from the Software Development Immersive provided by Galvanize. I then attended a 3-month internship with KBR as a member of a product team, before interviewing for a position as a full-stack developer for the Spaceforce. I am currently pursuing a BS in Computer Science through CSU Global-Campus to further develop and expand my knowledge",
   },
   SpaceForce: {
     JobDuties: [

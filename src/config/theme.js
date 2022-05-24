@@ -63,8 +63,20 @@ export const darkTheme = createTheme({
   },
   components: {
     MuiButton: {
-      style: {
-        backgroundcolor: "#700B97",
+      primary: {
+        main: "#42a9fb",
+        // darker: "#700B97",
+        background: {
+          main: "#c2d2df",
+          paper: "#3E065F",
+        },
+      },
+      secondary: {
+        main: "#8E05C2",
+        background: {
+          main: "#c2d2df",
+          paper: "#3E065F",
+        },
       },
     },
   },

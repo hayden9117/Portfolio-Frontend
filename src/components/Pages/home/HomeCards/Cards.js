@@ -4,7 +4,7 @@ import dummyData from "./apps";
 
 import CardsArray from "./CardsArray";
 
-const Cards = () => {
+const Cards = (props) => {
   return (
     <>
       <Box
