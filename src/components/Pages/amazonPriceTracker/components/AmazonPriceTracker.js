@@ -48,7 +48,7 @@ function AmazonPriceTracker(props) {
   };
   const handleAnalytics = (props, bool) => {
     setOpen(bool.open);
-    setItem(props);
+    setItem(list);
   };
 
   const handleDelete = (id) => {
