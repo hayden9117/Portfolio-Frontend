@@ -1,9 +1,9 @@
 import { Box, CssBaseline, Stack } from "@mui/material";
 
 import React, { useState, useEffect, useCallback } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 import Login from "./login/LogIn";
-import SignUp from "./login/SignUp";
+
 import { GetProductTimeData } from "./api/api";
 import PriceAppContext from "./Context/PriceAppContext";
 import AmazonPriceTracker from "./components/AmazonPriceTracker";
