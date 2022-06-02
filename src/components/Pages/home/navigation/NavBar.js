@@ -5,6 +5,7 @@ import {
   Typography,
   CssBaseline,
   IconButton,
+  Stack,
 } from "@mui/material";
 import React, { useState } from "react";
 import { useContext } from "react";
@@ -16,7 +17,7 @@ import PropTypes from "prop-types";
 import { Container } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Tooltip } from "@mui/material";
-
+import Rlogo from "./svgs/Rlogo";
 import { NavDrawer } from "./NavComponents/Drawer";
 
 function NavBar(props) {
@@ -99,10 +100,21 @@ function NavBar(props) {
       <AppBar sx={{ height: "15", position: "fixed" }}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
+            <Box
+              sx={{
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+              }}
+            >
+              {" "}
+              <Rlogo size="100" />
+            </Box>
+
             <Typography
               variant="h2"
               noWrap
               component="div"
+              align="center"
               sx={{
                 mr: 2,
                 display: { xs: "none", md: "flex" },
@@ -128,12 +140,16 @@ function NavBar(props) {
                 steps={props.steps}
               />
             </Box>
+            <Box sx={{ flexGrow: 2, display: { xs: "flex", md: "none" } }}>
+              {" "}
+              <Rlogo size="100" />
+            </Box>
 
             <Typography
               variant="h4"
               noWrap
               component="div"
-              sx={{ flexGrow: 2, display: { xs: "flex", md: "none" } }}
+              sx={{ flexGrow: 2, mr: 15, display: { xs: "flex", md: "none" } }}
             >
               {props.title}
             </Typography>

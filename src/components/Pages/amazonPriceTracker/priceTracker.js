@@ -11,6 +11,7 @@ import useToken from "./UseToken";
 import PriceTrackerNav from "./PriceNavBar/PriceTrackerNav";
 import { ThemeProvider } from "@mui/material";
 import { lightTheme, darkTheme } from "./config/theme";
+import Loading from "./components/helperComponents/Loading";
 
 function PriceTracker() {
   const { token, setToken } = useToken();
@@ -40,7 +41,7 @@ function PriceTracker() {
       getData();
     }
   }, [getData, render, token]);
-  console.log(render);
+
   if (!token) {
     return (
       <>
@@ -84,7 +85,7 @@ function PriceTracker() {
           <PriceTrackerNav />
           <br />
           <Stack direction={"column"}>
-            {list.length > 0 ? <AmazonPriceTracker list={list} /> : null}
+            {list.length > 0 ? <AmazonPriceTracker list={list} /> : <Loading />}
           </Stack>
         </ThemeProvider>
       </PriceAppContext.Provider>

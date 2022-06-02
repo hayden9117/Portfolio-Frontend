@@ -7,6 +7,7 @@ import { Box } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import { lightTheme, darkTheme } from "./config/theme";
 import PriceTracker from "./components/Pages/amazonPriceTracker/priceTracker";
+import PlanIt from "./components/Pages/PlanIt/PlanIt";
 
 function App() {
   const [value, setValue] = useState("");
@@ -54,6 +55,13 @@ function App() {
         <Switch>
           <Route path="/priceTracker" exact>
             <PriceTracker />
+          </Route>
+        </Switch>
+      </Router>
+      <Router>
+        <Switch>
+          <Route path="/PlanIt" exact>
+            <PlanIt />
           </Route>
         </Switch>
       </Router>

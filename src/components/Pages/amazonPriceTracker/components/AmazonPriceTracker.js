@@ -23,7 +23,7 @@ function AmazonPriceTracker(props) {
   const { list } = props;
   const [open, setOpen] = useState(false);
   const [openSnack, setOpenSnack] = useState(false);
-  const [id, setId] = useState("");
+  const [url, setUrl] = useState("");
   const [item, setItem] = useState({});
   const [maxList, setMaxList] = useState(0);
   const { token } = useToken();
@@ -51,9 +51,10 @@ function AmazonPriceTracker(props) {
     setItem(props);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = (url) => {
     setOpenSnack(true);
-    setId(id);
+    setUrl(url);
+    console.log(token.token);
   };
 
   console.log(list);
@@ -193,7 +194,12 @@ function AmazonPriceTracker(props) {
           }
         />
         <AnalyticDialog item={item} open={open} setOpen={setOpen} />
-        <DeleteAlert open={openSnack} setOpenSnack={setOpenSnack} id={id} />
+        <DeleteAlert
+          open={openSnack}
+          setOpenSnack={setOpenSnack}
+          id={token.token}
+          url={url}
+        />
       </Box>
     </Stack>
   );

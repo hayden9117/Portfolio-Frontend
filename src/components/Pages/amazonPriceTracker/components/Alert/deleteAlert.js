@@ -2,11 +2,11 @@ import { Button, Snackbar } from "@mui/material";
 
 import { deleteProduct } from "../../api/api";
 export const DeleteAlert = (props) => {
-  const { open, setOpenSnack, id } = props;
+  const { open, setOpenSnack, id, url } = props;
 
   const handleDelete = (prop) => {
     if (prop) {
-      deleteProduct(id);
+      deleteProduct(id, url);
       setOpenSnack(false);
     } else {
       setOpenSnack(false);

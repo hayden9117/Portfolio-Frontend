@@ -1,4 +1,4 @@
-export const deleteProduct = (url) => {
+export const deleteProduct = (id, url) => {
   // fetch(`https://http://localhost:3001.com/deleteList`, {
   fetch(`https://richiehayden-portfolio-backend.herokuapp.com/deleteList`, {
     credentials: "include",
@@ -7,7 +7,7 @@ export const deleteProduct = (url) => {
       "Content-Type": "application/json",
       charset: "UTF-8",
     },
-    body: JSON.stringify({ url: url }),
+    body: JSON.stringify({ id: id, url: url }),
   })
     .then((response) => response.json())
     .then((result) => {
@@ -19,7 +19,7 @@ export const GetAmazonData = async (res) => {
   return await fetch(
     `https://richiehayden-portfolio-backend.herokuapp.com/getAmazonData`,
     {
-      // fetch(`http://localhost:3001/getAmazonData`, {
+      // fetch(`https://richiehayden-portfolio-backend.herokuapp.com/getAmazonData`, {
       credentials: "include",
       method: "GET",
       headers: {

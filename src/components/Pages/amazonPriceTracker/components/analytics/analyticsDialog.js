@@ -23,11 +23,31 @@ function AnalyticDialog(props) {
   return (
     <>
       <Dialog open={open} onClose={handleClose}>
-        <Box sx={{ height: "100%", width: "80%" }}>
-          <Stack spacing={-2} sx={{ padding: 2, display: "flex" }}>
+        <Box
+          sx={{
+            height: "100%",
+            width: "80%",
+            "@.css-1t1j96h-MuiPaper-root-MuiDialog-paper": {
+              margin: "0px",
+            },
+          }}
+        >
+          <Stack
+            spacing={-2}
+            sx={{
+              padding: 2,
+              display: "flex",
+            }}
+          >
             <Stack
               spacing={2}
-              sx={{ padding: 2, display: "flex" }}
+              sx={{
+                padding: 2,
+                display: "flex",
+                " @media screen and (max-width: 651px)": {
+                  display: "none",
+                },
+              }}
               direction="row"
             >
               <Stack
@@ -50,13 +70,23 @@ function AnalyticDialog(props) {
                   past three months
                 </MenuItem>
               </Stack>
-              <Divider orientation="vertical" flexItem />
+              <Divider
+                orientation="vertical"
+                flexItem
+                sx={{
+                  padding: 2,
+                  display: "flex",
+                  " @media screen and (max-width: 651px)": {
+                    display: "none",
+                  },
+                }}
+              />
               <Stack
                 spacing={2}
                 sx={{
                   padding: 2,
                   " @media screen and (max-width: 651px)": {
-                    widows: "300px",
+                    display: "none",
                   },
                 }}
               >
@@ -84,7 +114,15 @@ function AnalyticDialog(props) {
               }}
               direction="row"
             >
-              <ProductGraph priceData={item.data} selection={selection} />
+              <Box
+                sx={{
+                  " @media screen and (min-width: 651px)": {
+                    width: "100%",
+                  },
+                }}
+              >
+                <ProductGraph priceData={item.data} selection={selection} />
+              </Box>
             </Stack>
           </Stack>
         </Box>

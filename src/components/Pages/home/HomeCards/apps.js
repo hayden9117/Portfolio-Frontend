@@ -13,14 +13,14 @@ const dummyData = [
   },
   {
     id: 2,
-    name: "Application 2",
+    name: "PlanIt",
     description:
-      "baby chillwave pork belly kinfolk hammock unicorn small batch brunch jianbing poutine shaman. Heirloom asymmetrical gentrify distillery pitchfork, raw denim poke williamsburg cray godard chartreuse brunch taxidermy selfies. Squid taiyaki hexagon, photo booth affogato taxidermy selvage vice banh mi heirloom food truck umami austin bicycle rights.",
+      "Vacation planning application, optimizes scheduling and planning for future vacations!.",
     createdAt: "2020-01-01",
     updatedAt: "2020-01-01",
     scrollEnd: 900,
     image: "/images/gamba-logo.jpg",
-    link: "Application 2",
+    link: "/PlanIt",
   },
   {
     id: 3,

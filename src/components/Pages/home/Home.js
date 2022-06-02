@@ -7,7 +7,7 @@ import { AboutMe } from "./resume/aboutMe";
 import Skills from "./resume/Skills";
 import { Divider } from "@mui/material";
 import NavBar from "./navigation/NavBar";
-
+import SassDemo from "./resume/SassDemo";
 function Home() {
   const [scrollOffset, setScrollOffset] = useState(0);
   const [aboutMeHeight, setAboutMeHeight] = useState();
@@ -83,6 +83,8 @@ function Home() {
           <Skills />
           <Divider sx={{ width: "100%" }} />
           <FullWidthTabs />
+          <Divider sx={{ width: "100%" }} />
+          <SassDemo />
           <Divider sx={{ width: "100%" }} />
           <Cards />
         </Stack>
