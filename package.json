@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://haydenportfol.io/",
+  "engines": {
+    "node": "16.x"
+  },
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
