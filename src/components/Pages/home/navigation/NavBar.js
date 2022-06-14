@@ -7,7 +7,7 @@ import {
   IconButton,
   Stack,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useContext } from "react";
 import AppContext from "../../../../Context/AppContext";
 import LightModeIcon from "@mui/icons-material/LightMode";
@@ -49,45 +49,6 @@ function NavBar(props) {
   }
 
   return (
-    // <Box
-    //   sx={{
-    //     display: "flex",
-    //     height: "100%",
-    //     width: "100%",
-    //     textAlign: "center",
-    //   }}
-    // >
-    //   <CssBaseline />
-    //   <AppBar sx={{ height: "20%", position: "fixed" }}>
-    //     <Toolbar sx={{ height: "150px", alignContent: "center" }}>
-    //       <Typography sx={{ position: "absolute" }} variant="h2">
-    //         {props.title}
-    //       </Typography>
-    //       <IconButton
-    //         sx={{ position: "fixed", left: "85%" }}
-    //         color={"inherit"}
-    //         onClick={handleGitHub}
-    //         size="large"
-    //       >
-    //         <GitHub fontSize="inherit" />
-    //       </IconButton>
-    //       <IconButton
-    //         sx={{ position: "fixed", left: "90%" }}
-    //         color={"inherit"}
-    //         onClick={toggleChecked}
-    //         size="large"
-    //       >
-    //         {" "}
-    //         {checked === true ? (
-    //           <LightModeIcon fontSize="inherit" />
-    //         ) : (
-    //           <DarkModeIcon fontSize="inherit" />
-    //         )}
-    //       </IconButton>
-    //     </Toolbar>
-    //   </AppBar>
-    // </Box>
-
     <Box
       sx={{
         display: "flex",
@@ -107,21 +68,8 @@ function NavBar(props) {
               }}
             >
               {" "}
-              <Rlogo size="100" />
+              <Rlogo width="200" height="100" title={props.title} />
             </Box>
-
-            <Typography
-              variant="h2"
-              noWrap
-              component="div"
-              align="center"
-              sx={{
-                mr: 2,
-                display: { xs: "none", md: "flex" },
-              }}
-            >
-              {props.title}
-            </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
               <IconButton
@@ -131,7 +79,7 @@ function NavBar(props) {
                 onClick={handleOpenNavMenu}
                 color="inherit"
               >
-                <MenuIcon />
+                <Rlogo width="200" height="50" title={props.title} />
               </IconButton>
 
               <NavDrawer
@@ -140,19 +88,7 @@ function NavBar(props) {
                 steps={props.steps}
               />
             </Box>
-            <Box sx={{ flexGrow: 2, display: { xs: "flex", md: "none" } }}>
-              {" "}
-              <Rlogo size="100" />
-            </Box>
 
-            <Typography
-              variant="h4"
-              noWrap
-              component="div"
-              sx={{ flexGrow: 2, mr: 15, display: { xs: "flex", md: "none" } }}
-            >
-              {props.title}
-            </Typography>
             <Box
               sx={{ position: "fixed", right: "2%", display: "flex" }}
               justifyContent="start"

@@ -7,8 +7,11 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import { useTheme } from "@mui/material/styles";
 import List from "@mui/material/List";
 import { Drawer } from "@mui/material";
+import { useContext } from "react";
+import AppContext from "../../../../../Context/AppContext";
 
 export const NavDrawer = (props) => {
+  const { checked, setChecked } = useContext(AppContext);
   const theme = useTheme();
   const handleClose = () => {
     props.setOpen(false);
@@ -22,7 +25,10 @@ export const NavDrawer = (props) => {
   return (
     <Drawer variant="persistent" anchor="left" open={props.open}>
       <div>
-        <IconButton color="primary" onClick={handleClose}>
+        <IconButton
+          color={checked ? "primary" : "secondary"}
+          onClick={handleClose}
+        >
           {theme.direction === "ltr" ? (
             <ChevronLeftIcon />
           ) : (
@@ -35,7 +41,12 @@ export const NavDrawer = (props) => {
           return (
             <ListItem button key={step.label}>
               <ListItemIcon>
-                <Button onClick={() => handleStep(step)}>{step.label}</Button>
+                <Button
+                  color={checked ? "primary" : "secondary"}
+                  onClick={() => handleStep(step)}
+                >
+                  {step.label}
+                </Button>
               </ListItemIcon>
             </ListItem>
           );

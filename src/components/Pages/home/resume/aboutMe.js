@@ -7,7 +7,7 @@ export const AboutMe = () => {
       sx={{
         bgcolor: "background.paper",
         width: "85%",
-        mt: 12,
+        mt: 20,
         mb: 10,
         " @media screen and (max-width: 650px)": {
           ml: "auto",

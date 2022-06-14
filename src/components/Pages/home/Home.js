@@ -8,11 +8,28 @@ import Skills from "./resume/Skills";
 import { Divider } from "@mui/material";
 import NavBar from "./navigation/NavBar";
 import SassDemo from "./resume/SassDemo";
+
+import "../../../App.css";
+import AppContext from "../../../Context/AppContext";
+
+import { ThemeProvider } from "@mui/material/styles";
+import { lightTheme, darkTheme } from "../../../config/theme";
+
 function Home() {
+  const [value, setValue] = useState("");
+  const [listName, setListName] = useState("");
+  const [listType, setListType] = useState("");
+  const [open, setOpen] = useState(false);
+  const [checked, setChecked] = useState(false);
+  const [steps, setSteps] = useState([]);
+  const [mode, setMode] = useState([]);
+
   const [scrollOffset, setScrollOffset] = useState(0);
   const [aboutMeHeight, setAboutMeHeight] = useState();
   const [skillsHeight, setSkillsHeight] = useState();
-  const [experienceHeight, setSExperienceHeight] = useState();
+  const [experienceHeight, setExperienceHeight] = useState();
+  const [toggle, setToggle] = useState(false);
+
   //eslint-disable-next-line react-hooks/exhaustive-deps
   const handleScroll = () => {
     let x = window.scrollY;
@@ -48,7 +65,7 @@ function Home() {
       handleScroll();
       setAboutMeHeight(document.getElementById("aboutMe").scrollHeight);
       setSkillsHeight(document.getElementById("skills").scrollHeight);
-      setSExperienceHeight(document.getElementById("experience").scrollHeight);
+      setExperienceHeight(document.getElementById("experience").scrollHeight);
     });
   }, [HomeSideSteps, handleScroll]);
 
@@ -56,7 +73,7 @@ function Home() {
   useEffect(() => {
     setAboutMeHeight(document.getElementById("aboutMe").scrollHeight);
     setSkillsHeight(document.getElementById("skills").scrollHeight);
-    setSExperienceHeight(document.getElementById("experience").scrollHeight);
+    setExperienceHeight(document.getElementById("experience").scrollHeight);
   }, []);
   for (let i = 0; i < HomeSideSteps.length; i++) {
     let labelIndex =
@@ -69,28 +86,49 @@ function Home() {
   }
   return (
     <>
-      <NavBar title={title} steps={HomeSideSteps} />
-      <Box
-        sx={{
-          textAlign: "center",
-
-          " @media screen and (max-width: 650px)": {},
+      <AppContext.Provider
+        value={{
+          value,
+          setValue,
+          listName,
+          setListName,
+          listType,
+          setListType,
+          open,
+          setOpen,
+          steps,
+          setSteps,
+          checked,
+          setChecked,
+          mode,
+          setMode,
         }}
       >
-        <Stack direction={"column"} spacing={5}>
-          <AboutMe />
-          <Divider sx={{ width: "100%" }} />
-          <Skills />
-          <Divider sx={{ width: "100%" }} />
-          <FullWidthTabs />
-          <Divider sx={{ width: "100%" }} />
-          <SassDemo />
-          <Divider sx={{ width: "100%" }} />
-          <Cards />
-        </Stack>
-      </Box>
+        <ThemeProvider theme={checked === true ? lightTheme : darkTheme}>
+          <NavBar title={title} steps={HomeSideSteps} />
+          <Box
+            sx={{
+              textAlign: "center",
 
-      <SideStepper scrollOffset={scrollOffset} steps={HomeSideSteps} />
+              " @media screen and (max-width: 650px)": {},
+            }}
+          >
+            <Stack direction={"column"} spacing={5}>
+              <AboutMe />
+              <Divider sx={{ width: "100%" }} />
+              <Skills />
+              <Divider sx={{ width: "100%" }} />
+              <FullWidthTabs />
+              <Divider sx={{ width: "100%" }} />
+              <SassDemo />
+              <Divider sx={{ width: "100%" }} />
+              <Cards />
+            </Stack>
+          </Box>
+
+          <SideStepper scrollOffset={scrollOffset} steps={HomeSideSteps} />
+        </ThemeProvider>
+      </AppContext.Provider>
     </>
   );
 }

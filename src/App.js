@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import AppContext from "./Context/AppContext";
 import Home from "./components/Pages/home/Home";
 import { Box } from "@mui/material";
@@ -8,6 +8,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { lightTheme, darkTheme } from "./config/theme";
 import PriceTracker from "./components/Pages/amazonPriceTracker/priceTracker";
 import PlanIt from "./components/Pages/PlanIt/PlanIt";
+import ViaURL from "./components/Pages/viaUrl/ViaUrl";
 
 function App() {
   const [value, setValue] = useState("");
@@ -21,50 +22,15 @@ function App() {
 
   return (
     <Box sx={{ height: "100%", width: "100%" }}>
-      <AppContext.Provider
-        value={{
-          value,
-          setValue,
-          listName,
-          setListName,
-          listType,
-          setListType,
-          open,
-          setOpen,
-          steps,
-          setSteps,
-          checked,
-          setChecked,
-          mode,
-          setMode,
-          title,
-          setTitle,
-        }}
-      >
-        <ThemeProvider theme={checked === true ? lightTheme : darkTheme}>
-          <Router>
-            <Switch>
-              <Route path="/" exact>
-                <Home />
-              </Route>
-            </Switch>
-          </Router>
-        </ThemeProvider>
-      </AppContext.Provider>
-      <Router>
-        <Switch>
-          <Route path="/priceTracker" exact>
-            <PriceTracker />
-          </Route>
-        </Switch>
-      </Router>
-      <Router>
-        <Switch>
-          <Route path="/PlanIt" exact>
-            <PlanIt />
-          </Route>
-        </Switch>
-      </Router>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+
+          <Route path="/priceTracker" element={<PriceTracker />} />
+          <Route path="/PlanIt" element={<PlanIt />} />
+          <Route path="/ViaURL/*" element={<ViaURL />} />
+        </Routes>
+      </BrowserRouter>
     </Box>
   );
 }

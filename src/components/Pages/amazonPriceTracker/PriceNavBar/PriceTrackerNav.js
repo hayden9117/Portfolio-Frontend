@@ -19,7 +19,7 @@ function PriceTrackerNav() {
   const { checked, setChecked } = useContext(PriceAppContext);
 
   const { token } = useToken();
-  console.log(token);
+
   const toggleChecked = () => {
     setChecked(!checked);
   };

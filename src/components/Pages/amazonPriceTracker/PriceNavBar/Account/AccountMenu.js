@@ -3,7 +3,7 @@ import { Button, Menu, MenuItem, Stack, Divider } from "@mui/material";
 import useToken from "../../UseToken";
 import AccountCircleRounded from "@material-ui/icons/AccountCircleRounded";
 import { useState } from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router-dom";
 import AccountDialog from "./accountDialog";
 
 // import MyAccount from './MyAccount';
@@ -12,7 +12,7 @@ export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [openDialog, setOpenDialog] = useState(false);
   const token = useToken();
-  const history = useHistory();
+  let navigate = useNavigate();
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -25,12 +25,12 @@ export default function AccountMenu() {
   };
   const handleLogOut = () => {
     localStorage.clear();
-    history.push("/priceTracker");
+    navigate("/priceTracker");
     window.location.reload(false);
   };
 
   const handleMain = () => {
-    history.push("/");
+    navigate("/");
     window.location.reload(false);
   };
 

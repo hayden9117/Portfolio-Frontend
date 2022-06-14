@@ -19,6 +19,8 @@ import "./css/priceTracker.css";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
 import useToken from "../UseToken";
 
+import Loading from "./helperComponents/Loading";
+
 function AmazonPriceTracker(props) {
   const { list } = props;
   const [open, setOpen] = useState(false);
@@ -122,39 +124,47 @@ function AmazonPriceTracker(props) {
           }}
         >
           <CardContent>
-            <CardHeader
-              titleTypographyProps={{ variant: "h4" }}
-              title={truncate(list[activeStep].productname)}
-              subheader={
-                list[activeStep].some_datetime ? (
-                  <Typography>{`Date product was added : ${list[
-                    activeStep
-                  ].some_datetime.slice(0, 10)}`}</Typography>
-                ) : (
-                  ""
-                )
-              }
-            />
-            <br />
-            <Typography variant="h5" component="div" sx={{ ml: "3%" }}>
-              {`Current Price:    $ ${list[activeStep].itemprice}`}
-            </Typography>
-
-            <CardActions>
-              <Button onClick={() => handleProductLink(list[activeStep].url)}>
-                Link To Page
-              </Button>
-              <Button
-                onClick={() =>
-                  handleAnalytics(list[activeStep], { open: true })
-                }
-              >
-                Show Analytics
-              </Button>
-              <Button onClick={() => handleDelete(list[activeStep].url)}>
-                <DeleteIcon />
-              </Button>
-            </CardActions>
+            {list ? (
+              <>
+                {" "}
+                <CardHeader
+                  titleTypographyProps={{ variant: "h4" }}
+                  title={truncate(list[activeStep].productname)}
+                  subheader={
+                    list[activeStep].some_datetime ? (
+                      <Typography>{`Date product was added : ${list[
+                        activeStep
+                      ].some_datetime.slice(0, 10)}`}</Typography>
+                    ) : (
+                      ""
+                    )
+                  }
+                />
+                <br />
+                <Typography variant="h5" component="div" sx={{ ml: "3%" }}>
+                  {`Current Price:    $ ${list[activeStep].itemprice}`}
+                </Typography>
+                <CardActions>
+                  <Button
+                    onClick={() => handleProductLink(list[activeStep].url)}
+                  >
+                    Link To Page
+                  </Button>
+                  <Button
+                    onClick={() =>
+                      handleAnalytics(list[activeStep], { open: true })
+                    }
+                  >
+                    Show Analytics
+                  </Button>
+                  <Button onClick={() => handleDelete(list[activeStep].url)}>
+                    <DeleteIcon />
+                  </Button>
+                </CardActions>{" "}
+              </>
+            ) : (
+              <Loading />
+            )}
           </CardContent>
         </Card>
         <br></br>

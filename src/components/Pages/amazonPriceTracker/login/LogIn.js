@@ -10,20 +10,20 @@ import {
 } from "@mui/material";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import SignUp from "./SignUp";
 
 function Login({ setToken }) {
   const [userName, setUserName] = useState();
   const [password, setPassword] = useState();
   const [signUp, setSignUp] = useState(false);
-  const history = useHistory();
+  let navigate = useNavigate();
 
   let bodyObject = { username: userName, password: password };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    fetch(`https://richiehayden-portfolio-backend.herokuapp.com/Login`, {
+    fetch(`https://richiehayden-portfolio-backend.herokuapp/Login`, {
       credentials: "include",
       method: "post",
       headers: {
@@ -36,7 +36,7 @@ function Login({ setToken }) {
       .then((result) => {
         if (result.message === "No match found, create new user.") {
           alert(result.message);
-          history.push("/priceTracker/signup");
+          navigate("/priceTracker/signup");
         }
 
         if (result.token) {

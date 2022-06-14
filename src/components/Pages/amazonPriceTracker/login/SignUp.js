@@ -1,6 +1,6 @@
 import PasswordStrengthBar from "react-password-strength-bar";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+
 import {
   FormControl,
   Stack,
@@ -14,14 +14,14 @@ function SignUp(props) {
   const [matchedPassWord, setMatchedPassword] = useState("");
   const [newPassword, setNewPassword] = useState();
   const [newUserName, setNewUserName] = useState();
-  const history = useHistory();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     let bodyObject = { username: newUserName, password: newPassword };
 
     if (matchedPassWord === newPassword) {
-      // ftch(`https://richiehayden-portfolio-backend.herokuapp.com/newuser`, {
-      fetch(`https://richiehayden-portfolio-backend.herokuapp.com/newuser`, {
+      // ftch(`https://richiehayde-portfolio-backend.herokuapp.com/newuser`, {
+      fetch("https://richiehayden-portfolio-backend.herokuapp/newuser", {
         credentials: "include",
         method: "post",
         headers: {
@@ -35,7 +35,6 @@ function SignUp(props) {
           console.log(result);
           if (result.message === "successfully added new entry to database") {
             alert("successfully added new entry to database, Please Login");
-            history.push("/priceTracker");
           }
         });
     } else {

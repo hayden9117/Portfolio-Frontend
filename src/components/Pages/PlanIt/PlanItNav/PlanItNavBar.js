@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState, useContext } from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -18,6 +19,8 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
+import { getJobs } from "../components/ONetApi";
+import PlanContext from "../context/PlanContext";
 
 const drawerWidth = 240;
 
@@ -88,14 +91,37 @@ const Drawer = styled(MuiDrawer, {
 
 export default function PlanItNavBar() {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-
+  const [open, setOpen] = useState(false);
+  const { setCareerList } = useContext(PlanContext);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const handleJobs = async (text) => {
+    let arr = [];
+    let objArr = [];
+    if (text === "get jobs") {
+      const jobs = await getJobs();
+      console.log(jobs);
+
+      jobs.career.forEach((career) => {
+        objArr.push({ label: career.title, id: career.code });
+
+        arr.push({
+          name: career.title,
+          calories: 23,
+          fat: 12,
+          carbs: 34,
+          protein: 34,
+        });
+      });
+      setCareerList(arr);
+    }
+    console.log(objArr);
   };
 
   return (
@@ -132,28 +158,31 @@ export default function PlanItNavBar() {
         </DrawerHeader>
         <Divider />
         <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
+          {["get jobs", "Starred", "Send email", "Drafts"].map(
+            (text, index) => (
+              <ListItem key={text} disablePadding sx={{ display: "block" }}>
+                <ListItemButton
                   sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
                   }}
+                  onClick={() => handleJobs(text)}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  </ListItemIcon>
+                  <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                </ListItemButton>
+              </ListItem>
+            )
+          )}
         </List>
       </Drawer>
     </Box>

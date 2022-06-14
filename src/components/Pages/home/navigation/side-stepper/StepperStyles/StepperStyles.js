@@ -1,12 +1,13 @@
 import PropTypes from "prop-types";
 import { styled } from "@mui/material/styles";
 import Check from "@mui/icons-material/Check";
-import SettingsIcon from "@mui/icons-material/Settings";
-import GroupAddIcon from "@mui/icons-material/GroupAdd";
-import VideoLabelIcon from "@mui/icons-material/VideoLabel";
 import StepConnector, {
   stepConnectorClasses,
 } from "@mui/material/StepConnector";
+import AboutMe from "../svgs-drawer/AboutMe";
+import SkillsSvg from "../svgs-drawer/SkillsSvg";
+import ExperienceSVG from "../svgs-drawer/ExperienceSVG";
+import PortfolioSVG from "../svgs-drawer/PortfolioSVG";
 
 export const QontoConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -108,10 +109,10 @@ export function ColorlibStepIcon(props) {
   const { active, completed, className } = props;
 
   const icons = {
-    1: <SettingsIcon />,
-    2: <GroupAddIcon />,
-    3: <VideoLabelIcon />,
-    4: <VideoLabelIcon />,
+    1: <AboutMe />,
+    2: <SkillsSvg />,
+    3: <ExperienceSVG />,
+    4: <PortfolioSVG />,
   };
 
   return (
