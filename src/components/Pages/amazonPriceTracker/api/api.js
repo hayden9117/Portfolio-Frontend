@@ -1,6 +1,6 @@
 export const deleteProduct = (id, url) => {
-  // fetch(`https://https://richiehayden-portfolio-backend.herokuapp/deleteList`, {
-  fetch(`https://richiehayden-portfolio-backend.herokuapp/deleteList`, {
+  // fetch(`https://https://richiehayden-portfolio-backend.herokuapp.com/deleteList`, {
+  fetch(`https://richiehayden-portfolio-backend.herokuapp.com/deleteList`, {
     credentials: "include",
     method: "delete",
     headers: {
@@ -17,9 +17,9 @@ export const deleteProduct = (id, url) => {
 
 export const GetAmazonData = async (res) => {
   return await fetch(
-    `https://richiehayden-portfolio-backend.herokuapp/getAmazonData`,
+    `https://richiehayden-portfolio-backend.herokuapp.com/getAmazonData`,
     {
-      // fetch(`https://richiehayden-portfolio-backend.herokuapp/getAmazonData`, {
+      // fetch(`https://richiehayden-portfolio-backend.herokuapp.com/getAmazonData`, {
       credentials: "include",
       method: "GET",
       headers: {
@@ -35,7 +35,7 @@ export const GetProductTimeData = async (token) => {
     userID: token,
   };
   return await fetch(
-    "https://richiehayden-portfolio-backend.herokuapp/getProductWeek",
+    "https://richiehayden-portfolio-backend.herokuapp.com/getProductWeek",
     {
       credentials: "include",
       method: "POST",
@@ -60,16 +60,19 @@ export const postUrl = async (url, token) => {
     itemPrice: "temp",
     productname: "temp",
   };
-  // fetch(`https://richiehayden-portfolio-backend.herokuapp/AmazonData`, {
-  return fetch(`https://richiehayden-portfolio-backend.herokuapp/AmazonData`, {
-    credentials: "include",
-    method: "post",
-    headers: {
-      "Content-Type": "application/json",
-      charset: "UTF-8",
-    },
-    body: JSON.stringify(obj),
-  })
+  // fetch(`https://richiehayden-portfolio-backend.herokuapp.com/AmazonData`, {
+  return fetch(
+    `https://richiehayden-portfolio-backend.herokuapp.com/AmazonData`,
+    {
+      credentials: "include",
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+        charset: "UTF-8",
+      },
+      body: JSON.stringify(obj),
+    }
+  )
     .then((response) => response.json())
     .then((result) => {
       console.log(result);
