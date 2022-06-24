@@ -21,6 +21,11 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import ViaHeaderSVG from "../../header/headerSVG/ViaHeaderSVG";
 import AddURLSVG from "./tool-icons/AddURLSVG";
+import AddLink from "./helperFunctions/AddLink";
+import { handleLink } from "./helperFunctions/AddLink";
+import useConfig from "./UseConfig";
+import { Button, Stack } from "@mui/material";
+import TemplateMenu from "./navbarComponents/TemplateMenu";
 
 const drawerWidth = 240;
 
@@ -94,9 +99,10 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function CreatePageNav() {
+export default function CreatePageNav(props) {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
+  const { config, setConfig } = props;
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -106,25 +112,62 @@ export default function CreatePageNav() {
     setOpen(false);
   };
 
+  const handleConfig = (text) => {
+    console.log(text);
+    // eslint-disable-next-line default-case
+    switch (text) {
+      case "Add a URL":
+        setConfig({
+          links: { num: config.links.num + 1, url: [...config.links.url, ""] },
+          avatars: config.avatars,
+          background: config.background,
+          template: config.template,
+        });
+        break;
+      case "Add a Avatar":
+        if (config.avatars < 1) {
+          setConfig({
+            links: { num: config.links.num, url: config.links.url },
+            avatars: config.avatars + 1,
+            background: config.background,
+            template: config.template,
+          });
+        }
+        break;
+      case "change bg Color":
+        setConfig({
+          links: { num: config.links.num, url: config.links.url },
+          avatars: config.avatars,
+          background: config.background === "white" ? "red" : "white",
+          template: config.template,
+        });
+
+        break;
+    }
+  };
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <StyledToolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{
-              marginRight: 5,
-              ...(open && { display: "none" }),
-            }}
-          >
-            <Box sx={{ mt: "auto", mb: "auto" }}>
-              <ViaHeaderSVG width={"50"} height={"50"} />
-            </Box>
-          </IconButton>
+          <Stack direction="row">
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              sx={{
+                marginRight: 5,
+                ...(open && { display: "none" }),
+              }}
+            >
+              <Box sx={{ mt: "auto", mb: "auto" }}>
+                <ViaHeaderSVG width={"50"} height={"50"} />
+              </Box>
+            </IconButton>
+            <TemplateMenu config={config} setConfig={setConfig} />
+          </Stack>
         </StyledToolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
@@ -139,28 +182,31 @@ export default function CreatePageNav() {
         </DrawerHeader>
         <Divider sx={{ mt: 5 }} />
         <List>
-          {["Add a URL"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
+          {["Add a URL", "Add a Avatar", "change bg Color"].map(
+            (text, index) => (
+              <ListItem key={text} disablePadding sx={{ display: "block" }}>
+                <ListItemButton
                   sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
                   }}
                 >
-                  <AddURLSVG />
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                    }}
+                    onClick={() => handleConfig(text)}
+                  >
+                    <AddURLSVG />
+                  </ListItemIcon>
+                  <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                </ListItemButton>
+              </ListItem>
+            )
+          )}
         </List>
       </Drawer>
     </Box>

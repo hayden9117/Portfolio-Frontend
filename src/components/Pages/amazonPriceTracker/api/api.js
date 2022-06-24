@@ -19,7 +19,6 @@ export const GetAmazonData = async (res) => {
   return await fetch(
     `https://richiehayden-portfolio-backend.herokuapp.com/getAmazonData`,
     {
-      // fetch(`https://richiehayden-portfolio-backend.herokuapp.com/getAmazonData`, {
       credentials: "include",
       method: "GET",
       headers: {
