@@ -1,8 +1,19 @@
 import React from "react";
-import { Box, List, ListItem, Typography, Button } from "@mui/material";
+import {
+  Box,
+  List,
+  ListItem,
+  Typography,
+  Button,
+  ButtonBase,
+  Stack,
+} from "@mui/material";
+
 import { TextField } from "@material-ui/core";
 import { useState } from "react";
-
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import SaveAsOutlinedIcon from "@mui/icons-material/SaveAsOutlined";
 export default function LinkList(props) {
   const { config, setConfig } = props;
   const [url, setUrl] = useState(config.links.url);
@@ -21,7 +32,9 @@ export default function LinkList(props) {
         links: { num: config.links.num, url: newArr },
         avatars: config.avatars,
         background: config.background,
+        opacity: config.opacity,
         template: config.template,
+        brightness: config.brightness,
       });
     } else {
       alert("you can only add one avatar.");
@@ -53,7 +66,9 @@ export default function LinkList(props) {
       links: { num: config.links.num + 1, url: [...arr, ""] },
       avatars: config.avatars,
       background: config.background,
+      opacity: config.opacity,
       template: config.template,
+      brightness: config.brightness,
     });
   };
   const handleConfigLinkRemove = () => {
@@ -62,12 +77,16 @@ export default function LinkList(props) {
       links: { num: config.links.num - 1, url: arr },
       avatars: config.avatars,
       background: config.background,
+      opacity: config.opacity,
       template: config.template,
+      brightness: config.brightness,
     });
   };
   return (
     <Box
       sx={{
+        display: "flex",
+        flexDirection: "column",
         width: "300px",
         borderWidth: 1,
         borderStyle: "dashed",
@@ -89,9 +108,20 @@ export default function LinkList(props) {
           ></TextField>
         </Box>
       ))}
-      <Button onClick={() => handleSave()}>Save</Button>
-      <Button onClick={() => handleConfigLinkRemove()}>remove</Button>
-      <Button onClick={() => handleConfigLink()}>add</Button>
+
+      <Box sx={{ alignSelf: "end" }}>
+        <Stack spacing={1} direction={"row"}>
+          <ButtonBase onClick={() => handleSave()}>
+            <SaveAsOutlinedIcon />
+          </ButtonBase>
+          <ButtonBase onClick={() => handleConfigLinkRemove()}>
+            <RemoveCircleOutlineIcon />
+          </ButtonBase>
+          <ButtonBase onClick={() => handleConfigLink()}>
+            <AddCircleOutlineIcon />
+          </ButtonBase>
+        </Stack>
+      </Box>
     </Box>
   );
 }

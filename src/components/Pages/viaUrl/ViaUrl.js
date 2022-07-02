@@ -1,4 +1,3 @@
-import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/styles";
 import { Box } from "@mui/system";
 import ViaHome from "./components/ViaHome";
@@ -6,23 +5,28 @@ import { ViaTheme } from "./theme/ViaTheme";
 import { Route, Routes } from "react-router-dom";
 import CreatePage from "./components/pages/CreatePage";
 import useConfig from "./components/pages/CreatePageComponents/UseConfig";
-import useToken from "./components/UseToken";
+import useViaToken from "./components/UseViaToken";
 import RenderPage from "./components/pages/RenderPage";
+import { createPage } from "./api";
 function ViaURL() {
-  const { token, setToken } = useToken();
-  const { config, setConfig } = useConfig();
+  const { token } = useViaToken();
+  const { config } = useConfig();
+
   return (
     <Box>
-      <ThemeProvider theme={ViaTheme}>
-        <Routes>
-          <Route path={`/`} element={<ViaHome />} />
-          <Route path={`/create`} element={<CreatePage edit={true} />} />
+      <Routes>
+        <Route path={`/`} element={<ViaHome />} />
+        <Route
+          path={`/create`}
+          element={<CreatePage token={token} edit={true} />}
+        />
+        {!token ? null : (
           <Route
             path={`/${token.username}`}
             element={<RenderPage config={config} />}
           />
-        </Routes>
-      </ThemeProvider>
+        )}
+      </Routes>
     </Box>
   );
 }

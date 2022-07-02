@@ -1,7 +1,7 @@
 export const resumeData = {
   Introduction: {
     Intro:
-      "I am a software developer who is passionate about learning new technologies and advancing my skill set. My coding journey began through self-teaching and learning from mentors in the field. I continued my learning in the Spaceforce Supra Coder program, which is highly competitive and has a selection rate of less than 4 percent. Through this program, I received a certificate from the Software Development Immersive provided by Galvanize. I then attended a 3-month internship with KBR as a member of a product team, before interviewing for a position as a full-stack developer for the Spaceforce. I am currently pursuing a BS in Computer Science through CSU Global-Campus to further develop and expand my knowledge",
+      "Hello! my name is Richard Hayden and I am  passionate about learning new technologies and advancing my skill set. My coding journey began through self-teaching and learning from mentors in the field. I continued my learning in the Spaceforce Supra Coder program, which is highly competitive and has a selection rate of less than 4 percent. Through this program, I received a certificate from the Software Development Immersive provided by Galvanize. I then attended a 3-month internship with KBR as a member of a product team, before interviewing for a position as a full-stack developer for the Spaceforce. I am currently pursuing a BS in Computer Science through CSU Global-Campus to further develop and expand my knowledge",
   },
   SpaceForce: {
     JobDuties: [
@@ -89,7 +89,7 @@ export const resumeData = {
       {
         skill: "Agile",
         description:
-          "Worked in team environment using Agile and scrum managing continuos development, and best practices.",
+          "Experience working in team environments using Agile and scrum managing continuos development, and best practices.",
         panel: "panel-11",
       },
       {

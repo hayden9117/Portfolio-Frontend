@@ -1,4 +1,11 @@
-import { Stepper, Step, StepButton, StepLabel, Stack } from "@mui/material";
+import {
+  Box,
+  Stepper,
+  Step,
+  StepButton,
+  StepLabel,
+  Stack,
+} from "@mui/material";
 import PropTypes from "prop-types";
 
 import {
@@ -15,12 +22,13 @@ export default function SideStepper(props) {
   };
 
   return (
-    <Stack
+    <Box
       sx={{
-        height: "500px",
-        width: 200,
-        paddingTop: "80px",
-        zIndex: 9000,
+        position: "fixed",
+        display: "flex",
+        top: "20%",
+
+        right: 15,
       }}
     >
       <Stepper
@@ -39,18 +47,13 @@ export default function SideStepper(props) {
           },
 
           ".MuiStepConnector-root .MuiStepConnector-line ": {
-            height: "11vh",
+            height: "12vh",
           },
 
           display: "block",
 
           width: 150,
           zIndex: 9000,
-
-          position: "fixed",
-          top: 170,
-
-          right: 15,
         }}
       >
         {props.steps.map((step) => {
@@ -73,7 +76,7 @@ export default function SideStepper(props) {
           );
         })}
       </Stepper>
-    </Stack>
+    </Box>
   );
 }
 

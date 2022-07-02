@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Box, Stack } from "@mui/material";
-import Cards from "./HomeCards/Cards";
+// import Cards from "./HomeCards/Cards";
 import SideStepper from "./navigation/side-stepper/sideStepper";
 import FullWidthTabs from "./resume/Tabs";
 import { AboutMe } from "./resume/aboutMe";
@@ -9,11 +9,12 @@ import { Divider } from "@mui/material";
 import NavBar from "./navigation/NavBar";
 import SassDemo from "./resume/SassDemo";
 
-import "../../../App.css";
+// import "../../../App.css";
 import AppContext from "../../../Context/AppContext";
 
 import { ThemeProvider } from "@mui/material/styles";
-import { lightTheme, darkTheme } from "../../../config/theme";
+import { lightTheme, darkTheme } from "./config/theme";
+import ContactMe from "./resume/ContactMe";
 
 function Home() {
   const [value, setValue] = useState("");
@@ -28,6 +29,7 @@ function Home() {
   const [aboutMeHeight, setAboutMeHeight] = useState();
   const [skillsHeight, setSkillsHeight] = useState();
   const [experienceHeight, setExperienceHeight] = useState();
+  const [portfolioHeight, setPortfolioHeight] = useState();
   const [toggle, setToggle] = useState(false);
 
   //eslint-disable-next-line react-hooks/exhaustive-deps
@@ -53,10 +55,15 @@ function Home() {
       stepValue: 3,
       scrollPos: aboutMeHeight + skillsHeight + 250,
     },
+    // {
+    //   label: "My Portfolio",
+    //   stepValue: 4,
+    //   scrollPos: aboutMeHeight + skillsHeight + experienceHeight + 300,
+    // },
     {
-      label: "My Portfolio",
+      label: "Contact Me",
       stepValue: 4,
-      scrollPos: aboutMeHeight + skillsHeight + experienceHeight + 300,
+      scrollPos: aboutMeHeight + skillsHeight + experienceHeight + 400,
     },
   ];
 
@@ -66,6 +73,7 @@ function Home() {
       setAboutMeHeight(document.getElementById("aboutMe").scrollHeight);
       setSkillsHeight(document.getElementById("skills").scrollHeight);
       setExperienceHeight(document.getElementById("experience").scrollHeight);
+      // setPortfolioHeight(document.getElementById("portfolio").scrollHeight);
     });
   }, [HomeSideSteps, handleScroll]);
 
@@ -74,6 +82,7 @@ function Home() {
     setAboutMeHeight(document.getElementById("aboutMe").scrollHeight);
     setSkillsHeight(document.getElementById("skills").scrollHeight);
     setExperienceHeight(document.getElementById("experience").scrollHeight);
+    // setPortfolioHeight(document.getElementById("portfolio").scrollHeight);
   }, []);
   for (let i = 0; i < HomeSideSteps.length; i++) {
     let labelIndex =
@@ -119,10 +128,10 @@ function Home() {
               <Skills />
               <Divider sx={{ width: "100%" }} />
               <FullWidthTabs />
+
+              {/* <SassDemo /> */}
               <Divider sx={{ width: "100%" }} />
-              <SassDemo />
-              <Divider sx={{ width: "100%" }} />
-              <Cards />
+              <ContactMe />
             </Stack>
           </Box>
 

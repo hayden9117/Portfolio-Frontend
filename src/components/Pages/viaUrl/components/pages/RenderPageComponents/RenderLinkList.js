@@ -1,5 +1,12 @@
 import React from "react";
-import { Box, List, ListItem, Typography, Button } from "@mui/material";
+import {
+  Box,
+  List,
+  ListItem,
+  Typography,
+  Button,
+  ButtonBase,
+} from "@mui/material";
 import { TextField } from "@material-ui/core";
 import { useState } from "react";
 
@@ -15,6 +22,8 @@ export default function RenderLinkList(props) {
   return (
     <Box
       sx={{
+        display: "flex",
+        flexDirection: "column",
         width: "300px",
       }}
     >
@@ -24,10 +33,12 @@ export default function RenderLinkList(props) {
             padding: 2,
           }}
         >
-          <Typography fullWidth={true} key={index}>
-            {" "}
-            {config.links.url[index]}
-          </Typography>
+          <ButtonBase href={config.links.url[index]}>
+            <Typography fullWidth={true} key={index}>
+              {" "}
+              {config.links.url[index]}
+            </Typography>
+          </ButtonBase>
         </Box>
       ))}
     </Box>

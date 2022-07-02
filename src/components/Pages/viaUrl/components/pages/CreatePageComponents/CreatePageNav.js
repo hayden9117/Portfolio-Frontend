@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -7,25 +7,27 @@ import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import CssBaseline from "@mui/material/CssBaseline";
-import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import ViaHeaderSVG from "../../header/headerSVG/ViaHeaderSVG";
-import AddURLSVG from "./tool-icons/AddURLSVG";
-import AddLink from "./helperFunctions/AddLink";
-import { handleLink } from "./helperFunctions/AddLink";
-import useConfig from "./UseConfig";
-import { Button, Stack } from "@mui/material";
+import {
+  AddURLSVG,
+  Background,
+  Template,
+  AvatarAdd,
+  PreviewSVG,
+} from "./tool-icons/NavSVGS";
+import { Stack } from "@mui/material";
 import TemplateMenu from "./navbarComponents/TemplateMenu";
+import { SavePage } from "./navbarComponents/SavePage";
+import { Preview } from "./navbarComponents/Preview";
+import TopDrawer from "./navbarComponents/TopDrawer";
 
 const drawerWidth = 240;
 
@@ -102,7 +104,8 @@ const Drawer = styled(MuiDrawer, {
 export default function CreatePageNav(props) {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
-  const { config, setConfig } = props;
+  const [openTop, setOpenTop] = useState(false);
+  const { config, setConfig, token, pageColor } = props;
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -121,7 +124,9 @@ export default function CreatePageNav(props) {
           links: { num: config.links.num + 1, url: [...config.links.url, ""] },
           avatars: config.avatars,
           background: config.background,
+          opacity: config.opacity,
           template: config.template,
+          brightness: config.brightness,
         });
         break;
       case "Add a Avatar":
@@ -130,17 +135,21 @@ export default function CreatePageNav(props) {
             links: { num: config.links.num, url: config.links.url },
             avatars: config.avatars + 1,
             background: config.background,
+            opacity: config.opacity,
             template: config.template,
+            brightness: config.brightness,
           });
         }
         break;
       case "change bg Color":
-        setConfig({
-          links: { num: config.links.num, url: config.links.url },
-          avatars: config.avatars,
-          background: config.background === "white" ? "red" : "white",
-          template: config.template,
-        });
+        handleDrawerOpen();
+        setOpenTop(!openTop);
+        // setConfig({
+        //   links: { num: config.links.num, url: config.links.url },
+        //   avatars: config.avatars,
+        //   background: config.background === "white" ? "red" : "white",
+        //   template: config.template,
+        // });
 
         break;
     }
@@ -149,28 +158,51 @@ export default function CreatePageNav(props) {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
-        <StyledToolbar>
-          <Stack direction="row">
+      <AppBar
+        sx={{ backgroundColor: pageColor.darker }}
+        position="fixed"
+        open={open}
+      >
+        <StyledToolbar
+          sx={{
+            backgroundColor: pageColor.nav.appBar,
+            height: 70,
+          }}
+        >
+          <Box sx={{ alignSelf: "center" }}>
             <IconButton
-              color="inherit"
-              aria-label="open drawer"
               onClick={handleDrawerOpen}
               edge="start"
               sx={{
-                marginRight: 5,
                 ...(open && { display: "none" }),
               }}
             >
-              <Box sx={{ mt: "auto", mb: "auto" }}>
-                <ViaHeaderSVG width={"50"} height={"50"} />
-              </Box>
+              <ViaHeaderSVG width={"50"} height={"50"} />
             </IconButton>
+          </Box>
+          <Box
+            sx={{
+              position: "fixed",
+              right: "2%",
+              display: "flex",
+            }}
+          >
+            {" "}
             <TemplateMenu config={config} setConfig={setConfig} />
-          </Stack>
+            <Preview token={token} />
+            <SavePage config={config} setConfig={setConfig} token={token} />
+          </Box>
         </StyledToolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}>
+      <Drawer
+        PaperProps={{
+          sx: {
+            backgroundColor: pageColor.nav.drawer,
+          },
+        }}
+        variant="permanent"
+        open={open}
+      >
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
@@ -187,20 +219,19 @@ export default function CreatePageNav(props) {
               <ListItem key={text} disablePadding sx={{ display: "block" }}>
                 <ListItemButton
                   sx={{
-                    minHeight: 48,
-                    justifyContent: open ? "initial" : "center",
-                    px: 2.5,
+                    justifyContent: open ? "center" : "center",
                   }}
+                  onClick={() => handleConfig(text)}
                 >
                   <ListItemIcon
                     sx={{
-                      minWidth: 0,
                       mr: open ? 3 : "auto",
                       justifyContent: "center",
                     }}
-                    onClick={() => handleConfig(text)}
                   >
-                    <AddURLSVG />
+                    {text === "Add a URL" ? <AddURLSVG /> : null}
+                    {text === "Add a Avatar" ? <AvatarAdd /> : null}
+                    {text === "change bg Color" ? <Background /> : null}
                   </ListItemIcon>
                   <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
@@ -209,6 +240,12 @@ export default function CreatePageNav(props) {
           )}
         </List>
       </Drawer>
+      <TopDrawer
+        setOpenTop={setOpenTop}
+        openTop={openTop}
+        config={config}
+        setConfig={setConfig}
+      />
     </Box>
   );
 }

@@ -8,6 +8,7 @@ import { AboutMeSVG } from "./RlogoParts/AboutMeSVG";
 import { ExperienceSVG } from "./RlogoParts/ExperienceSVG";
 import { PortfolioSVG } from "./RlogoParts/PortfolioSVG";
 import { SkillsSVG } from "./RlogoParts/SkillsSVG";
+import { ContactSVG } from "./RlogoParts/ContactSVG";
 import { useState, useEffect } from "react";
 
 const Rlogo = (props) => {
@@ -24,6 +25,8 @@ const Rlogo = (props) => {
     return <ExperienceSVG width={width} height={height} />;
   if (title === "My Portfolio")
     return <PortfolioSVG width={width} height={height} />;
+  if (title === "Contact Me")
+    return <ContactSVG width={width} height={height} />;
   else {
     return <AboutMeSVG width={width} height={height} />;
   }

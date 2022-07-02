@@ -5,15 +5,14 @@ export const AboutMe = () => {
     <Box
       id="aboutMe"
       sx={{
-        bgcolor: "background.paper",
         width: "85%",
-        mt: 20,
+        mt: 25,
         mb: 10,
         " @media screen and (max-width: 650px)": {
           ml: "auto",
           mr: "auto",
           padding: "10px 10px 10px 10px",
-          wifth: "100%",
+          width: "100%",
         },
       }}
     >

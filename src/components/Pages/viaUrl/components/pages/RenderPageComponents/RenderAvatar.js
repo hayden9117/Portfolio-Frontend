@@ -9,27 +9,22 @@ export default function RenderAvatar(props) {
   return (
     <Box
       sx={{
+        display: "flex",
+        flexDirection: "column",
         width: "300px",
       }}
     >
-      <Avatar
-        variant="circular"
-        sx={{
-          height: 150,
-          width: 150,
-
-          " @media screen and (min-width: 650px)": {
-            float: "left",
-            padding: "10px 10px 0px 20px",
-          },
-          " @media screen and (max-width: 650px)": {
-            ml: "auto",
-            mr: "auto",
-            padding: "10px 10px 10px 10px",
-          },
-          padding: "0 20px 20px 0",
-        }}
-      />
+      <Box alignSelf={"center"}>
+        <Avatar
+          variant="circular"
+          sx={{
+            maxHeight: "40vh ",
+            maxWidth: "40vh ",
+            minHeight: "40vh ",
+            minWidth: "40vh ",
+          }}
+        />
+      </Box>
     </Box>
   );
 }

@@ -17,11 +17,15 @@ function SignUp(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let bodyObject = { username: newUserName, password: newPassword };
+    let bodyObject = {
+      username: newUserName,
+      password: newPassword,
+      url: `http://${window.location.hostname}:3000/${newUserName}`,
+    };
 
     if (matchedPassWord === newPassword) {
       // ftch(`https://richiehayde-portfolio-backend.herokuapp.com/newuser`, {
-      fetch("http://localhost:3001/newuser", {
+      fetch("https://richiehayden-portfolio-backend.herokuapp.com/viaSignUp", {
         credentials: "include",
         method: "post",
         headers: {

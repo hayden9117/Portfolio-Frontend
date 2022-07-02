@@ -9,7 +9,7 @@ import ArchiveIcon from "@mui/icons-material/Archive";
 import FileCopyIcon from "@mui/icons-material/FileCopy";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-
+import { Template } from "../tool-icons/NavSVGS";
 const StyledMenu = styled((props) => (
   <Menu
     elevation={0}
@@ -71,7 +71,9 @@ export default function TemplateMenu(props) {
           links: { num: config.links.num, url: config.links.url },
           avatars: config.avatars,
           background: config.background,
+          opacity: config.opacity,
           template: "row",
+          brightness: config.brightness,
         });
         break;
       case "column":
@@ -79,7 +81,9 @@ export default function TemplateMenu(props) {
           links: { num: config.links.num, url: config.links.url },
           avatars: config.avatars,
           background: config.background,
+          opacity: config.opacity,
           template: "column",
+          brightness: config.brightness,
         });
         break;
       default:
@@ -89,16 +93,16 @@ export default function TemplateMenu(props) {
   return (
     <div>
       <Button
+        sx={{ color: "black" }}
         id="demo-customized-button"
         aria-controls={open ? "demo-customized-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
-        variant="contained"
         disableElevation
         onClick={handleClick}
         endIcon={<KeyboardArrowDownIcon />}
       >
-        Options
+        <Template />
       </Button>
       <StyledMenu
         id="demo-customized-menu"

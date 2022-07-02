@@ -13,7 +13,8 @@ import React, { useState } from "react";
 
 import SignUp from "./SignUp";
 
-function ViaLogin({ setToken }) {
+function ViaLogin(props) {
+  const { setToken, setConfig } = props;
   const [userName, setUserName] = useState();
   const [password, setPassword] = useState();
   const [signUp, setSignUp] = useState(false);
@@ -22,7 +23,7 @@ function ViaLogin({ setToken }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    fetch(`http://localhost:3001/Login`, {
+    fetch(`https://richiehayden-portfolio-backend.herokuapp.com/viaLogin`, {
       credentials: "include",
       method: "post",
       headers: {
@@ -38,8 +39,11 @@ function ViaLogin({ setToken }) {
         }
 
         if (result.token) {
-          setToken(result);
-          window.location.reload(false);
+          console.log(result.config);
+          setConfig(result.config);
+          setToken(result.token);
+
+          window.location.reload(true);
         }
 
         if (result.message === "incorrect password") {
@@ -68,32 +72,6 @@ function ViaLogin({ setToken }) {
         >
           <Box
             sx={{
-              width: "40%",
-              padding: 10,
-              flexGrow: 1,
-              zIndex: 1,
-              bgcolor: "background.paper",
-              " @media screen and (max-width: 650px)": {
-                width: "100%",
-                paddingBottom: 2,
-              },
-            }}
-          >
-            <Stack spacing={5}>
-              <Typography variant={"h2"} align={"center"}>
-                Welcome to my Amazon Price Tracker!
-              </Typography>
-
-              <Typography variant={"h5"}>
-                Copy a URL that links to an amazon product you would like to
-                track, Paste it into the the text box on the navigation bar and
-                hit submit.
-              </Typography>
-            </Stack>
-          </Box>
-          <Box
-            sx={{
-              maxWidth: "40%",
               padding: 10,
               flexGrow: 1,
               zIndex: 1,
@@ -107,6 +85,7 @@ function ViaLogin({ setToken }) {
               raised
               sx={{
                 minHeight: 300,
+
                 minWidth: 300,
               }}
             >
@@ -122,105 +101,56 @@ function ViaLogin({ setToken }) {
   }
   return (
     <>
-      <Stack
+      <Card
+        raised
         sx={{
-          " @media screen and (max-width: 650px)": {
-            flexDirection: "column",
-          },
+          minHeight: 300,
+          minWidth: 300,
         }}
-        direction={"row"}
-        justifyContent="center"
-        alignItems="center"
       >
-        <Box
-          sx={{
-            width: "40%",
-            padding: 10,
-            flexGrow: 1,
-            zIndex: 1,
-            bgcolor: "background.paper",
-            " @media screen and (max-width: 650px)": {
-              width: "100%",
-              paddingBottom: 2,
-            },
-          }}
-        >
-          <Stack spacing={5}>
-            <Typography variant={"h2"} align={"center"}>
-              Welcome to my Amazon Price Tracker!
+        <CardContent>
+          <FormControl sx={{ display: "flex" }}>
+            <Typography
+              variant="h3"
+              sx={{
+                alignSelf: "center",
+                justifySelf: "center",
+                paddingBottom: 2,
+              }}
+            >
+              Please Login
             </Typography>
-
-            <Typography variant={"h5"}>
-              Copy a URL that links to an amazon product you would like to
-              track, Paste it into the the text box on the navigation bar and
-              hit submit.
-            </Typography>
-          </Stack>
-        </Box>
-        <Box
-          sx={{
-            maxWidth: "40%",
-            padding: 10,
-            flexGrow: 1,
-            zIndex: 1,
-            " @media screen and (max-width: 650px)": {
-              maxWidth: "100%",
-              padding: 0,
-            },
-          }}
-        >
-          <Card
-            raised
-            sx={{
-              minHeight: 300,
-              minWidth: 300,
-            }}
-          >
-            <CardContent>
-              <FormControl sx={{ display: "flex" }}>
-                <Typography
-                  variant="h3"
-                  sx={{
-                    alignSelf: "center",
-                    justifySelf: "center",
-                    paddingBottom: 2,
-                  }}
-                >
-                  Please Login
-                </Typography>
-                <TextField
-                  label="username"
-                  value={userName}
-                  onChange={(e) => setUserName(e.target.value)}
-                  variant="outlined"
-                  style={{ height: 80 }}
-                />
-                <div />
-                <TextField
-                  label="password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  variant="outlined"
-                />
-                <div />
-                <Button
-                  className="loginSubmit"
-                  type="submit"
-                  onClick={handleSubmit}
-                >
-                  Submit
-                </Button>
-                <div></div>
-                <Button onClick={() => handleSignUp("/priceTracker/signup")}>
-                  Sign UP
-                </Button>
-              </FormControl>
-            </CardContent>
-          </Card>
-          <br></br>
-        </Box>
-      </Stack>
+            <TextField
+              label="username"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+              variant="outlined"
+              style={{ height: 80 }}
+            />
+            <div />
+            <TextField
+              label="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              variant="outlined"
+            />
+            <div />
+            <Button
+              className="loginSubmit"
+              type="submit"
+              onClick={handleSubmit}
+            >
+              Submit
+            </Button>
+            <div></div>
+            <Button onClick={() => handleSignUp("/priceTracker/signup")}>
+              Sign UP
+            </Button>
+          </FormControl>
+        </CardContent>
+      </Card>
+      <br></br>
     </>
   );
 }

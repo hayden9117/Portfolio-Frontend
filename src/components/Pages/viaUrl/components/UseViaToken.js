@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-export default function useToken() {
+export default function useViaToken() {
   const getToken = () => {
-    const tokenString = localStorage.getItem("token");
+    const tokenString = localStorage.getItem("viaToken");
     const userToken = JSON.parse(tokenString);
 
     return userToken;
@@ -11,7 +11,7 @@ export default function useToken() {
   const [token, setToken] = useState(getToken());
 
   const saveToken = (userToken) => {
-    localStorage.setItem("token", JSON.stringify(userToken));
+    localStorage.setItem("viaToken", JSON.stringify(userToken));
 
     setToken(userToken);
   };
